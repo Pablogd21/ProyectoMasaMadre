@@ -1,3 +1,0 @@
-module proyectoMasaMadre {
-	exports principal;
-}
