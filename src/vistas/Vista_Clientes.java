@@ -18,6 +18,8 @@ public class Vista_Clientes extends JPanel {
 		
 		this.setSize(750, 430 );
 		
+		System.out.println("Pablo es un perro y fernando se fue");
+		
 		btnAniadirCli = new JButton("A\u00F1adir");
 		btnAniadirCli.setBackground(Color.BLACK);
 		btnAniadirCli.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
