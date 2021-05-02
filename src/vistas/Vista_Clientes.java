@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
+
 import javax.swing.JTextField;
 
 public class Vista_Clientes extends JPanel {
@@ -146,6 +147,5 @@ public class Vista_Clientes extends JPanel {
 
 
 }
-
 
 
