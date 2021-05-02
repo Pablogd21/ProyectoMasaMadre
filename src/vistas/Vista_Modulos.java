@@ -28,20 +28,28 @@ public class Vista_Modulos extends JPanel {
 		add(btnCerrarSesion);
 		
 		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(23, 82, 89, 23);
+		btnNewButton.setBounds(88, 106, 89, 23);
 		add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(169, 82, 89, 23);
+		btnNewButton_1.setBounds(265, 106, 89, 23);
 		add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(313, 82, 89, 23);
+		btnNewButton_2.setBounds(446, 106, 89, 23);
 		add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setBounds(462, 82, 89, 23);
+		btnNewButton_3.setBounds(446, 235, 89, 23);
 		add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("New button");
+		btnNewButton_4.setBounds(88, 235, 89, 23);
+		add(btnNewButton_4);
+		
+		JButton btnNewButton_5 = new JButton("New button");
+		btnNewButton_5.setBounds(265, 235, 89, 23);
+		add(btnNewButton_5);
 		
 		
 	}
