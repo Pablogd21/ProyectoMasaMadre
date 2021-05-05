@@ -25,34 +25,53 @@ public class Vista_Modulos extends JPanel {
 		
 		JButton btnCerrarSesion = new JButton();
 		btnCerrarSesion.setBounds(715, 11, 25, 25);
-		btnCerrarSesion.setSelectedIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/flecha.png")));
-		btnCerrarSesion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/flecha.png")));
+		btnCerrarSesion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/logout.png")));
 		btnCerrarSesion.setBorder(null);
 		add(btnCerrarSesion);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(317, 91, 100, 100);
-		add(btnNewButton_1);
+		JButton btnFacturacion = new JButton();
+		btnFacturacion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/factura.png")));
+		btnFacturacion.setBounds(420, 73, 100, 100);
+		add(btnFacturacion);
 		
-		JButton btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setBounds(317, 252, 100, 100);
-		add(btnNewButton_4);
+		JButton btnMarketing = new JButton("");
+		btnMarketing.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/marketing.png")));
+		btnMarketing.setBounds(420, 251, 100, 100);
+		add(btnMarketing);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(468, 91, 100, 100);
-		add(btnNewButton_2);
+		JButton btnPlanificacion = new JButton("");
+		btnPlanificacion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/programar.png")));
+		btnPlanificacion.setBounds(182, 251, 100, 100);
+		add(btnPlanificacion);
 		
-		JButton btnNewButton_5 = new JButton("New button");
-		btnNewButton_5.setBounds(468, 252, 100, 100);
-		add(btnNewButton_5);
+		JButton btnClientes = new JButton("");
+		btnClientes.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/clientes.png")));
+		btnClientes.setBounds(182, 73, 100, 100);
+		add(btnClientes);
 		
-		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setBounds(164, 252, 100, 100);
-		add(btnNewButton_3);
+		JLabel lblNewLabel = new JLabel("Clientes");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
+		lblNewLabel.setBounds(182, 184, 100, 14);
+		add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(164, 91, 100, 100);
-		add(btnNewButton);
+		JLabel lblNewLabel_1 = new JLabel("Planificaci\u00F3n");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(182, 362, 100, 14);
+		add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Facturas");
+		lblNewLabel_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(420, 184, 100, 14);
+		add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Marketing");
+		lblNewLabel_3.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBounds(420, 362, 100, 14);
+		add(lblNewLabel_3);
 		
 		
 	}
