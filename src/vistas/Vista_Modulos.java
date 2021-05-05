@@ -3,12 +3,10 @@ package vistas;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 
 public class Vista_Modulos extends JPanel {
@@ -17,8 +15,9 @@ public class Vista_Modulos extends JPanel {
 		this.setSize(750, 430);
 		setLayout(null);
 		
-		JLabel lblUsuario = new JLabel("Nombre Usuario");
-		lblUsuario.setBounds(607, 11, 98, 25);
+		JLabel lblUsuario = new JLabel("Usuario");
+		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario.setBounds(642, 11, 63, 25);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		add(lblUsuario);
 		
