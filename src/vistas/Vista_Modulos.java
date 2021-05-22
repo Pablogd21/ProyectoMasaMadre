@@ -8,10 +8,6 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
 
 public class Vista_Modulos extends JPanel {
 	public Vista_Modulos() {
