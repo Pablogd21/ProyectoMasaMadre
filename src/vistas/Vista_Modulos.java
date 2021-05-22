@@ -11,6 +11,10 @@ import javax.swing.SwingConstants;
 
 public class Vista_Modulos extends JPanel {
 	public Vista_Modulos() {
+
+
+		setBorder(null);
+
 		
 		this.setSize(750, 430);
 		setLayout(null);
@@ -31,16 +35,19 @@ public class Vista_Modulos extends JPanel {
 		JButton btnFacturacion = new JButton();
 		btnFacturacion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/factura.png")));
 		btnFacturacion.setBounds(420, 73, 100, 100);
+		btnFacturacion.setBounds(431, 73, 100, 100);
 		add(btnFacturacion);
 		
 		JButton btnMarketing = new JButton("");
 		btnMarketing.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/marketing.png")));
 		btnMarketing.setBounds(420, 251, 100, 100);
+		btnMarketing.setBounds(431, 251, 100, 100);
 		add(btnMarketing);
 		
 		JButton btnPlanificacion = new JButton("");
 		btnPlanificacion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/programar.png")));
 		btnPlanificacion.setBounds(182, 251, 100, 100);
+		btnPlanificacion.setBounds(193, 251, 100, 100);
 		add(btnPlanificacion);
 		
 		JButton btnClientes = new JButton("");
@@ -70,7 +77,15 @@ public class Vista_Modulos extends JPanel {
 		lblNewLabel_3.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(420, 362, 100, 14);
-		add(lblNewLabel_3);
+		
+		btnClientes.setBounds(193, 73, 100, 100);
+		add(btnClientes);
+//		btnClientes.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseEntered(MouseEvent e) {
+//				btnClientes.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/cliente_grande.png")));
+//			}
+//		});
 		
 		
 	}
