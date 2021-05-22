@@ -1,4 +1,4 @@
-package vistas;
+package views;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,14 +7,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Vista_Planificacion extends JPanel {
+public class Vista_Facturacion extends JPanel {
 	
 	private JButton btnAniadirUsu;
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JButton btnResumen;
 	
-	public Vista_Planificacion() {
+	public Vista_Facturacion() {
 		setLayout(null);
 		
 		this.setSize(750, 430 );
@@ -37,13 +37,13 @@ public class Vista_Planificacion extends JPanel {
 		btnEliminar.setBounds(23, 142, 175, 28);
 		add(btnEliminar);
 		
-		btnResumen = new JButton("Calendarios");
+		btnResumen = new JButton("Balance Mensual");
 		btnResumen.setBackground(Color.BLACK);
 		btnResumen.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnResumen.setBounds(23, 181, 175, 28);
 		add(btnResumen);
 		
-		JLabel lblTituloModulo = new JLabel("Planificación ...");
+		JLabel lblTituloModulo = new JLabel("Facturación ...");
 		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		lblTituloModulo.setBounds(23, 359, 140, 28);
 		add(lblTituloModulo);
