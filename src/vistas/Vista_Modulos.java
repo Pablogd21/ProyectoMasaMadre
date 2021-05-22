@@ -3,7 +3,9 @@ package vistas;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
@@ -13,31 +15,32 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 public class Vista_Modulos extends JPanel {
+	
 	public Vista_Modulos() {
 		
-		//setBorder(null);
-		setLayout(null);
-		
-		Toolkit miPantalla = Toolkit.getDefaultToolkit();
-		Dimension tamanyoPantalla = miPantalla.getScreenSize();	
-		int altoPantalla = tamanyoPantalla.height;
-		int anchoPantalla = tamanyoPantalla.width;
-		
-		setSize(1920, 1080);
+		BorderLayout layout = new BorderLayout();
+		setLayout(layout);
 		
 		
+		//PANEL SUPERIOR PARA BOTON Y USUARIO
+		JPanel panel_login = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario.setBounds(835, 186, 63, 25);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		add(lblUsuario);
-		
+		panel_login.add(lblUsuario);
 		
 		JButton btnCerrarSesion = new JButton();
 		btnCerrarSesion.setBounds(908, 186, 25, 25);
 		btnCerrarSesion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/logout.png")));
 		btnCerrarSesion.setBorder(null);
-		add(btnCerrarSesion);
+		panel_login.add(btnCerrarSesion);
+		panel_login.setAlignmentX(RIGHT_ALIGNMENT);
+		add(panel_login, BorderLayout.NORTH);
+		
+		
+		
+		//PANEL CENTRAL CON BOTONES
 		
 		JButton btnFacturacion = new JButton();
 		btnFacturacion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/factura.png")));
