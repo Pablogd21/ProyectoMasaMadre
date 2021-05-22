@@ -40,29 +40,30 @@ public class Vista_Modulos extends JPanel {
 
 		JButton btnCerrarSesion = new JButton();
 		btnCerrarSesion.setBounds(908, 186, 25, 25);
-		btnCerrarSesion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/logout.png")));
+		btnCerrarSesion.setIcon(new ImageIcon(".\\images\\logout.png"));
 		btnCerrarSesion.setBorder(null);
 		add(btnCerrarSesion);
 		panel_login.add(btnCerrarSesion);
 		panel_login.setAlignmentX(RIGHT_ALIGNMENT);
 		add(panel_login, BorderLayout.NORTH);
 
+		
+		
 		// PANEL CENTRAL CON BOTONES
-
 		JButton btnFacturacion = new JButton();
-		btnFacturacion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/factura.png")));
+		btnFacturacion.setIcon(new ImageIcon(".\\images\\factura.png"));
 		btnFacturacion.setBounds(624, 248, 100, 100);
 		add(btnFacturacion);
 		JButton btnMarketing = new JButton("");
-		btnMarketing.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/marketing.png")));
+		btnMarketing.setIcon(new ImageIcon(".\\images\\marketing.png"));
 		btnMarketing.setBounds(624, 426, 100, 100);
 		add(btnMarketing);
 		JButton btnPlanificacion = new JButton("");
-		btnPlanificacion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/programar.png")));
+		btnPlanificacion.setIcon(new ImageIcon(".\\images\\programar.png"));
 		btnPlanificacion.setBounds(386, 426, 100, 100);
 		add(btnPlanificacion);
 		JButton btnClientes = new JButton("");
-		btnClientes.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/clientes.png")));
+		btnClientes.setIcon(new ImageIcon(".\\images\\clientes.png"));
 		btnClientes.setBounds(386, 248, 100, 100);
 		add(btnClientes);
 // btnClientes.addMouseListener(new MouseAdapter() {
