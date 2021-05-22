@@ -17,12 +17,13 @@ class Framesito extends JFrame {
 	
 	public Framesito() {
 		setTitle("hola");
-		setSize(760, 450);
+		setExtendedState(MAXIMIZED_BOTH);
 		Vista_Modulos marquito = new Vista_Modulos();
-		add(marquito);
 		marquito.setAlignmentX(CENTER_ALIGNMENT);
 		marquito.setAlignmentY(CENTER_ALIGNMENT);
+		add(marquito);
 		setVisible(true);
+		
 	}
 	
 }
