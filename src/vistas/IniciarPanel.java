@@ -6,22 +6,22 @@ public class IniciarPanel {
 
 	public static void main(String[] args) {
 		
-		
-		Framesito panelillo = new Framesito();
+		Marco_Principal panelillo = new Marco_Principal();
 		panelillo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
 
-class Framesito extends JFrame {
+class Marco_Principal extends JFrame {
 	
-	public Framesito() {
+	public Marco_Principal() {
 		setTitle("hola");
 		setExtendedState(MAXIMIZED_BOTH);
-		Vista_Modulos marquito = new Vista_Modulos();
-		marquito.setAlignmentX(CENTER_ALIGNMENT);
-		marquito.setAlignmentY(CENTER_ALIGNMENT);
-		add(marquito);
+		setResizable(false);
+		Vista_Modulos vistaM = new Vista_Modulos();
+		//vistaM.setAlignmentX(CENTER_ALIGNMENT);
+		//vistaM.setAlignmentY(CENTER_ALIGNMENT);
+		add(vistaM);
 		setVisible(true);
 		
 	}
