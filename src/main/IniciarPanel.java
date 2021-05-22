@@ -1,6 +1,6 @@
 package main;
 
-import javax.swing.JFrame;
+import java.awt.*;
 
 import views.Marco_Principal;
 
@@ -8,9 +8,16 @@ import views.Marco_Principal;
 public class IniciarPanel {
 
 	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				Marco_Principal appPrincipal = new Marco_Principal();
+				appPrincipal.hacerVisible();
+			
+			}
+		});
 		
-		Marco_Principal panelillo = new Marco_Principal();
-		panelillo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
