@@ -143,8 +143,6 @@ public class Vista_Clientes extends JPanel {
 		textField_3.setBounds(123, 61, 376, 26);
 		panel.add(textField_3);
 	}
-
-
 }
 
 
