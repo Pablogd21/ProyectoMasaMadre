@@ -1,10 +1,11 @@
-package vistas;
+package views;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
+
 import javax.swing.JTextField;
 
 public class Vista_Clientes extends JPanel {
@@ -143,7 +144,8 @@ public class Vista_Clientes extends JPanel {
 		textField_3.setBounds(123, 61, 376, 26);
 		panel.add(textField_3);
 	}
-}
 
+
+}
 
 
