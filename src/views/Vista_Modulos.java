@@ -18,14 +18,6 @@ public class Vista_Modulos extends JPanel {
 
 	public Vista_Modulos() {
 
-//setBorder(null);
-		setLayout(null);
-		Toolkit miPantalla = Toolkit.getDefaultToolkit();
-		Dimension tamanyoPantalla = miPantalla.getScreenSize();
-		int altoPantalla = tamanyoPantalla.height;
-		int anchoPantalla = tamanyoPantalla.width;
-		setSize(1920, 1080);
-
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);
 
@@ -50,22 +42,28 @@ public class Vista_Modulos extends JPanel {
 		
 		
 		// PANEL CENTRAL CON BOTONES
+		JPanel panel_botones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 80, 0));
 		JButton btnFacturacion = new JButton();
 		btnFacturacion.setIcon(new ImageIcon(".\\images\\factura.png"));
-		btnFacturacion.setBounds(624, 248, 100, 100);
-		add(btnFacturacion);
+		btnFacturacion.setBounds(getWidth()/2, getHeight()/2, 100, 100);
+		panel_botones.add(btnFacturacion);
+		
 		JButton btnMarketing = new JButton("");
 		btnMarketing.setIcon(new ImageIcon(".\\images\\marketing.png"));
 		btnMarketing.setBounds(624, 426, 100, 100);
-		add(btnMarketing);
+		panel_botones.add(btnMarketing);
+		
 		JButton btnPlanificacion = new JButton("");
 		btnPlanificacion.setIcon(new ImageIcon(".\\images\\programar.png"));
 		btnPlanificacion.setBounds(386, 426, 100, 100);
-		add(btnPlanificacion);
+		panel_botones.add(btnPlanificacion);
+		
 		JButton btnClientes = new JButton("");
 		btnClientes.setIcon(new ImageIcon(".\\images\\clientes.png"));
 		btnClientes.setBounds(386, 248, 100, 100);
-		add(btnClientes);
+		panel_botones.add(btnClientes);
+		add(panel_botones, BorderLayout.CENTER);
+		
 // btnClientes.addMouseListener(new MouseAdapter() {
 // @Override
 // public void mouseEntered(MouseEvent e) {
@@ -73,6 +71,7 @@ public class Vista_Modulos extends JPanel {
 // }
 // });
 
+		/*
 		JLabel lblNewLabel = new JLabel("Clientes");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
@@ -94,6 +93,6 @@ public class Vista_Modulos extends JPanel {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(624, 535, 100, 25);
 		add(lblNewLabel_3);
-
+		*/
 	}
 }
