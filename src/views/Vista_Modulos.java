@@ -18,14 +18,6 @@ public class Vista_Modulos extends JPanel {
 
 	public Vista_Modulos() {
 
-//setBorder(null);
-		setLayout(null);
-		Toolkit miPantalla = Toolkit.getDefaultToolkit();
-		Dimension tamanyoPantalla = miPantalla.getScreenSize();
-		int altoPantalla = tamanyoPantalla.height;
-		int anchoPantalla = tamanyoPantalla.width;
-		setSize(1920, 1080);
-
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);
 

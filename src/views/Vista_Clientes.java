@@ -7,19 +7,19 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 import javax.swing.JTextField;
+import javax.swing.JTable;
 
 public class Vista_Clientes extends JPanel {
 	
 	private JButton btnAniadirCli;
 	private JButton btnModificar;
-	private JButton btnEliminar;
-	private JButton btnResumen;
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JTable table_1;
 	
 	public Vista_Clientes() {
 		
@@ -30,26 +30,14 @@ public class Vista_Clientes extends JPanel {
 		btnAniadirCli = new JButton("A\u00D1ADIR");
 		btnAniadirCli.setBackground(Color.BLACK);
 		btnAniadirCli.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 15));
-		btnAniadirCli.setBounds(23, 64, 175, 28);
+		btnAniadirCli.setBounds(21, 160, 175, 28);
 		add(btnAniadirCli);
 		
-		btnModificar = new JButton("MODIFICAR");
+		btnModificar = new JButton("RESUMEN");
 		btnModificar.setBackground(Color.BLACK);
 		btnModificar.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 15));
-		btnModificar.setBounds(23, 103, 175, 28);
+		btnModificar.setBounds(21, 199, 175, 28);
 		add(btnModificar);
-		
-		btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.setBackground(Color.BLACK);
-		btnEliminar.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 15));
-		btnEliminar.setBounds(23, 142, 175, 28);
-		add(btnEliminar);
-		
-		btnResumen = new JButton("RESUMEN");
-		btnResumen.setBackground(Color.BLACK);
-		btnResumen.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 15));
-		btnResumen.setBounds(23, 181, 175, 28);
-		add(btnResumen);
 		
 		JLabel lblTituloModulo = new JLabel("Clientes ...");
 		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
@@ -143,9 +131,14 @@ public class Vista_Clientes extends JPanel {
 		textField_3.setColumns(10);
 		textField_3.setBounds(123, 61, 376, 26);
 		panel.add(textField_3);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(214, 21, 526, 348);
+		add(panel_1);
+		
+		table_1 = new JTable();
+		panel_1.add(table_1);
 	}
-
-
 }
 
 
