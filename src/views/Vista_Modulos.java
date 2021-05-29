@@ -20,7 +20,7 @@ public class Vista_Modulos extends JPanel {
 
 	public Vista_Modulos() {
 
-		setSize(1500, 600);
+
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);
 
