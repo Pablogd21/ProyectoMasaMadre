@@ -8,61 +8,26 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 
 public class Vista_Modulos extends JPanel {
 
 	public Vista_Modulos() {
 
+		setSize(1500, 600);
 		BorderLayout layout = new BorderLayout();
 		setLayout(layout);
-
-		// PANEL SUPERIOR PARA BOTON Y USUARIO
-		JPanel panel_login = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario.setBounds(835, 186, 63, 25);
-		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		add(lblUsuario);
-		panel_login.add(lblUsuario);
-
-		JButton btnCerrarSesion = new JButton();
-		btnCerrarSesion.setBounds(908, 186, 25, 25);
-		btnCerrarSesion.setIcon(new ImageIcon(".\\images\\logout.png"));
-		btnCerrarSesion.setBorder(null);
-		add(btnCerrarSesion);
-		panel_login.add(btnCerrarSesion);
-		panel_login.setAlignmentX(RIGHT_ALIGNMENT);
-		add(panel_login, BorderLayout.NORTH);
 
 		
 		
 		// PANEL CENTRAL CON BOTONES
-		JPanel panel_botones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 80, 0));
-		JButton btnFacturacion = new JButton();
-		btnFacturacion.setIcon(new ImageIcon(".\\images\\factura.png"));
-		btnFacturacion.setBounds(getWidth()/2, getHeight()/2, 100, 100);
-		panel_botones.add(btnFacturacion);
-		
-		JButton btnMarketing = new JButton("");
-		btnMarketing.setIcon(new ImageIcon(".\\images\\marketing.png"));
-		btnMarketing.setBounds(624, 426, 100, 100);
-		panel_botones.add(btnMarketing);
-		
-		JButton btnPlanificacion = new JButton("");
-		btnPlanificacion.setIcon(new ImageIcon(".\\images\\programar.png"));
-		btnPlanificacion.setBounds(386, 426, 100, 100);
-		panel_botones.add(btnPlanificacion);
-		
-		JButton btnClientes = new JButton("");
-		btnClientes.setIcon(new ImageIcon(".\\images\\clientes.png"));
-		btnClientes.setBounds(386, 248, 100, 100);
-		panel_botones.add(btnClientes);
-		add(panel_botones, BorderLayout.CENTER);
+		GridBagLayout layout_botones = new GridBagLayout();
 		
 // btnClientes.addMouseListener(new MouseAdapter() {
 // @Override

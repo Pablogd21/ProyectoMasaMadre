@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import views.Marco_Principal;
 
 
-public class IniciarPanel {
+public class IniciarPanel extends JFrame{
 
 	public static void main(String[] args) {
 		
