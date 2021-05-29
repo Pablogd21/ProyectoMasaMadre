@@ -11,6 +11,7 @@ public class Marco_Principal extends JFrame {
 		add(vistaM);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(true);
 		setVisible(true);
 		
 	}
