@@ -8,7 +8,7 @@ public class Marco_Principal extends JFrame {
 		setTitle("hola");
 		setExtendedState(MAXIMIZED_BOTH);
 		setResizable(false);
-		Vista_Modulos vistaM = new Vista_Modulos();
+		Vista_Marketing vistaM = new Vista_Marketing();
 		//vistaM.setAlignmentX(CENTER_ALIGNMENT);
 		//vistaM.setAlignmentY(CENTER_ALIGNMENT);
 		add(vistaM);

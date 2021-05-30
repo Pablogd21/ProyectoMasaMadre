@@ -9,8 +9,10 @@ public class IniciarPanel {
 
 	public static void main(String[] args) {
 		
-		Marco_Principal panelillo = new Marco_Principal();
-		panelillo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Marco_Principal miMarco = new Marco_Principal();
+		miMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
 	}
 
 }
