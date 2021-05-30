@@ -1,5 +1,8 @@
 package views;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 
 public class Marco_Principal extends JFrame {
@@ -12,6 +15,8 @@ public class Marco_Principal extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(true);
+		Image icon = Toolkit.getDefaultToolkit().getImage(".\\images\\logo.jpg");
+		setIconImage(icon);
 		setVisible(true);
 		
 	}
