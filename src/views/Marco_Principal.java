@@ -10,7 +10,7 @@ public class Marco_Principal extends JFrame {
 	public Marco_Principal() {
 		setTitle("hola");
 		setExtendedState(MAXIMIZED_BOTH);
-		Vista_Modulos vistaM = new Vista_Modulos();
+		Vista_Modulos1 vistaM = new Vista_Modulos1();
 		add(vistaM);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
