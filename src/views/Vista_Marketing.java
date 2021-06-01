@@ -35,11 +35,6 @@ public class Vista_Marketing extends JPanel {
 		btnModificar.setBounds(23, 186, 175, 28);
 		add(btnModificar);
 		
-		JLabel lblTituloModulo = new JLabel("Marketing ...");
-		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblTituloModulo.setBounds(23, 359, 140, 28);
-		add(lblTituloModulo);
-		
 		JButton btnModificar_1 = new JButton("Encuestas");
 		btnModificar_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnModificar_1.setBackground(Color.BLACK);
