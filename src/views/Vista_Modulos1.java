@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 
 public class Vista_Modulos1 extends JPanel {
+	private JButton btnLogout;
 
 	public Vista_Modulos1() {
 		
@@ -31,7 +32,7 @@ public class Vista_Modulos1 extends JPanel {
 		lblUsuario.setBorder(new EmptyBorder(20,0,20,0));
 		panel_login.add(lblUsuario);
 		
-		JButton btnLogout = new JButton("");
+		btnLogout = new JButton("");
 		btnLogout.setIcon(new ImageIcon(".\\images\\logout.png"));
 		btnLogout.setBackground(null);
 		btnLogout.setBorder(new EmptyBorder(0,0,0,0));
