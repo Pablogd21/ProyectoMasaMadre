@@ -1,10 +1,10 @@
 package controller;
 
-import views.Vista_Modulos1;
+import views.Vista_Modulos;
 
 public class Controlador {
 
-	Vista_Modulos1 vistaM = new Vista_Modulos1();
+	Vista_Modulos vistaM = new Vista_Modulos();
 
 
 }
