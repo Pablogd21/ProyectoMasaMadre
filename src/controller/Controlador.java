@@ -4,12 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.db.PersistenciaMasaMadre;
-import views.Vista_Clientes;
-import views.Vista_Facturacion;
-import views.Vista_Login;
-import views.Vista_Marketing;
-import views.Vista_Modulos;
-import views.Vista_Planificacion;
+import views.*;
 
 public class Controlador implements ActionListener {
 
@@ -42,9 +37,9 @@ public class Controlador implements ActionListener {
 		if(e.getSource().equals(vistaL.getBtnIngresar())) {
 			
 			
-			String contra = datos.getCredentials(vistaL.getTxtUsuario().toString());
+			String contra = datos.getCredentials(vistaL.getTxtUsuario().toString().trim());
 			
-			if (contra.equals(vistaL.getTxtPassword().toString())) {
+			if (contra.equals(vistaL.getTxtPassword().toString().trim())) {
 				System.out.println("hola");
 				vistaM.setVisible(true);
 			} else {

@@ -27,17 +27,12 @@ public class Marco_Principal extends JFrame {
 		setVisible(true);
 	}
 	
-	public int salir() {	
-		int opcion = JOptionPane.showConfirmDialog(
-						this, "¿Desea salir de la aplicación?",
-						"confirmación", 
-						JOptionPane.YES_NO_OPTION,
-						JOptionPane.WARNING_MESSAGE);
-		
-		if (opcion == JOptionPane.YES_OPTION) {
-			System.exit(0);
-		}
-		return opcion;
-	}
+	/*
+	 * public int salir() { int opcion = JOptionPane.showConfirmDialog( this,
+	 * "¿Desea salir de la aplicación?", "confirmación", JOptionPane.YES_NO_OPTION,
+	 * JOptionPane.WARNING_MESSAGE);
+	 * 
+	 * if (opcion == JOptionPane.YES_OPTION) { System.exit(0); } return opcion; }
+	 */
 
 }
