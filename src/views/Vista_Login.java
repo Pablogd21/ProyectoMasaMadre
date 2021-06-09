@@ -4,6 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import controller.Controlador;
+
 import javax.swing.JButton;
 
 public class Vista_Login extends JPanel{
@@ -42,4 +45,25 @@ public class Vista_Login extends JPanel{
 		btnIngresar.setBounds(445, 276, 196, 34);
 		add(btnIngresar);
 	}
+	
+	public void setControlador(Controlador controlador) {
+		btnIngresar.addActionListener(controlador);
+		txtPassword.addActionListener(controlador);
+		txtUsuario.addActionListener(controlador);
+		
+	}
+
+	public JButton getBtnIngresar() {
+		return btnIngresar;
+	}
+
+	public JTextField getTxtPassword() {
+		return txtPassword;
+	}
+
+	public JTextField getTxtUsuario() {
+		return txtUsuario;
+	}
+	
+	
 }

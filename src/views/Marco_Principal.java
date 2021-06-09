@@ -14,13 +14,12 @@ public class Marco_Principal extends JFrame {
 	public Marco_Principal() {
 		setTitle("CRM Masa Madre");
 		setExtendedState(MAXIMIZED_BOTH);
-		Vista_Modulos vistaM = new Vista_Modulos();
-		add(vistaM);
+		Vista_Login vistaL = new Vista_Login();
+		add(vistaL);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(true);
 		Image icon = Toolkit.getDefaultToolkit().getImage(".\\images\\logo.jpg");
 		setIconImage(icon);
-		setVisible(true);
 
 	}
 	

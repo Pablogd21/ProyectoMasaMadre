@@ -11,10 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.Controlador;
+
 public class Vista_Marketing extends JPanel {
 	
-	private JButton btnEliminar;
-	private JButton btnResumen;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -149,8 +149,15 @@ public class Vista_Marketing extends JPanel {
 		textField_4.setColumns(10);
 		textField_4.setBounds(122, 82, 376, 26);
 		panelComunicacion.add(textField_4);
-		
-		
 	
+	}
+	
+	public void setControlador(Controlador controlador) {
+		textField.addActionListener(controlador);
+		textField_1.addActionListener(controlador);
+		textField_2.addActionListener(controlador);
+		textField_3.addActionListener(controlador);
+		textField_4.addActionListener(controlador);
+		
 	}
 }
