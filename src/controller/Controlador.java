@@ -1,10 +1,19 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import views.Vista_Modulos;
 
-public class Controlador {
+public class Controlador implements ActionListener {
 
-	Vista_Modulos vistaM = new Vista_Modulos();
+	private Vista_Modulos vistaM;	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
 
 
 }

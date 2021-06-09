@@ -1,9 +1,11 @@
 package views;
 
-import java.awt.Image;
+import java.awt.Image; 
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+
+import controller.Controlador;
 
 public class Marco_Principal extends JFrame {
 	
@@ -17,8 +19,13 @@ public class Marco_Principal extends JFrame {
 		setResizable(true);
 		Image icon = Toolkit.getDefaultToolkit().getImage(".\\images\\logo.jpg");
 		setIconImage(icon);
+		
+		Controlador al = new Controlador();
+		
 		setVisible(true);
 		
 	}
+	
+	
 
 }
