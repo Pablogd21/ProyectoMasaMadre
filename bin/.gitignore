@@ -1,14 +1,15 @@
-/views/
-/main/
-/clientes.png
-/factura.png
-/marketing.png
-/progamar.png
-/programar.png
 /clientes 1.png
+/clientes.png
 /factura 1.png
+/factura.png
+/logo.jpg
+/logout.png
+/main/
 /marketing 1.png
+/marketing.png
+/model/
 /programar 1.png
+<<<<<<< HEAD
 /flecha.png
 /logout 1.png
 /logo.jpg
@@ -29,3 +30,8 @@
 /logout.png
 /logout_grande.png
 /model/
+=======
+/programar.png
+/views/
+/wallpaper.jpg
+>>>>>>> refs/heads/main
