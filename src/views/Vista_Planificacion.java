@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.Controlador;
+
 public class Vista_Planificacion extends JPanel {
 	
 	private JButton btnAniadirUsu;
@@ -49,6 +51,12 @@ public class Vista_Planificacion extends JPanel {
 		add(lblTituloModulo);
 	}
 	
-	
+	public void setControlador(Controlador controlador) {
+		btnAniadirUsu.addActionListener(controlador);
+		btnModificar.addActionListener(controlador);
+		btnEliminar.addActionListener(controlador);
+		btnResumen.addActionListener(controlador);
+		
+	}
 
 }
