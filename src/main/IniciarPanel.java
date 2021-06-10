@@ -49,7 +49,7 @@ public class IniciarPanel {
 				vistaM.setControlador(controlador);
 				vistaP.setControlador(controlador);
 				
-				appPrincipal.cargarPanel(vistaL);
+				appPrincipal.cargarPanel(vistaMar);
 				appPrincipal.hacerVisible();
 				
 			}
