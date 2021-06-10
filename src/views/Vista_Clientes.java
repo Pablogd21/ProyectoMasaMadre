@@ -51,7 +51,6 @@ public class Vista_Clientes extends JPanel {
 		
 		JPanel panelAnadir = new JPanel();
 		panelAnadir.setLayout(null);
-		panelAnadir.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panelAnadir.setBounds(377, 72, 979, 659);
 		add(panelAnadir);
 		
