@@ -5,10 +5,6 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
-import controller.Controlador;
-
-import javax.swing.JOptionPane;
-
 public class Marco_Principal extends JFrame {
 	
 	public Marco_Principal() {

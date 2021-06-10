@@ -32,7 +32,7 @@ public class Controlador implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource().equals(vistaL.getBtnIngresar())) {
-			//TODO: quitar trims
+			
 			String contra = datos.getCredentials(vistaL.getTxtUsuario().getText());
 			
 			if (contra.equals(vistaL.getTxtPassword().getText())) {
@@ -40,7 +40,8 @@ public class Controlador implements ActionListener {
 				//vistaL.setVisible(false);
 				//appPrincipal.removeAll();
 				//appPrincipal.add(vistaM);
-				vistaM.setVisible(true);
+				vistaL.setVisible(false);
+				
 			} else {
 				System.out.println("adios");
 			}
