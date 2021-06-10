@@ -165,6 +165,7 @@ public class Vista_Clientes extends JPanel {
 		btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
 		btnHome.setBorder(null);
 		btnHome.setBackground(null);
+		btnHome.setContentAreaFilled(false);
 		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
 				btnHome.setIcon(new ImageIcon(".\\images\\home_grande.png"));
@@ -174,7 +175,6 @@ public class Vista_Clientes extends JPanel {
 				btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
 			}
 		});
-		btnHome.setContentAreaFilled(false);
 		add(btnHome);
 
 	}
