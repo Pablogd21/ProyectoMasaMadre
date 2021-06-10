@@ -2,126 +2,167 @@ package views;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import controller.Controlador;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import javax.swing.JButton;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 
 public class Vista_Modulos extends JPanel {
 
+	private JLabel lblUsuario;
+	private JButton btnLogout;
+	private JLabel lblTitulo;
+	private JLabel lblClientes;
+	private JLabel lblMarketing;
+	private JLabel lblFacturas;
+	private JLabel lblProgramar;
+	private JButton btnClientes;
+	private JButton btnMarketing;
+	private JButton btnFacturas;
+	private JButton btnProgramar;
+
 	public Vista_Modulos() {
+
 		setLayout(new BorderLayout(0, 0));
-		
+		setSize(1920, 1080);
 		JPanel panel_login = new JPanel();
+		panel_login.setBackground(new Color(255, 204, 153));
 		FlowLayout fl_panel_login = (FlowLayout) panel_login.getLayout();
+		fl_panel_login.setHgap(10);
 		fl_panel_login.setAlignment(FlowLayout.RIGHT);
 		add(panel_login, BorderLayout.NORTH);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		panel_login.add(lblNewLabel);
+		lblUsuario = new JLabel("New label");
+		lblUsuario.setBorder(new EmptyBorder(20,0,20,0));
+		panel_login.add(lblUsuario);
 		
-		JButton btnNewButton = new JButton("New button");
-		panel_login.add(btnNewButton);
-		
-		JPanel panel = new JPanel();
-		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		JPanel panel_1 = new JPanel();
-		panel.add(panel_1);
-		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0};
-		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel_1.setLayout(gbl_panel_1);
-		
-		JButton btnNewButton_4 = new JButton("");
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		JLabel lblNewLabel_3 = new JLabel("M O D U L O S");
-		lblNewLabel_3.setFont(new Font("NSimSun", Font.PLAIN, 99));
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.gridwidth = 2;
-		gbc_lblNewLabel_3.insets = new Insets(50, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 0;
-		gbc_lblNewLabel_3.gridy = 0;
-		panel_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
-		btnNewButton_4.setIcon(new ImageIcon(".\\images\\clientes.png"));
-		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
-		gbc_btnNewButton_4.insets = new Insets(50, 100, 5, 100);
-		gbc_btnNewButton_4.gridx = 0;
-		gbc_btnNewButton_4.gridy = 1;
-		panel_1.add(btnNewButton_4, gbc_btnNewButton_4);
-		
-		JButton btnNewButton_5 = new JButton("");
-		btnNewButton_5.setIcon(new ImageIcon(".\\images\\marketing.png"));
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		GridBagConstraints gbc_btnNewButton_5 = new GridBagConstraints();
-		gbc_btnNewButton_5.insets = new Insets(50, 100, 5, 100);
-		gbc_btnNewButton_5.gridx = 1;
-		gbc_btnNewButton_5.gridy = 1;
-		panel_1.add(btnNewButton_5, gbc_btnNewButton_5);
-		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-		gbc_lblNewLabel_4.insets = new Insets(0, 0, 100, 5);
-		gbc_lblNewLabel_4.gridx = 0;
-		gbc_lblNewLabel_4.gridy = 2;
-		panel_1.add(lblNewLabel_4, gbc_lblNewLabel_4);
-		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
-		gbc_lblNewLabel_5.insets = new Insets(0, 0, 100, 5);
-		gbc_lblNewLabel_5.gridx = 1;
-		gbc_lblNewLabel_5.gridy = 2;
-		panel_1.add(lblNewLabel_5, gbc_lblNewLabel_5);
-		
-		JButton btnNewButton_3 = new JButton("");
-		btnNewButton_3.setIcon(new ImageIcon(".\\images\\factura.png"));
-		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
-		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_3.gridx = 0;
-		gbc_btnNewButton_3.gridy = 5;
-		panel_1.add(btnNewButton_3, gbc_btnNewButton_3);
-		
-		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setIcon(new ImageIcon(".\\images\\programar.png"));
-		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
-		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_2.gridx = 1;
-		gbc_btnNewButton_2.gridy = 5;
-		panel_1.add(btnNewButton_2, gbc_btnNewButton_2);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 6;
-		panel_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_2.gridx = 1;
-		gbc_lblNewLabel_2.gridy = 6;
-		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		btnLogout = new JButton("");
+		btnLogout.setIcon(new ImageIcon(".\\images\\logout.png"));
+		btnLogout.setBackground(null);
+		btnLogout.setBorder(new EmptyBorder(0,0,0,0));
+		btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+		    public void mouseEntered(java.awt.event.MouseEvent evt) {
+		        btnLogout.setIcon(new ImageIcon(".\\images\\logout_grande.png"));
+		    }
 
+		    public void mouseExited(java.awt.event.MouseEvent evt) {
+		        btnLogout.setIcon(new ImageIcon(".\\images\\logout.png"));
+		    }
+		});
+		panel_login.add(btnLogout);
+		
+		
+		
+		JPanel panel_modulos = new JPanel();
+		panel_modulos.setBackground(new Color(255, 204, 153));
+		add(panel_modulos, BorderLayout.CENTER);
+		panel_modulos.setLayout(null);
+		
+		lblTitulo = new JLabel("M O D U L O S");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(0, 39, 1920, 104);
+		lblTitulo.setFont(new Font("NSimSun", Font.PLAIN, 90));
+		panel_modulos.add(lblTitulo);
+		
+		lblClientes = new JLabel("Clientes");
+		lblClientes.setFont(new Font("Sitka Small", Font.BOLD, 16));
+		lblClientes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblClientes.setBounds(575, 491, 260, 52);
+		panel_modulos.add(lblClientes);
+		
+		lblMarketing = new JLabel("Marketing");
+		lblMarketing.setFont(new Font("Sitka Small", Font.BOLD, 16));
+		lblMarketing.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMarketing.setBounds(1086, 491, 260, 52);
+		panel_modulos.add(lblMarketing);
+		
+		lblFacturas = new JLabel("Facturas");
+		lblFacturas.setFont(new Font("Sitka Small", Font.BOLD, 16));
+		lblFacturas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFacturas.setBounds(575, 882, 260, 52);
+		panel_modulos.add(lblFacturas);
+		
+		lblProgramar = new JLabel("Programar");
+		lblProgramar.setFont(new Font("Sitka Small", Font.BOLD, 16));
+		lblProgramar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblProgramar.setBounds(1086, 882, 260, 52);
+		panel_modulos.add(lblProgramar);
+		
+		btnClientes = new JButton("");
+		btnClientes.setIcon(new ImageIcon(".\\images\\clientes.png"));
+		btnClientes.setBounds(575, 220, 260, 260);
+		btnClientes.setBorder(null);
+		btnClientes.setBackground(null);
+		panel_modulos.add(btnClientes);
+		
+		btnMarketing = new JButton("");
+		btnMarketing.setIcon(new ImageIcon(".\\images\\marketing.png"));
+		btnMarketing.setBounds(1086, 220, 260, 260);
+		btnMarketing.setBorder(null);
+		btnMarketing.setBackground(null);
+		panel_modulos.add(btnMarketing);
+		
+		btnFacturas = new JButton("");
+		btnFacturas.setIcon(new ImageIcon(".\\images\\facturas.png"));
+		btnFacturas.setBounds(575, 611, 260, 260);
+		btnFacturas.setBorder(null);
+		btnFacturas.setBackground(null);
+		panel_modulos.add(btnFacturas);
+		
+		btnProgramar = new JButton("");
+		btnProgramar.setIcon(new ImageIcon(".\\images\\programar.png"));
+		btnProgramar.setBounds(1086, 611, 260, 260);
+		btnProgramar.setBorder(null);
+		btnProgramar.setBackground(null);
+		panel_modulos.add(btnProgramar);
 
+	}
+	
+	public Vista_Modulos(JButton btnLogout, JButton btnClientes, JButton btnMarketing, JButton btnFacturas,
+			JButton btnProgramar) {
+		super();
+		this.btnLogout = btnLogout;
+		this.btnClientes = btnClientes;
+		this.btnMarketing = btnMarketing;
+		this.btnFacturas = btnFacturas;
+		this.btnProgramar = btnProgramar;
+	}
+	
+	public void setControlador(Controlador controlador) {
+		btnLogout.addActionListener(controlador);
+		btnClientes.addActionListener(controlador);
+		btnMarketing.addActionListener(controlador);
+		btnFacturas.addActionListener(controlador);
+		btnProgramar.addActionListener(controlador);
 		
 	}
+	
+	public JButton getBtnLogout() {
+		return btnLogout;
+	}
+
+	public JButton getBtnClientes() {
+		return btnClientes;
+	}
+
+	public JButton getBtnMarketing() {
+		return btnMarketing;
+	}
+
+	public JButton getBtnFacturas() {
+		return btnFacturas;
+	}
+
+	public JButton getBtnProgramar() {
+		return btnProgramar;
+	}
+
+	
 }

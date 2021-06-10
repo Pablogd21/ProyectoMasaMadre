@@ -7,6 +7,9 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 import javax.swing.JTextField;
+
+import controller.Controlador;
+
 import javax.swing.JTable;
 
 public class Vista_Clientes extends JPanel {
@@ -25,7 +28,7 @@ public class Vista_Clientes extends JPanel {
 		
 		setLayout(null);
 		
-		this.setSize(750, 430 );
+		this.setSize(1920, 1080);
 		
 		btnAniadirCli = new JButton("A\u00D1ADIR");
 		btnAniadirCli.setBackground(Color.BLACK);
@@ -138,6 +141,18 @@ public class Vista_Clientes extends JPanel {
 		
 		table_1 = new JTable();
 		panel_1.add(table_1);
+	}
+	
+	public void setControlador(Controlador controlador) {
+		btnAniadirCli.addActionListener(controlador);
+		btnModificar.addActionListener(controlador);
+		textField_4.addActionListener(controlador);
+		textField_5.addActionListener(controlador);
+		textField.addActionListener(controlador);
+		textField_1.addActionListener(controlador);
+		textField_2.addActionListener(controlador);
+		textField_3.addActionListener(controlador);
+		
 	}
 }
 
