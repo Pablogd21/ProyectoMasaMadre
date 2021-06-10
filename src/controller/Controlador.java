@@ -80,7 +80,14 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaF.getBtnHome())) {
 			appPrincipal.quitarPanel(vistaF);
 			appPrincipal.cargarPanel(vistaM);
+		} else if (e.getSource().equals(vistaC.getBtnBorrar())) {
+			vistaC.vaciarCampos();
+		}  else if (e.getSource().equals(vistaC.getBtnAnadir())) {
+			vistaC.cargarPanelAnadir();
+		} else if (e.getSource().equals(vistaC.getBtnResumen())) {
+			vistaC.cargarPanelResumen();
 		}
+		
 		
 
 

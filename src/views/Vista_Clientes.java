@@ -22,6 +22,7 @@ public class Vista_Clientes extends JPanel {
 	private JTextField txtFieldNacimiento;
 	private JTextField txtFieldDireccion;
 	private JTextField txtFieldTelefono;
+	private JPanel panelAnadir, panelResumen;
 
 	public Vista_Clientes() {
 
@@ -36,19 +37,19 @@ public class Vista_Clientes extends JPanel {
 
 		btnAnadir = new JButton("A\u00D1ADIR");
 		btnAnadir.setBackground(SystemColor.controlHighlight);
-		btnAnadir.setFont(new Font("Tahoma", Font.BOLD, 22));
-		btnAnadir.setBounds(25, 336, 330, 84);
+		btnAnadir.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnAnadir.setBounds(25, 300, 330, 84);
 		add(btnAnadir);
 
 		btnResumen = new JButton("RESUMEN");
 		btnResumen.setBackground(SystemColor.controlHighlight);
-		btnResumen.setFont(new Font("Tahoma", Font.BOLD, 22));
-		btnResumen.setBounds(25, 445, 330, 84);
+		btnResumen.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnResumen.setBounds(25, 399, 330, 84);
 		add(btnResumen);
 
-		JPanel panelAnadir = new JPanel();
+		panelAnadir = new JPanel();
 		panelAnadir.setLayout(null);
-		panelAnadir.setBounds(377, 72, 979, 659);
+		panelAnadir.setBounds(377, 30, 979, 659);
 		add(panelAnadir);
 
 		JLabel lblNombre = new JLabel("NOMBRE:");
@@ -74,10 +75,16 @@ public class Vista_Clientes extends JPanel {
 		lblDatosCliente.setBounds(422, 28, 288, 50);
 		panelAnadir.add(lblDatosCliente);
 
+
 		btnGuardar = new JButton("GUARDAR");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 25));
+
+
+		JButton btnGuardar = new JButton("GUARDAR");
+		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+
 		btnGuardar.setBackground(SystemColor.controlHighlight);
-		btnGuardar.setBounds(283, 588, 251, 43);
+		btnGuardar.setBounds(283, 588, 251, 27);
 		panelAnadir.add(btnGuardar);
 
 		btnBorrar = new JButton("BORRAR");
@@ -85,6 +92,14 @@ public class Vista_Clientes extends JPanel {
 		btnBorrar.setBackground(SystemColor.controlHighlight);
 		btnBorrar.setBounds(586, 588, 251, 43);
 		panelAnadir.add(btnBorrar);
+
+
+
+		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCancelar.setBackground(SystemColor.controlHighlight);
+		btnCancelar.setBounds(586, 588, 251, 27);
+		panelAnadir.add(btnCancelar);
 
 		txtFieldNombre = new JTextField();
 		txtFieldNombre.setColumns(10);
@@ -134,8 +149,8 @@ public class Vista_Clientes extends JPanel {
 		txtFieldTelefono.setBounds(198, 509, 748, 50);
 		panelAnadir.add(txtFieldTelefono);
 
-		JPanel panelResumen = new JPanel();
-		panelResumen.setBounds(377, 72, 979, 659);
+		panelResumen = new JPanel();
+		panelResumen.setBounds(377, 30, 979, 659);
 		add(panelResumen);
 		panelResumen.setLayout(null);
 
@@ -151,15 +166,15 @@ public class Vista_Clientes extends JPanel {
 		btnModificar = new JButton("MODIFICAR");
 		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnModificar.setBackground(SystemColor.controlHighlight);
-		btnModificar.setBounds(306, 670, 231, 34);
+		btnModificar.setBounds(283, 670, 251, 27);
 		panelResumen.add(btnModificar);
 
 		btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnEliminar.setBackground(SystemColor.controlHighlight);
-		btnEliminar.setBounds(592, 670, 238, 36);
+		btnEliminar.setBounds(592, 670, 251, 27);
 		panelResumen.add(btnEliminar);
-		
+
 		JPanel panel_home = new JPanel();
 		panel_home.setBounds(25, 11, 32, 32);
 		add(panel_home);
@@ -179,7 +194,26 @@ public class Vista_Clientes extends JPanel {
 			}
 		});
 		panel_home.add(btnHome);
+		
+		panelAnadir.setVisible(true);
+		panelResumen.setVisible(false);
 
+	}
+	
+	public void cargarPanelAnadir() {
+		if (!panelAnadir.isVisible()) {
+			panelResumen.setVisible(false);
+			panelAnadir.setVisible(true);
+			this.repaint();
+		}
+	}
+	
+	public void cargarPanelResumen() {
+		if (!panelResumen.isVisible()) {
+			panelAnadir.setVisible(false);
+			panelResumen.setVisible(true);
+			this.repaint();
+		}
 	}
 
 	public JTable getTable() {
@@ -227,6 +261,16 @@ public class Vista_Clientes extends JPanel {
 		txtFieldNombre.addActionListener(controlador);
 		btnModificar.addActionListener(controlador);
 		btnEliminar.addActionListener(controlador);
+		btnBorrar.addActionListener(controlador);
 		btnHome.addActionListener(controlador);
+	}
+
+	public void vaciarCampos() {
+		txtFieldDireccion.setText("");
+		txtFieldTelefono.setText("");
+		txtFieldApellido.setText("");
+		txtFieldEmail.setText("");
+		txtFieldNacimiento.setText("");
+		txtFieldNombre.setText("");
 	}
 }
