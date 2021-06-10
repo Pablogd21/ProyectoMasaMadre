@@ -15,7 +15,7 @@ import java.awt.SystemColor;
 
 public class Vista_Clientes extends JPanel {
 	private JTable table;
-	private JButton btnAnadir, btnResumen, btnModificar, btnEliminar, btnHome;
+	private JButton btnAnadir, btnResumen, btnModificar, btnEliminar, btnHome, btnBorrar, btnGuardar;
 	private JTextField txtFieldNombre;
 	private JTextField txtFieldApellido;
 	private JTextField txtFieldEmail;
@@ -74,17 +74,17 @@ public class Vista_Clientes extends JPanel {
 		lblDatosCliente.setBounds(422, 28, 288, 50);
 		panelAnadir.add(lblDatosCliente);
 
-		JButton btnGuardar = new JButton("GUARDAR");
+		btnGuardar = new JButton("GUARDAR");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnGuardar.setBackground(SystemColor.controlHighlight);
 		btnGuardar.setBounds(283, 588, 251, 43);
 		panelAnadir.add(btnGuardar);
 
-		JButton btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnCancelar.setBackground(SystemColor.controlHighlight);
-		btnCancelar.setBounds(586, 588, 251, 43);
-		panelAnadir.add(btnCancelar);
+		btnBorrar = new JButton("BORRAR");
+		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnBorrar.setBackground(SystemColor.controlHighlight);
+		btnBorrar.setBounds(586, 588, 251, 43);
+		panelAnadir.add(btnBorrar);
 
 		txtFieldNombre = new JTextField();
 		txtFieldNombre.setColumns(10);
@@ -174,8 +174,41 @@ public class Vista_Clientes extends JPanel {
 				btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
 			}
 		});
+		btnHome.setContentAreaFilled(false);
 		add(btnHome);
 
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public JButton getBtnAnadir() {
+		return btnAnadir;
+	}
+
+	public JButton getBtnResumen() {
+		return btnResumen;
+	}
+
+	public JButton getBtnModificar() {
+		return btnModificar;
+	}
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public JButton getBtnHome() {
+		return btnHome;
+	}
+
+	public JButton getBtnBorrar() {
+		return btnBorrar;
+	}
+
+	public JButton getBtnGuardar() {
+		return btnGuardar;
 	}
 
 	public void setControlador(Controlador controlador) {

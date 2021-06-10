@@ -26,8 +26,6 @@ public class Controlador implements ActionListener {
 		this.vistaM = vistaM;
 		this.vistaP = vistaP;
 		datos = new PersistenciaMasaMadre();
-
-		datos = new PersistenciaMasaMadre();
 	}
 
 	@Override
@@ -64,8 +62,10 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaM.getBtnLogout())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaL);
-			//vaciamos campos de login
 			vistaL.vaciarCampos();
+		} else if (e.getSource().equals(vistaC.getBtnHome())) {
+			appPrincipal.quitarPanel(vistaC);
+			appPrincipal.cargarPanel(vistaM);
 		}
 
 	}
