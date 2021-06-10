@@ -13,8 +13,6 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Font;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 
 public class Vista_Modulos extends JPanel {
 

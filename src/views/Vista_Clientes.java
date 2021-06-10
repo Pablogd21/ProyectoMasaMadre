@@ -7,11 +7,15 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import controller.Controlador;
 
 import javax.swing.JTable;
 import java.awt.SystemColor;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
 public class Vista_Clientes extends JPanel {
 	private JTable table;
@@ -161,11 +165,15 @@ public class Vista_Clientes extends JPanel {
 		btnEliminar.setBounds(592, 670, 238, 36);
 		panelResumen.add(btnEliminar);
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(25, 11, 32, 32);
+		add(panel);
+		
 		btnHome = new JButton("");
-		btnHome.setBounds(25, 11, 32, 32);
 		btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
 		btnHome.setBorder(null);
-		btnHome.setBackground(null);
+		btnHome.setBackground(null); 
+        btnHome.setContentAreaFilled(false);
 		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
 				btnHome.setIcon(new ImageIcon(".\\images\\home_grande.png"));
@@ -175,7 +183,8 @@ public class Vista_Clientes extends JPanel {
 				btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
 			}
 		});
-		add(btnHome);
+		panel.setLayout(new BorderLayout(0, 0));
+		panel.add(btnHome);
 	}
 
 	public void setControlador(Controlador controlador) {
