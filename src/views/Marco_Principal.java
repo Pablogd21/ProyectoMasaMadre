@@ -1,3 +1,4 @@
+
 package views;
 
 import java.awt.HeadlessException;
@@ -5,10 +6,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import controller.Controlador;
 
 
 public class Marco_Principal extends JFrame {

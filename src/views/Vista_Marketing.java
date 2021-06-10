@@ -1,3 +1,4 @@
+
 package views;
 
 import java.awt.BorderLayout;
@@ -12,152 +13,178 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.Controlador;
+import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Vista_Marketing extends JPanel {
-	
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField txtFieldTituloFeli;
+	private JTextField txtFieldConteFeli;
+	private JTextField txtFieldDestiFeli;
+	private JTextField txtFieldTituloCom;
+	private JTextField txtFieldConteCom;
+	private JTextField txtFieldDestiCom;
+	private JButton btnNuevaComunicacion, btnFelicitaciones, btnEncuestas, btnEnviarFeli, btnEliminarFeli,btnEnviarCom,btnEliminarCon ;
+	private JPanel panelFelicitacion, panelComunicacion; 
 	
 	public Vista_Marketing() {
 		
-		this.setSize(1920, 1080);
-		setLayout(new BorderLayout(0, 0));
+		this.setSize(1366,768);
+		setLayout(null);
 		
-		JPanel panelBotones = new JPanel();
-		add(panelBotones, BorderLayout.WEST);
-		panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 150));
+		btnNuevaComunicacion = new JButton("NUEVA COMUNICACI\u00D3N");
+		btnNuevaComunicacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNuevaComunicacion.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnNuevaComunicacion.setBackground(SystemColor.controlHighlight);
+		btnNuevaComunicacion.setBounds(28, 260, 330, 69);
+		add(btnNuevaComunicacion);
 		
-		JPanel panel = new JPanel();
-		panelBotones.add(panel);
-		panel.setLayout(new GridLayout(0, 1, 0, 5));
+		btnFelicitaciones = new JButton("FELICITACIONES");
+		btnFelicitaciones.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnFelicitaciones.setBackground(SystemColor.controlHighlight);
+		btnFelicitaciones.setBounds(28, 339, 330, 56);
+		add(btnFelicitaciones);
 		
-		JButton btnAniadirUsu = new JButton("Nueva Comunicaci\u00F3n");
-		btnAniadirUsu.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		btnAniadirUsu.setBackground(Color.BLACK);
-		panel.add(btnAniadirUsu);
+		btnEncuestas = new JButton("ENCUESTAS");
+		btnEncuestas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnEncuestas.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnEncuestas.setBackground(SystemColor.controlHighlight);
+		btnEncuestas.setBounds(28, 405, 330, 56);
+		add(btnEncuestas);
 		
-		JButton btnModificar = new JButton("Felicitaciones");
-		btnModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		btnModificar.setBackground(Color.BLACK);
-		panel.add(btnModificar);
+		JLabel lblModuloMarketing = new JLabel("Marketing ...");
+		lblModuloMarketing.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
+		lblModuloMarketing.setBounds(73, 689, 213, 69);
+		add(lblModuloMarketing);
 		
-		JButton btnModificar_1 = new JButton("Encuestas");
-		btnModificar_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		btnModificar_1.setBackground(Color.BLACK);
-		panel.add(btnModificar_1);
-		
-		JPanel panelCambiante = new JPanel();
-		add(panelCambiante);
-		panelCambiante.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panelFelicitacion = new JPanel();
+		panelFelicitacion = new JPanel();
 		panelFelicitacion.setLayout(null);
-		panelCambiante.add(panelFelicitacion);
+		panelFelicitacion.setBounds(379, 72, 979, 659);
+		add(panelFelicitacion);
 		
-		JLabel lblFelicitacion = new JLabel("FELICITACION:");
-		lblFelicitacion.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblFelicitacion.setBounds(190, 10, 142, 22);
-		panelFelicitacion.add(lblFelicitacion);
+		JLabel lblFelicitaFeli = new JLabel("FELICITACI\u00D3N");
+		lblFelicitaFeli.setFont(new Font("Tahoma", Font.BOLD, 32));
+		lblFelicitaFeli.setBounds(424, 25, 288, 50);
+		panelFelicitacion.add(lblFelicitaFeli);
 		
-		JLabel lblTitulo_1 = new JLabel("TITULO:");
-		lblTitulo_1.setToolTipText("");
-		lblTitulo_1.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblTitulo_1.setBounds(20, 55, 82, 28);
-		panelFelicitacion.add(lblTitulo_1);
+		JLabel lblTituloFeli = new JLabel("TITULO:");
+		lblTituloFeli.setToolTipText("");
+		lblTituloFeli.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblTituloFeli.setBounds(39, 124, 135, 35);
+		panelFelicitacion.add(lblTituloFeli);
 		
-		JLabel lblContenido_1 = new JLabel("CONTENIDO:");
-		lblContenido_1.setToolTipText("");
-		lblContenido_1.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblContenido_1.setBounds(10, 104, 82, 28);
-		panelFelicitacion.add(lblContenido_1);
+		JLabel lblConteFeli = new JLabel("CONTENIDO:");
+		lblConteFeli.setToolTipText("");
+		lblConteFeli.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblConteFeli.setBounds(27, 323, 135, 35);
+		panelFelicitacion.add(lblConteFeli);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(95, 55, 404, 28);
-		panelFelicitacion.add(textField);
+		JLabel lblDestiFeli = new JLabel("DESTINATARIO:");
+		lblDestiFeli.setToolTipText("");
+		lblDestiFeli.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblDestiFeli.setBounds(26, 539, 161, 35);
+		panelFelicitacion.add(lblDestiFeli);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(95, 93, 404, 203);
-		panelFelicitacion.add(textField_1);
+		txtFieldTituloFeli = new JTextField();
+		txtFieldTituloFeli.setColumns(10);
+		txtFieldTituloFeli.setBounds(184, 99, 770, 50);
+		panelFelicitacion.add(txtFieldTituloFeli);
 		
-		JButton btnGuardar_2 = new JButton("GUARDAR");
-		btnGuardar_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnGuardar_2.setBackground(Color.BLACK);
-		btnGuardar_2.setBounds(95, 311, 158, 28);
-		panelFelicitacion.add(btnGuardar_2);
+		txtFieldConteFeli = new JTextField();
+		txtFieldConteFeli.setColumns(10);
+		txtFieldConteFeli.setBounds(184, 171, 770, 336);
+		panelFelicitacion.add(txtFieldConteFeli);
 		
-		JButton btnCancelar_1 = new JButton("BORRAR");
-		btnCancelar_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnCancelar_1.setBackground(Color.BLACK);
-		btnCancelar_1.setBounds(295, 311, 158, 28);
-		panelFelicitacion.add(btnCancelar_1);
+		btnEnviarFeli = new JButton("ENVIAR");
+		btnEnviarFeli.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnEnviarFeli.setBackground(SystemColor.controlHighlight);
+		btnEnviarFeli.setBounds(304, 606, 251, 27);
+		panelFelicitacion.add(btnEnviarFeli);
 		
-		JPanel panelComunicacion = new JPanel();
+		JButton btnCancelarFeli = new JButton("CANCELAR");
+		btnCancelarFeli.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCancelarFeli.setBackground(SystemColor.controlHighlight);
+		btnCancelarFeli.setBounds(589, 606, 251, 27);
+		panelFelicitacion.add(btnCancelarFeli);
+		
+		txtFieldDestiFeli = new JTextField();
+		txtFieldDestiFeli.setColumns(10);
+		txtFieldDestiFeli.setBounds(184, 532, 770, 50);
+		panelFelicitacion.add(txtFieldDestiFeli);
+		
+		panelComunicacion = new JPanel();
 		panelComunicacion.setLayout(null);
-		panelCambiante.add(panelComunicacion);
+		panelComunicacion.setBounds(377, 72, 979, 659);
+		add(panelComunicacion);
+		
+		JLabel lblComunicacin = new JLabel("COMUNICACI\u00D3N");
+		lblComunicacin.setFont(new Font("Tahoma", Font.BOLD, 32));
+		lblComunicacin.setBounds(401, 21, 288, 50);
+		panelComunicacion.add(lblComunicacin);
 		
 		JLabel lblTitulo = new JLabel("TITULO:");
 		lblTitulo.setToolTipText("");
-		lblTitulo.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblTitulo.setBounds(30, 81, 82, 28);
+		lblTitulo.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblTitulo.setBounds(58, 100, 89, 42);
 		panelComunicacion.add(lblTitulo);
 		
 		JLabel lblContenido = new JLabel("CONTENIDO:");
 		lblContenido.setToolTipText("");
-		lblContenido.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblContenido.setBounds(20, 198, 82, 28);
+		lblContenido.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblContenido.setBounds(40, 337, 135, 35);
 		panelComunicacion.add(lblContenido);
 		
-		JLabel lblDestinatarios = new JLabel("DESTINO:");
-		lblDestinatarios.setToolTipText("");
-		lblDestinatarios.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblDestinatarios.setBounds(29, 313, 73, 28);
-		panelComunicacion.add(lblDestinatarios);
+		JLabel lblDestinatario = new JLabel("DESTINATARIO:");
+		lblDestinatario.setToolTipText("");
+		lblDestinatario.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblDestinatario.setBounds(26, 537, 161, 35);
+		panelComunicacion.add(lblDestinatario);
 		
-		JLabel lblNewLabel_1 = new JLabel("COMUNICACI\u00D3N");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel_1.setBounds(225, 31, 182, 28);
-		panelComunicacion.add(lblNewLabel_1);
+		txtFieldTituloCom = new JTextField();
+		txtFieldTituloCom.setColumns(10);
+		txtFieldTituloCom.setBounds(185, 97, 774, 50);
+		panelComunicacion.add(txtFieldTituloCom);
 		
-		JButton btnGuardar = new JButton("ENVIAR");
-		btnGuardar.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnGuardar.setBackground(Color.BLACK);
-		btnGuardar.setBounds(129, 370, 158, 28);
-		panelComunicacion.add(btnGuardar);
+		txtFieldConteCom = new JTextField();
+		txtFieldConteCom.setColumns(10);
+		txtFieldConteCom.setBounds(185, 166, 772, 340);
+		panelComunicacion.add(txtFieldConteCom);
 		
-		JButton btnCancelar = new JButton("BORRAR");
-		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnCancelar.setBackground(Color.BLACK);
-		btnCancelar.setBounds(329, 370, 158, 28);
-		panelComunicacion.add(btnCancelar);
+		JButton btnEnviarCom = new JButton("ENVIAR");
+		btnEnviarCom.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnEnviarCom.setBackground(SystemColor.controlHighlight);
+		btnEnviarCom.setBounds(304, 606, 251, 27);
+		panelComunicacion.add(btnEnviarCom);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(122, 313, 376, 26);
-		panelComunicacion.add(textField_2);
+		JButton btnCancelarCom = new JButton("CANCELAR");
+		btnCancelarCom.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCancelarCom.setBackground(SystemColor.controlHighlight);
+		btnCancelarCom.setBounds(589, 606, 251, 27);
+		panelComunicacion.add(btnCancelarCom);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(122, 120, 376, 183);
-		panelComunicacion.add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(122, 82, 376, 26);
-		panelComunicacion.add(textField_4);
+		txtFieldDestiCom = new JTextField();
+		txtFieldDestiCom.setColumns(10);
+		txtFieldDestiCom.setBounds(185, 530, 774, 50);
+		panelComunicacion.add(txtFieldDestiCom);
 	
 	}
 	
 	public void setControlador(Controlador controlador) {
-		textField.addActionListener(controlador);
-		textField_1.addActionListener(controlador);
-		textField_2.addActionListener(controlador);
-		textField_3.addActionListener(controlador);
-		textField_4.addActionListener(controlador);
-		
+		txtFieldTituloFeli.addActionListener(controlador);
+		txtFieldConteFeli.addActionListener(controlador);
+		txtFieldDestiFeli.addActionListener(controlador);
+		txtFieldTituloCom.addActionListener(controlador);
+		txtFieldConteCom.addActionListener(controlador);
+		txtFieldDestiFeli.addActionListener(controlador);
+		btnNuevaComunicacion.addActionListener(controlador);
+		btnFelicitaciones.addActionListener(controlador);
+		btnEncuestas.addActionListener(controlador);
 	}
 }
+

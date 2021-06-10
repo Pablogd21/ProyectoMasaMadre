@@ -11,147 +11,171 @@ import javax.swing.JTextField;
 import controller.Controlador;
 
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
+import javax.swing.border.BevelBorder;
 
 public class Vista_Clientes extends JPanel {
+	private JTable table;
+	private JButton btnAnadir, btnResumen, btnModificar,btnEliminar;
+	private JTextField txtFieldNombre;
+	private JTextField txtFieldApellido;
+	private JTextField txtFieldEmail;
+	private JTextField txtFieldNacimiento;
+	private JTextField txtFieldDireccion;
+	private JTextField txtFieldTelefono;
 	
-	private JButton btnAniadirCli;
-	private JButton btnModificar;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTable table_1;
 	
 	public Vista_Clientes() {
 		
 		setLayout(null);
 		
-		this.setSize(1920, 1080);
-		
-		btnAniadirCli = new JButton("A\u00D1ADIR");
-		btnAniadirCli.setBackground(Color.BLACK);
-		btnAniadirCli.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 15));
-		btnAniadirCli.setBounds(21, 160, 175, 28);
-		add(btnAniadirCli);
-		
-		btnModificar = new JButton("RESUMEN");
-		btnModificar.setBackground(Color.BLACK);
-		btnModificar.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 15));
-		btnModificar.setBounds(21, 199, 175, 28);
-		add(btnModificar);
+		this.setSize(1366,768);
 		
 		JLabel lblTituloModulo = new JLabel("Clientes ...");
-		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblTituloModulo.setBounds(39, 362, 140, 28);
+		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
+		lblTituloModulo.setBounds(83, 636, 213, 69);
 		add(lblTituloModulo);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(214, 21, 526, 348);
-		add(panel);
-		panel.setLayout(null);
+		btnAnadir = new JButton("A\u00D1ADIR");
+		btnAnadir.setBackground(SystemColor.controlHighlight);
+		btnAnadir.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnAnadir.setBounds(25, 336, 330, 84);
+		add(btnAnadir);
 		
-		JLabel lblNewLabel = new JLabel("NOMBRE:");
-		lblNewLabel.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblNewLabel.setToolTipText("");
-		lblNewLabel.setBounds(30, 61, 82, 28);
-		panel.add(lblNewLabel);
+		btnResumen = new JButton("RESUMEN");
+		btnResumen.setBackground(SystemColor.controlHighlight);
+		btnResumen.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnResumen.setBounds(25, 445, 330, 84);
+		add(btnResumen);
+		
+		JPanel panelAnadir = new JPanel();
+		panelAnadir.setLayout(null);
+		panelAnadir.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panelAnadir.setBounds(377, 72, 979, 659);
+		add(panelAnadir);
+		
+		JLabel lblNombre = new JLabel("NOMBRE:");
+		lblNombre.setToolTipText("");
+		lblNombre.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblNombre.setBounds(58, 141, 135, 35);
+		panelAnadir.add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("APELLIDO:");
 		lblApellido.setToolTipText("");
-		lblApellido.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblApellido.setBounds(30, 99, 82, 28);
-		panel.add(lblApellido);
+		lblApellido.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblApellido.setBounds(58, 230, 142, 35);
+		panelAnadir.add(lblApellido);
 		
 		JLabel lblEmail = new JLabel("EMAIL:");
 		lblEmail.setToolTipText("");
-		lblEmail.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblEmail.setBounds(40, 137, 73, 28);
-		panel.add(lblEmail);
+		lblEmail.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblEmail.setBounds(58, 299, 116, 37);
+		panelAnadir.add(lblEmail);
 		
-		JLabel lblFechaNacimiento = new JLabel("F.NACIMIENTO:");
-		lblFechaNacimiento.setToolTipText("");
-		lblFechaNacimiento.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblFechaNacimiento.setBounds(20, 175, 153, 28);
-		panel.add(lblFechaNacimiento);
+		JLabel lblDatosCliente = new JLabel("DATOS CLIENTE");
+		lblDatosCliente.setFont(new Font("Tahoma", Font.BOLD, 32));
+		lblDatosCliente.setBounds(422, 28, 288, 50);
+		panelAnadir.add(lblDatosCliente);
+		
+		JButton btnGuardar = new JButton("GUARDAR");
+		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnGuardar.setBackground(SystemColor.controlHighlight);
+		btnGuardar.setBounds(283, 588, 251, 43);
+		panelAnadir.add(btnGuardar);
+		
+		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnCancelar.setBackground(SystemColor.controlHighlight);
+		btnCancelar.setBounds(586, 588, 251, 43);
+		panelAnadir.add(btnCancelar);
+		
+		txtFieldNombre = new JTextField();
+		txtFieldNombre.setColumns(10);
+		txtFieldNombre.setBounds(198, 134, 748, 50);
+		panelAnadir.add(txtFieldNombre);
+		
+		JLabel lblFnacimiento = new JLabel("F.NACIMIENTO:");
+		lblFnacimiento.setToolTipText("");
+		lblFnacimiento.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblFnacimiento.setBounds(32, 381, 171, 35);
+		panelAnadir.add(lblFnacimiento);
 		
 		JLabel lblDireccion = new JLabel("DIRECCION:");
 		lblDireccion.setToolTipText("");
-		lblDireccion.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblDireccion.setBounds(30, 213, 92, 28);
-		panel.add(lblDireccion);
+		lblDireccion.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblDireccion.setBounds(43, 451, 171, 35);
+		panelAnadir.add(lblDireccion);
 		
 		JLabel lblTelefono = new JLabel("TELEFONO:");
 		lblTelefono.setToolTipText("");
-		lblTelefono.setFont(new Font("Cambria Math", Font.PLAIN, 14));
-		lblTelefono.setBounds(30, 250, 92, 28);
-		panel.add(lblTelefono);
+		lblTelefono.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblTelefono.setBounds(43, 516, 171, 35);
+		panelAnadir.add(lblTelefono);
 		
-		JLabel lblNewLabel_1 = new JLabel("DATOS CLIENTE");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel_1.setBounds(177, 10, 182, 28);
-		panel.add(lblNewLabel_1);
+		txtFieldApellido = new JTextField();
+		txtFieldApellido.setColumns(10);
+		txtFieldApellido.setBounds(198, 204, 748, 50);
+		panelAnadir.add(txtFieldApellido);
 		
-		JButton btnGuardar = new JButton("GUARDAR");
-		btnGuardar.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnGuardar.setBackground(Color.BLACK);
-		btnGuardar.setBounds(89, 310, 158, 28);
-		panel.add(btnGuardar);
+		txtFieldEmail = new JTextField();
+		txtFieldEmail.setColumns(10);
+		txtFieldEmail.setBounds(198, 293, 748, 50);
+		panelAnadir.add(txtFieldEmail);
 		
-		JButton btnCanccelar = new JButton("CANCELAR");
-		btnCanccelar.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnCanccelar.setBackground(Color.BLACK);
-		btnCanccelar.setBounds(289, 310, 158, 28);
-		panel.add(btnCanccelar);
+		txtFieldNacimiento = new JTextField();
+		txtFieldNacimiento.setColumns(10);
+		txtFieldNacimiento.setBounds(198, 366, 748, 50);
+		panelAnadir.add(txtFieldNacimiento);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(123, 211, 376, 26);
-		panel.add(textField_4);
+		txtFieldDireccion = new JTextField();
+		txtFieldDireccion.setColumns(10);
+		txtFieldDireccion.setBounds(198, 444, 748, 50);
+		panelAnadir.add(txtFieldDireccion);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(123, 251, 376, 26);
-		panel.add(textField_5);
+		txtFieldTelefono = new JTextField();
+		txtFieldTelefono.setColumns(10);
+		txtFieldTelefono.setBounds(198, 509, 748, 50);
+		panelAnadir.add(txtFieldTelefono);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(123, 175, 376, 26);
-		panel.add(textField);
+		JPanel panelResumen = new JPanel();
+		panelResumen.setBounds(377, 72, 979, 659);
+		add(panelResumen);
+		panelResumen.setLayout(null);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(123, 137, 376, 26);
-		panel.add(textField_1);
+		JLabel lblResumenCliente = new JLabel("Resumen Cliente");
+		lblResumenCliente.setBounds(402, 10, 286, 39);
+		lblResumenCliente.setFont(new Font("Tahoma", Font.BOLD, 32));
+		panelResumen.add(lblResumenCliente);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(123, 99, 376, 26);
-		panel.add(textField_2);
+		table = new JTable();
+		table.setBounds(10, 74, 959, 550);
+		panelResumen.add(table);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(123, 61, 376, 26);
-		panel.add(textField_3);
+		btnModificar = new JButton("MODIFICAR");
+		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnModificar.setBackground(SystemColor.controlHighlight);
+		btnModificar.setBounds(306, 670, 231, 34);
+		panelResumen.add(btnModificar);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(214, 21, 526, 348);
-		add(panel_1);
-		
-		table_1 = new JTable();
-		panel_1.add(table_1);
+		btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnEliminar.setBackground(SystemColor.controlHighlight);
+		btnEliminar.setBounds(592, 670, 238, 36);
+		panelResumen.add(btnEliminar);
 	}
 	
 	public void setControlador(Controlador controlador) {
-		btnAniadirCli.addActionListener(controlador);
+		btnAnadir.addActionListener(controlador);
+		btnResumen.addActionListener(controlador);
+		txtFieldDireccion.addActionListener(controlador);
+		txtFieldTelefono.addActionListener(controlador);
+		txtFieldApellido.addActionListener(controlador);
+		txtFieldEmail.addActionListener(controlador);
+		txtFieldNacimiento.addActionListener(controlador);
+		txtFieldNombre.addActionListener(controlador);
 		btnModificar.addActionListener(controlador);
-		textField_4.addActionListener(controlador);
-		textField_5.addActionListener(controlador);
-		textField.addActionListener(controlador);
-		textField_1.addActionListener(controlador);
-		textField_2.addActionListener(controlador);
-		textField_3.addActionListener(controlador);
+		btnEliminar.addActionListener(controlador);
 		
 	}
 }
