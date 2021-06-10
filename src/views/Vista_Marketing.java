@@ -1,23 +1,21 @@
+
 package views;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+
+import controller.Controlador;
 
 public class Vista_Marketing extends JPanel {
-	private JButton btnEliminar;
-	private JButton btnResumen;
+	
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -26,48 +24,34 @@ public class Vista_Marketing extends JPanel {
 	
 	public Vista_Marketing() {
 		
-		this.setSize(750, 430 );
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] {777, 533, 0};
-		gridBagLayout.rowHeights = new int[]{430, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+		this.setSize(1920, 1080);
+		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelBotones = new JPanel();
-		GridBagConstraints gbc_panelBotones = new GridBagConstraints();
-		gbc_panelBotones.fill = GridBagConstraints.BOTH;
-		gbc_panelBotones.insets = new Insets(0, 0, 5, 5);
-		gbc_panelBotones.gridx = 0;
-		gbc_panelBotones.gridy = 0;
-		add(panelBotones, gbc_panelBotones);
-		panelBotones.setLayout(null);
+		add(panelBotones, BorderLayout.WEST);
+		panelBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 150));
+		
+		JPanel panel = new JPanel();
+		panelBotones.add(panel);
+		panel.setLayout(new GridLayout(0, 1, 0, 5));
 		
 		JButton btnAniadirUsu = new JButton("Nueva Comunicaci\u00F3n");
-		btnAniadirUsu.setBounds(10, 145, 193, 27);
 		btnAniadirUsu.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnAniadirUsu.setBackground(Color.BLACK);
-		panelBotones.add(btnAniadirUsu);
+		panel.add(btnAniadirUsu);
 		
 		JButton btnModificar = new JButton("Felicitaciones");
-		btnModificar.setBounds(10, 182, 193, 27);
 		btnModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnModificar.setBackground(Color.BLACK);
-		panelBotones.add(btnModificar);
+		panel.add(btnModificar);
 		
 		JButton btnModificar_1 = new JButton("Encuestas");
-		btnModificar_1.setBounds(10, 219, 193, 27);
 		btnModificar_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnModificar_1.setBackground(Color.BLACK);
-		panelBotones.add(btnModificar_1);
+		panel.add(btnModificar_1);
 		
 		JPanel panelCambiante = new JPanel();
-		GridBagConstraints gbc_panelCambiante = new GridBagConstraints();
-		gbc_panelCambiante.insets = new Insets(0, 0, 5, 0);
-		gbc_panelCambiante.fill = GridBagConstraints.BOTH;
-		gbc_panelCambiante.gridx = 1;
-		gbc_panelCambiante.gridy = 0;
-		add(panelCambiante, gbc_panelCambiante);
+		add(panelCambiante);
 		panelCambiante.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelFelicitacion = new JPanel();
@@ -166,8 +150,16 @@ public class Vista_Marketing extends JPanel {
 		textField_4.setColumns(10);
 		textField_4.setBounds(122, 82, 376, 26);
 		panelComunicacion.add(textField_4);
-		
-		
 	
 	}
+	
+	public void setControlador(Controlador controlador) {
+		textField.addActionListener(controlador);
+		textField_1.addActionListener(controlador);
+		textField_2.addActionListener(controlador);
+		textField_3.addActionListener(controlador);
+		textField_4.addActionListener(controlador);
+		
+	}
 }
+
