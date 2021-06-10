@@ -40,15 +40,6 @@ public class IniciarPanel {
 				vistaM.setControlador(controlador);
 				vistaP.setControlador(controlador);
 				
-				appPrincipal.add(vistaM);
-
-				vistaC.setControlador(controlador);
-				vistaF.setControlador(controlador);
-				vistaL.setControlador(controlador);
-				vistaMar.setControlador(controlador);
-				vistaM.setControlador(controlador);
-				vistaP.setControlador(controlador);
-				
 				appPrincipal.cargarPanel(vistaL);
 				appPrincipal.hacerVisible();
 				
