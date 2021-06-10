@@ -20,7 +20,6 @@ public class Controlador implements ActionListener {
 	private Vista_Planificacion vistaP;
 	private PersistenciaMasaMadre datos;
 	private Marco_Principal appPrincipal = new Marco_Principal();
-	private int letra;
 
 	public Controlador(Vista_Clientes vistaC, Vista_Facturacion vistaF, Vista_Login vistaL, Vista_Marketing vistaMar,
 			Vista_Modulos vistaM, Vista_Planificacion vistaP) {
@@ -35,10 +34,8 @@ public class Controlador implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		loginEnter();
-
-		if (e.getSource().equals(vistaL.getBtnIngresar()) || letra == KeyEvent.VK_ENTER) {
+		
+		if (e.getSource().equals(vistaL.getBtnIngresar())) {
 			String contra = null;
 			if (vistaL.getTxtUsuario().getText().equals("")) {
 				vistaL.loginVacio();
@@ -75,50 +72,7 @@ public class Controlador implements ActionListener {
 			appPrincipal.cargarPanel(vistaM);
 		}
 
-		;
-
 	}
 
-	private void loginEnter() {
-		vistaL.getTxtPassword().addKeyListener(new KeyListener() {
-
-			public void keyTyped(KeyEvent e) {
-				letra = e.getKeyChar();
-
-			}
-
-			public void keyPressed(KeyEvent e) {
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		vistaL.getTxtUsuario().addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				letra = e.getKeyChar();
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-	}
 
 }
