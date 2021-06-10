@@ -37,7 +37,7 @@ public class Controlador implements ActionListener {
 			} else {
 				contra = datos.getCredentials(vistaL.getTxtUsuario().getText());
 				if (contra == null) {
-					contra = "";
+					contra = " ";
 				}
 				if (contra.equals(vistaL.getTxtPassword().getText())) {
 					appPrincipal.quitarPanel(vistaL);
