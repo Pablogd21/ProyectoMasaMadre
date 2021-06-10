@@ -1,12 +1,9 @@
 
 package views;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,7 +22,7 @@ public class Vista_Marketing extends JPanel {
 	private JTextField txtFieldTituloCom;
 	private JTextField txtFieldConteCom;
 	private JTextField txtFieldDestiCom;
-	private JButton btnNuevaComunicacion, btnFelicitaciones, btnEncuestas, btnEnviarFeli, btnEliminarFeli,btnEnviarCom,btnEliminarCon ;
+	private JButton btnNuevaComunicacion, btnFelicitaciones, btnEncuestas, btnEnviarFeli, btnHome;
 	private JPanel panelFelicitacion, panelComunicacion; 
 	
 	public Vista_Marketing() {
@@ -173,6 +170,28 @@ public class Vista_Marketing extends JPanel {
 		txtFieldDestiCom.setColumns(10);
 		txtFieldDestiCom.setBounds(185, 530, 774, 50);
 		panelComunicacion.add(txtFieldDestiCom);
+		
+		JPanel panel_home = new JPanel();
+		panel_home.setBounds(25, 11, 32, 32);
+		add(panel_home);
+
+		btnHome = new JButton("");
+		btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
+		btnHome.setBorder(null);
+		btnHome.setBackground(null); 
+        btnHome.setContentAreaFilled(false);
+		btnHome.setBackground(null);
+		btnHome.setContentAreaFilled(false);
+		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				btnHome.setIcon(new ImageIcon(".\\images\\home_grande.png"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
+			}
+		});
+		panel_home.add(btnHome);
 	
 	}
 	

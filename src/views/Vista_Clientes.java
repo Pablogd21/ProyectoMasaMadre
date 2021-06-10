@@ -7,7 +7,6 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 import javax.swing.JTextField;
-
 import controller.Controlador;
 
 import javax.swing.JTable;
@@ -160,11 +159,16 @@ public class Vista_Clientes extends JPanel {
 		btnEliminar.setBackground(SystemColor.controlHighlight);
 		btnEliminar.setBounds(592, 670, 238, 36);
 		panelResumen.add(btnEliminar);
+		
+		JPanel panel_home = new JPanel();
+		panel_home.setBounds(25, 11, 32, 32);
+		add(panel_home);
 
 		btnHome = new JButton("");
-		btnHome.setBounds(25, 11, 32, 32);
 		btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
 		btnHome.setBorder(null);
+		btnHome.setBackground(null); 
+        btnHome.setContentAreaFilled(false);
 		btnHome.setBackground(null);
 		btnHome.setContentAreaFilled(false);
 		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,7 +180,7 @@ public class Vista_Clientes extends JPanel {
 				btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
 			}
 		});
-		add(btnHome);
+		panel_home.add(btnHome);
 
 	}
 

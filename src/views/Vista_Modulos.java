@@ -13,8 +13,6 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Font;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 
 public class Vista_Modulos extends JPanel {
 
@@ -46,6 +44,7 @@ public class Vista_Modulos extends JPanel {
 		btnLogout.setIcon(new ImageIcon(".\\images\\logout.png"));
 		btnLogout.setBackground(null);
 		btnLogout.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnLogout.setContentAreaFilled(false);
 		btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
 				btnLogout.setIcon(new ImageIcon(".\\images\\logout_grande.png"));
@@ -98,6 +97,7 @@ public class Vista_Modulos extends JPanel {
 		btnClientes.setBounds(465, 140, 128, 128);
 		btnClientes.setBorder(null);
 		btnClientes.setBackground(null);
+		btnClientes.setContentAreaFilled(false);
 		panel_modulos.add(btnClientes);
 
 		btnMarketing = new JButton("");
@@ -106,6 +106,7 @@ public class Vista_Modulos extends JPanel {
 		btnMarketing.setBounds(760, 140, 128, 128);
 		btnMarketing.setBorder(null);
 		btnMarketing.setBackground(null);
+		btnMarketing.setContentAreaFilled(false);
 		panel_modulos.add(btnMarketing);
 
 		btnFacturas = new JButton("");
@@ -114,6 +115,7 @@ public class Vista_Modulos extends JPanel {
 		btnFacturas.setBounds(465, 415, 128, 128);
 		btnFacturas.setBorder(null);
 		btnFacturas.setBackground(null);
+		btnFacturas.setContentAreaFilled(false);
 		panel_modulos.add(btnFacturas);
 
 		btnProgramar = new JButton("");
@@ -122,6 +124,7 @@ public class Vista_Modulos extends JPanel {
 		btnProgramar.setBounds(760, 415, 128, 128);
 		btnProgramar.setBorder(null);
 		btnProgramar.setBackground(null);
+		btnProgramar.setContentAreaFilled(false);
 		panel_modulos.add(btnProgramar);
 
 	}

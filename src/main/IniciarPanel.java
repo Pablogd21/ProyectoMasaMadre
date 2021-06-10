@@ -32,7 +32,11 @@ public class IniciarPanel {
 
 				Controlador controlador = new Controlador(vistaC, vistaF, vistaL, vistaMar, vistaM, vistaP);
 
+
 				// Añadir controlador a las vistas
+
+				appPrincipal.add(vistaM);
+
 				vistaC.setControlador(controlador);
 				vistaF.setControlador(controlador);
 				vistaL.setControlador(controlador);
