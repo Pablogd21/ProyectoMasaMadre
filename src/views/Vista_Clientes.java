@@ -28,7 +28,7 @@ public class Vista_Clientes extends JPanel {
 		
 		setLayout(null);
 		
-		this.setSize(750, 430 );
+		this.setSize(1920, 1080);
 		
 		btnAniadirCli = new JButton("A\u00D1ADIR");
 		btnAniadirCli.setBackground(Color.BLACK);

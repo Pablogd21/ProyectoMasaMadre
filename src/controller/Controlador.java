@@ -30,12 +30,10 @@ public class Controlador implements ActionListener {
 		
 	}
 
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource().equals(vistaL.getBtnIngresar())) {
-			
 			
 			String contra = datos.getCredentials(vistaL.getTxtUsuario().toString().trim());
 			
@@ -47,10 +45,7 @@ public class Controlador implements ActionListener {
 			}
 			
 		}
-		
-		
-		
+				
 	}
-
 
 }

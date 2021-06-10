@@ -19,7 +19,7 @@ public class Vista_Facturacion extends JPanel {
 	public Vista_Facturacion() {
 		setLayout(null);
 		
-		this.setSize(750, 430 );
+		this.setSize(1920, 1080);
 		
 		btnAniadirUsu = new JButton("A\u00F1adir");
 		btnAniadirUsu.setBackground(Color.BLACK);
