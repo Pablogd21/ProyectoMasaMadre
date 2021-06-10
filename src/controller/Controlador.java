@@ -2,6 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import model.db.PersistenciaMasaMadre;
 import views.*;
 
@@ -15,6 +18,7 @@ public class Controlador implements ActionListener {
 	private Vista_Planificacion vistaP;
 	private PersistenciaMasaMadre datos;
 	private Marco_Principal appPrincipal = new Marco_Principal();
+	private int letra;
 
 	public Controlador(Vista_Clientes vistaC, Vista_Facturacion vistaF, Vista_Login vistaL, Vista_Marketing vistaMar,
 			Vista_Modulos vistaM, Vista_Planificacion vistaP) {
@@ -29,8 +33,10 @@ public class Controlador implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		if (e.getSource().equals(vistaL.getBtnIngresar())) {
+
+		login_enter();
+
+		if (e.getSource().equals(vistaL.getBtnIngresar()) || letra == KeyEvent.VK_ENTER) {
 			String contra = null;
 			if (vistaL.getTxtUsuario().getText().equals("")) {
 				vistaL.loginVacio();
@@ -69,5 +75,48 @@ public class Controlador implements ActionListener {
 
 	}
 
+	private void login_enter() {
+		vistaL.getTxtUsuario().addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				letra = e.getKeyChar();
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		vistaL.getTxtPassword().addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				letra = e.getKeyChar();
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+	}
 
 }
