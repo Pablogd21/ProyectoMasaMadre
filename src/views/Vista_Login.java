@@ -3,10 +3,12 @@ package views;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
+
 
 import controller.Controlador;
 
@@ -64,9 +66,19 @@ public class Vista_Login extends JPanel {
 	
 	public void setControlador(Controlador controlador) {
 		btnIngresar.addActionListener(controlador);
-		txtPassword.addActionListener(controlador);
-		txtUsuario.addActionListener(controlador);
 		
+	}
+	
+	public void loginIncorrecto() {
+		JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos","Fallo de inicio de sesión",JOptionPane.ERROR_MESSAGE);
+		txtUsuario.setText("");
+		txtPassword.setText("");
+	}
+	
+	public void loginVacio() {
+		JOptionPane.showMessageDialog(this, "Introduzca datos para iniciar sesión","Fallo de inicio de sesión",JOptionPane.ERROR_MESSAGE);
+		txtUsuario.setText("");
+		txtPassword.setText("");
 	}
 
 	public JButton getBtnIngresar() {
@@ -80,6 +92,8 @@ public class Vista_Login extends JPanel {
 	public JTextField getTxtUsuario() {
 		return txtUsuario;
 	}
+
+	
 	
 	
 }
