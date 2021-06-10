@@ -64,6 +64,7 @@ public class Controlador implements ActionListener {
 		}else if (e.getSource().equals(vistaM.getBtnLogout())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaL);
+			vistaL.vaciarCampos();
 		}
 				
 	}
