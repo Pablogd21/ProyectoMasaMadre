@@ -9,48 +9,31 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.Controlador;
+import javax.swing.border.LineBorder;
 
 public class Vista_Planificacion extends JPanel {
 
 	private JButton btnAniadirUsu;
 	private JButton btnModificar;
-	private JButton btnEliminar;
-	private JButton btnResumen;
 	private JButton btnHome;
+	private JPanel panel_resumen;
 
 	public Vista_Planificacion() {
 		setLayout(null);
 
 		this.setSize(1366, 768);
 
-		btnAniadirUsu = new JButton("A\u00F1adir");
+		btnAniadirUsu = new JButton("A\u00F1adir Pedido");
 		btnAniadirUsu.setBackground(Color.BLACK);
 		btnAniadirUsu.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		btnAniadirUsu.setBounds(10, 160, 175, 28);
+		btnAniadirUsu.setBounds(49, 203, 195, 65);
 		add(btnAniadirUsu);
 
-		btnModificar = new JButton("Modificar");
+		btnModificar = new JButton("Resumen Pedido");
 		btnModificar.setBackground(Color.BLACK);
 		btnModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		btnModificar.setBounds(10, 199, 175, 28);
+		btnModificar.setBounds(49, 292, 195, 65);
 		add(btnModificar);
-
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBackground(Color.BLACK);
-		btnEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		btnEliminar.setBounds(10, 238, 175, 28);
-		add(btnEliminar);
-
-		btnResumen = new JButton("Calendarios");
-		btnResumen.setBackground(Color.BLACK);
-		btnResumen.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		btnResumen.setBounds(10, 277, 175, 28);
-		add(btnResumen);
-
-		JLabel lblTituloModulo = new JLabel("Planificación ...");
-		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblTituloModulo.setBounds(10, 455, 140, 28);
-		add(lblTituloModulo);
 		
 		JPanel panel_home = new JPanel();
 		panel_home.setBounds(25, 11, 32, 32);
@@ -71,6 +54,14 @@ public class Vista_Planificacion extends JPanel {
 			}
 		});
 		panel_home.add(btnHome);
+		
+		JPanel panel_aniadir = new JPanel();
+		panel_aniadir.setBounds(294, 31, 1000, 662);
+		add(panel_aniadir);
+		
+		panel_resumen = new JPanel();
+		panel_resumen.setBounds(294, 31, 1000, 662);
+		add(panel_resumen);
 	}
 	
 
@@ -82,9 +73,6 @@ public class Vista_Planificacion extends JPanel {
 		btnHome.addActionListener(controlador);
 		btnAniadirUsu.addActionListener(controlador);
 		btnModificar.addActionListener(controlador);
-		btnEliminar.addActionListener(controlador);
-		btnResumen.addActionListener(controlador);
 
 	}
-
 }
