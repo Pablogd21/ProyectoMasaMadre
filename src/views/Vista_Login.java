@@ -72,12 +72,15 @@ public class Vista_Login extends JPanel{
 	
 	public void loginIncorrecto() {
 		JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos","Fallo de inicio de sesión",JOptionPane.ERROR_MESSAGE);
-		txtUsuario.setText("");
-		txtPassword.setText("");
+		vaciarCampos();
 	}
 	
 	public void loginVacio() {
 		JOptionPane.showMessageDialog(this, "Introduzca datos para iniciar sesión","Fallo de inicio de sesión",JOptionPane.ERROR_MESSAGE);
+		vaciarCampos();
+	}
+	
+	public void vaciarCampos() {
 		txtUsuario.setText("");
 		txtPassword.setText("");
 	}
