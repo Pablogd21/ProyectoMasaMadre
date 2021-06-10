@@ -13,6 +13,8 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 public class Vista_Modulos extends JPanel {
 
@@ -71,25 +73,25 @@ public class Vista_Modulos extends JPanel {
 		lblClientes = new JLabel("Clientes");
 		lblClientes.setFont(new Font("Sitka Small", Font.BOLD, 16));
 		lblClientes.setHorizontalAlignment(SwingConstants.CENTER);
-		lblClientes.setBounds(575, 491, 260, 52);
+		lblClientes.setBounds(465, 279, 128, 52);
 		panel_modulos.add(lblClientes);
 
 		lblMarketing = new JLabel("Marketing");
 		lblMarketing.setFont(new Font("Sitka Small", Font.BOLD, 16));
 		lblMarketing.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMarketing.setBounds(1086, 491, 260, 52);
+		lblMarketing.setBounds(760, 279, 128, 52);
 		panel_modulos.add(lblMarketing);
 
 		lblFacturas = new JLabel("Facturas");
 		lblFacturas.setFont(new Font("Sitka Small", Font.BOLD, 16));
 		lblFacturas.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFacturas.setBounds(575, 882, 260, 52);
+		lblFacturas.setBounds(465, 554, 128, 52);
 		panel_modulos.add(lblFacturas);
 
 		lblProgramar = new JLabel("Programar");
 		lblProgramar.setFont(new Font("Sitka Small", Font.BOLD, 16));
 		lblProgramar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblProgramar.setBounds(1086, 882, 260, 52);
+		lblProgramar.setBounds(760, 554, 128, 52);
 		panel_modulos.add(lblProgramar);
 
 		btnClientes = new JButton("");
