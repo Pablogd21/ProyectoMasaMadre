@@ -96,28 +96,28 @@ public class Vista_Modulos extends JPanel {
 		panel_modulos.add(lblProgramar);
 		
 		btnClientes = new JButton("");
-		btnClientes.setIcon(new ImageIcon(".\\images\\clientes.png"));
+		btnClientes.setIcon(new ImageIcon(".\\images\\clientes 1.png"));
 		btnClientes.setBounds(575, 220, 260, 260);
 		btnClientes.setBorder(null);
 		btnClientes.setBackground(null);
 		panel_modulos.add(btnClientes);
 		
 		btnMarketing = new JButton("");
-		btnMarketing.setIcon(new ImageIcon(".\\images\\marketing.png"));
+		btnMarketing.setIcon(new ImageIcon(".\\images\\marketing 1.png"));
 		btnMarketing.setBounds(1086, 220, 260, 260);
 		btnMarketing.setBorder(null);
 		btnMarketing.setBackground(null);
 		panel_modulos.add(btnMarketing);
 		
 		btnFacturas = new JButton("");
-		btnFacturas.setIcon(new ImageIcon(".\\images\\facturas.png"));
+		btnFacturas.setIcon(new ImageIcon(".\\images\\facturas 1.png"));
 		btnFacturas.setBounds(575, 611, 260, 260);
 		btnFacturas.setBorder(null);
 		btnFacturas.setBackground(null);
 		panel_modulos.add(btnFacturas);
 		
 		btnProgramar = new JButton("");
-		btnProgramar.setIcon(new ImageIcon(".\\images\\programar.png"));
+		btnProgramar.setIcon(new ImageIcon(".\\images\\programar 1.png"));
 		btnProgramar.setBounds(1086, 611, 260, 260);
 		btnProgramar.setBorder(null);
 		btnProgramar.setBackground(null);
@@ -125,15 +125,6 @@ public class Vista_Modulos extends JPanel {
 
 	}
 	
-	public Vista_Modulos(JButton btnLogout, JButton btnClientes, JButton btnMarketing, JButton btnFacturas,
-			JButton btnProgramar) {
-		super();
-		this.btnLogout = btnLogout;
-		this.btnClientes = btnClientes;
-		this.btnMarketing = btnMarketing;
-		this.btnFacturas = btnFacturas;
-		this.btnProgramar = btnProgramar;
-	}
 	
 	public void setControlador(Controlador controlador) {
 		btnLogout.addActionListener(controlador);

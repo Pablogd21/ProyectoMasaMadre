@@ -36,8 +36,8 @@ public class IniciarPanel {
 				vistaMar.setControlador(cont);
 				vistaM.setControlador(cont);
 				vistaP.setControlador(cont);
-
-				appPrincipal.hacerVisible();
+				
+				appPrincipal.add(vistaM);
 
 			}
 		});

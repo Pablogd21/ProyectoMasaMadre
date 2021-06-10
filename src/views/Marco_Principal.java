@@ -15,18 +15,15 @@ public class Marco_Principal extends JFrame {
 		setTitle("CRM Masa Madre");
 		setExtendedState(MAXIMIZED_BOTH);
 		this.setSize(1920, 1080);
-		Vista_Login vistaL = new Vista_Login();
-		add(vistaL);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(true);
 		Image icon = Toolkit.getDefaultToolkit().getImage(".\\images\\logo.jpg");
 		setIconImage(icon);
-
-	}
-	
-	public void hacerVisible() {
 		setVisible(true);
 	}
+	
+	
+	
 	
 	/*
 	 * public int salir() { int opcion = JOptionPane.showConfirmDialog( this,
