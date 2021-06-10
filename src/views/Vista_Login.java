@@ -81,6 +81,7 @@ public class Vista_Login extends JPanel{
 	}
 	
 	public void vaciarCampos() {
+		//Hola
 		txtUsuario.setText("");
 		txtPassword.setText("");
 	}
