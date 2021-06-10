@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.CardLayout;
 import java.awt.EventQueue;
 
 import controller.Controlador;
