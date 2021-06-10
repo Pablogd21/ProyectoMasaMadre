@@ -16,28 +16,28 @@ public class Controlador implements ActionListener {
 	private Vista_Planificacion vistaP;
 	private PersistenciaMasaMadre datos;
 	private Marco_Principal appPrincipal = new Marco_Principal();
-	
-	
+
 	public Controlador(Vista_Clientes vistaC, Vista_Facturacion vistaF, Vista_Login vistaL, Vista_Marketing vistaMar,
 			Vista_Modulos vistaM, Vista_Planificacion vistaP) {
-		super();
 		this.vistaC = vistaC;
 		this.vistaF = vistaF;
 		this.vistaL = vistaL;
 		this.vistaMar = vistaMar;
 		this.vistaM = vistaM;
 		this.vistaP = vistaP;
-		datos = new PersistenciaMasaMadre(); 
+		datos = new PersistenciaMasaMadre();
+
+		datos = new PersistenciaMasaMadre();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		if(e.getSource().equals(vistaL.getBtnIngresar())) {
+
+		if (e.getSource().equals(vistaL.getBtnIngresar())) {
 			String contra = null;
 			if (vistaL.getTxtUsuario().getText().equals("")) {
 				vistaL.loginVacio();
-			}else {
+			} else {
 				contra = datos.getCredentials(vistaL.getTxtUsuario().getText());
 				if (contra == null) {
 					contra = "";
@@ -49,25 +49,25 @@ public class Controlador implements ActionListener {
 					vistaL.loginIncorrecto();
 				}
 			}
-		}else if (e.getSource().equals(vistaM.getBtnClientes())) {
+		} else if (e.getSource().equals(vistaM.getBtnClientes())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaC);
-		}else if (e.getSource().equals(vistaM.getBtnFacturas())) {
+		} else if (e.getSource().equals(vistaM.getBtnFacturas())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaF);
-		}else if (e.getSource().equals(vistaM.getBtnMarketing())) {
+		} else if (e.getSource().equals(vistaM.getBtnMarketing())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaMar);
-		}else if (e.getSource().equals(vistaM.getBtnProgramar())) {
+		} else if (e.getSource().equals(vistaM.getBtnProgramar())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaP);
-		}else if (e.getSource().equals(vistaM.getBtnLogout())) {
+		} else if (e.getSource().equals(vistaM.getBtnLogout())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaL);
 			//vaciamos campos de login
 			vistaL.vaciarCampos();
 		}
-				
+
 	}
 
 }

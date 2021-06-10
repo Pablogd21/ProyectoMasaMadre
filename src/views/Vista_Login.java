@@ -15,7 +15,7 @@ import controller.Controlador;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class Vista_Login extends JPanel{
+public class Vista_Login extends JPanel {
 	
 	private JButton btnIngresar;
 	private JPasswordField txtPassword;

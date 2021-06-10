@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import controller.Controlador;
 
+
 public class Marco_Principal extends JFrame {
 	
 	
@@ -73,8 +74,7 @@ public class Marco_Principal extends JFrame {
 	public void hacerVisible() {
 		setVisible(true);
 	}
-	
-	
+
 	/*
 	 * public int salir() { int opcion = JOptionPane.showConfirmDialog( this,
 	 * "¿Desea salir de la aplicación?", "confirmación", JOptionPane.YES_NO_OPTION,
