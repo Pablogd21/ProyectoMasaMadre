@@ -168,8 +168,6 @@ public class Vista_Clientes extends JPanel {
 		btnHome.setBorder(null);
 		btnHome.setBackground(null); 
         btnHome.setContentAreaFilled(false);
-		btnHome.setBackground(null);
-		btnHome.setContentAreaFilled(false);
 		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
 				btnHome.setIcon(new ImageIcon(".\\images\\home_grande.png"));
@@ -214,6 +212,8 @@ public class Vista_Clientes extends JPanel {
 	public JButton getBtnGuardar() {
 		return btnGuardar;
 	}
+	
+	
 
 	public void setControlador(Controlador controlador) {
 		btnAnadir.addActionListener(controlador);
@@ -226,6 +226,6 @@ public class Vista_Clientes extends JPanel {
 		txtFieldNombre.addActionListener(controlador);
 		btnModificar.addActionListener(controlador);
 		btnEliminar.addActionListener(controlador);
-
+		btnHome.addActionListener(controlador);
 	}
 }

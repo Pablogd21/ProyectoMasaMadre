@@ -34,7 +34,7 @@ public class Controlador implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		login_enter();
+		//login_enter();
 
 		if (e.getSource().equals(vistaL.getBtnIngresar()) || letra == KeyEvent.VK_ENTER) {
 			String contra = null;
@@ -71,7 +71,17 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaC.getBtnHome())) {
 			appPrincipal.quitarPanel(vistaC);
 			appPrincipal.cargarPanel(vistaM);
+		} else if (e.getSource().equals(vistaP.getBtnHome())) {
+			appPrincipal.quitarPanel(vistaP);
+			appPrincipal.cargarPanel(vistaM);
+		} else if (e.getSource().equals(vistaMar.getBtnHome())) {
+			appPrincipal.quitarPanel(vistaMar);
+			appPrincipal.cargarPanel(vistaM);
+		} else if (e.getSource().equals(vistaF.getBtnHome())) {
+			appPrincipal.quitarPanel(vistaF);
+			appPrincipal.cargarPanel(vistaM);
 		}
+
 
 	}
 

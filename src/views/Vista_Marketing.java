@@ -194,6 +194,14 @@ public class Vista_Marketing extends JPanel {
 	
 	}
 	
+	
+	
+	public JButton getBtnHome() {
+		return btnHome;
+	}
+
+
+
 	public void setControlador(Controlador controlador) {
 		txtFieldTituloFeli.addActionListener(controlador);
 		txtFieldConteFeli.addActionListener(controlador);
@@ -204,6 +212,7 @@ public class Vista_Marketing extends JPanel {
 		btnNuevaComunicacion.addActionListener(controlador);
 		btnFelicitaciones.addActionListener(controlador);
 		btnEncuestas.addActionListener(controlador);
+		btnHome.addActionListener(controlador);
 	}
 }
 

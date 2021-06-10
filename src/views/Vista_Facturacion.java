@@ -3,6 +3,7 @@ package views;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ public class Vista_Facturacion extends JPanel {
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JButton btnResumen;
+	private JButton btnHome;
 	
 	public Vista_Facturacion() {
 		setLayout(null);
@@ -49,9 +51,38 @@ public class Vista_Facturacion extends JPanel {
 		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		lblTituloModulo.setBounds(23, 359, 140, 28);
 		add(lblTituloModulo);
+		
+		JPanel panel_home = new JPanel();
+		panel_home.setBounds(25, 11, 32, 32);
+		add(panel_home);
+
+		btnHome = new JButton("");
+		btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
+		btnHome.setBorder(null);
+		btnHome.setBackground(null); 
+        btnHome.setContentAreaFilled(false);
+		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				btnHome.setIcon(new ImageIcon(".\\images\\home_grande.png"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
+			}
+		});
+		panel_home.add(btnHome);
 	}
 	
+	
+	
+	public JButton getBtnHome() {
+		return btnHome;
+	}
+
+
+
 	public void setControlador(Controlador controlador) {
+		btnHome.addActionListener(controlador);
 		btnAniadirUsu.addActionListener(controlador);
 		btnModificar.addActionListener(controlador);
 		btnEliminar.addActionListener(controlador);
