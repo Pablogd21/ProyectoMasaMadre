@@ -30,6 +30,7 @@ public class Vista_Modulos extends JPanel {
 
 	public Vista_Modulos() {
 		setLayout(new BorderLayout(0, 0));
+		setSize(1366, 768);
 		JPanel panel_login = new JPanel();
 		panel_login.setBackground(new Color(255, 204, 153));
 		FlowLayout fl_panel_login = (FlowLayout) panel_login.getLayout();
@@ -94,7 +95,7 @@ public class Vista_Modulos extends JPanel {
 		btnClientes = new JButton("");
 		btnClientes.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnClientes.setIcon(new ImageIcon(".\\images\\clientes 1.png"));
-		btnClientes.setBounds(0, 140, 590, 128);
+		btnClientes.setBounds(465, 140, 128, 128);
 		btnClientes.setBorder(null);
 		btnClientes.setBackground(null);
 		panel_modulos.add(btnClientes);
@@ -102,7 +103,7 @@ public class Vista_Modulos extends JPanel {
 		btnMarketing = new JButton("");
 		btnMarketing.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMarketing.setIcon(new ImageIcon(".\\images\\marketing 1.png"));
-		btnMarketing.setBounds(770, 140, 590, 128);
+		btnMarketing.setBounds(760, 140, 128, 128);
 		btnMarketing.setBorder(null);
 		btnMarketing.setBackground(null);
 		panel_modulos.add(btnMarketing);
@@ -110,7 +111,7 @@ public class Vista_Modulos extends JPanel {
 		btnFacturas = new JButton("");
 		btnFacturas.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnFacturas.setIcon(new ImageIcon(".\\images\\facturas 1.png"));
-		btnFacturas.setBounds(0, 400, 590, 128);
+		btnFacturas.setBounds(465, 415, 128, 128);
 		btnFacturas.setBorder(null);
 		btnFacturas.setBackground(null);
 		panel_modulos.add(btnFacturas);
@@ -118,7 +119,7 @@ public class Vista_Modulos extends JPanel {
 		btnProgramar = new JButton("");
 		btnProgramar.setHorizontalAlignment(SwingConstants.LEFT);
 		btnProgramar.setIcon(new ImageIcon(".\\images\\programar 1.png"));
-		btnProgramar.setBounds(770, 400, 590, 128);
+		btnProgramar.setBounds(760, 415, 128, 128);
 		btnProgramar.setBorder(null);
 		btnProgramar.setBackground(null);
 		panel_modulos.add(btnProgramar);
