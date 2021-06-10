@@ -32,49 +32,6 @@ public class Vista_Clientes extends JPanel {
 		
 		this.setSize(1920, 1080);
 		
-		JLabel lblTituloModulo = new JLabel("Clientes ...");
-		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
-		lblTituloModulo.setBounds(79, 736, 213, 69);
-		add(lblTituloModulo);
-		
-		JPanel panelResumen = new JPanel();
-		panelResumen.setBounds(385, 55, 1124, 740);
-		add(panelResumen);
-		panelResumen.setLayout(null);
-		
-		JLabel lblResumenCliente = new JLabel("Resumen Cliente:");
-		lblResumenCliente.setBounds(453, 10, 286, 39);
-		lblResumenCliente.setFont(new Font("Tahoma", Font.BOLD, 32));
-		panelResumen.add(lblResumenCliente);
-		
-		table = new JTable();
-		table.setBounds(10, 80, 1104, 543);
-		panelResumen.add(table);
-		
-		btnModificar = new JButton("MODIFICAR");
-		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnModificar.setBackground(SystemColor.controlHighlight);
-		btnModificar.setBounds(306, 670, 231, 34);
-		panelResumen.add(btnModificar);
-		
-		btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnEliminar.setBackground(SystemColor.controlHighlight);
-		btnEliminar.setBounds(592, 670, 238, 36);
-		panelResumen.add(btnEliminar);
-		
-		btnAnadir = new JButton("A\u00D1ADIR");
-		btnAnadir.setBackground(SystemColor.controlHighlight);
-		btnAnadir.setFont(new Font("Tahoma", Font.BOLD, 22));
-		btnAnadir.setBounds(25, 336, 330, 84);
-		add(btnAnadir);
-		
-		btnResumen = new JButton("RESUMEN");
-		btnResumen.setBackground(SystemColor.controlHighlight);
-		btnResumen.setFont(new Font("Tahoma", Font.BOLD, 22));
-		btnResumen.setBounds(25, 445, 330, 84);
-		add(btnResumen);
-		
 		JPanel panelAnadir = new JPanel();
 		panelAnadir.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panelAnadir.setBounds(385, 55, 1124, 740);
@@ -163,6 +120,49 @@ public class Vista_Clientes extends JPanel {
 		txtFieldTelefono.setColumns(10);
 		txtFieldTelefono.setBounds(224, 574, 835, 50);
 		panelAnadir.add(txtFieldTelefono);
+		
+		JLabel lblTituloModulo = new JLabel("Clientes ...");
+		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
+		lblTituloModulo.setBounds(79, 736, 213, 69);
+		add(lblTituloModulo);
+		
+		JPanel panelResumen = new JPanel();
+		panelResumen.setBounds(385, 55, 1124, 740);
+		add(panelResumen);
+		panelResumen.setLayout(null);
+		
+		JLabel lblResumenCliente = new JLabel("Resumen Cliente:");
+		lblResumenCliente.setBounds(453, 10, 286, 39);
+		lblResumenCliente.setFont(new Font("Tahoma", Font.BOLD, 32));
+		panelResumen.add(lblResumenCliente);
+		
+		table = new JTable();
+		table.setBounds(10, 80, 1104, 543);
+		panelResumen.add(table);
+		
+		btnModificar = new JButton("MODIFICAR");
+		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnModificar.setBackground(SystemColor.controlHighlight);
+		btnModificar.setBounds(306, 670, 231, 34);
+		panelResumen.add(btnModificar);
+		
+		btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnEliminar.setBackground(SystemColor.controlHighlight);
+		btnEliminar.setBounds(592, 670, 238, 36);
+		panelResumen.add(btnEliminar);
+		
+		btnAnadir = new JButton("A\u00D1ADIR");
+		btnAnadir.setBackground(SystemColor.controlHighlight);
+		btnAnadir.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnAnadir.setBounds(25, 336, 330, 84);
+		add(btnAnadir);
+		
+		btnResumen = new JButton("RESUMEN");
+		btnResumen.setBackground(SystemColor.controlHighlight);
+		btnResumen.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnResumen.setBounds(25, 445, 330, 84);
+		add(btnResumen);
 	}
 	
 	public void setControlador(Controlador controlador) {
