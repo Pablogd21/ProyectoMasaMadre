@@ -66,7 +66,6 @@ public class Vista_Login extends JPanel {
 	
 	public void setControlador(Controlador controlador) {
 		btnIngresar.addActionListener(controlador);
-		
 	}
 	
 	public void loginIncorrecto() {
@@ -80,7 +79,6 @@ public class Vista_Login extends JPanel {
 	}
 	
 	public void vaciarCampos() {
-		//Hola
 		txtUsuario.setText("");
 		txtPassword.setText("");
 	}
