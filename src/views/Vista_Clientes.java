@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import java.awt.SystemColor;
 
 public class Vista_Clientes extends JPanel {
+	
 	private JTable table;
 	private JButton btnAnadir, btnResumen, btnModificar, btnEliminar, btnHome, btnBorrar, btnGuardar;
 	private JTextField txtFieldNombre;
