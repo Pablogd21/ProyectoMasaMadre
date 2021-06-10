@@ -66,8 +66,8 @@ public class Controlador implements ActionListener {
 			appPrincipal.quitarPanel(vistaC);
 			appPrincipal.cargarPanel(vistaM);
 		}
+		
 
 	}
-
 
 }
