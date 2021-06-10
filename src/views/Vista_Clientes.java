@@ -7,26 +7,20 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-
 import controller.Controlador;
 
 import javax.swing.JTable;
 import java.awt.SystemColor;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
 
 public class Vista_Clientes extends JPanel {
 	private JTable table;
-	private JButton btnAnadir, btnResumen, btnModificar, btnEliminar;
+	private JButton btnAnadir, btnResumen, btnModificar, btnEliminar, btnHome, btnBorrar, btnGuardar;
 	private JTextField txtFieldNombre;
 	private JTextField txtFieldApellido;
 	private JTextField txtFieldEmail;
 	private JTextField txtFieldNacimiento;
 	private JTextField txtFieldDireccion;
 	private JTextField txtFieldTelefono;
-	private JButton btnHome;
 
 	public Vista_Clientes() {
 
@@ -79,17 +73,17 @@ public class Vista_Clientes extends JPanel {
 		lblDatosCliente.setBounds(422, 28, 288, 50);
 		panelAnadir.add(lblDatosCliente);
 
-		JButton btnGuardar = new JButton("GUARDAR");
+		btnGuardar = new JButton("GUARDAR");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnGuardar.setBackground(SystemColor.controlHighlight);
 		btnGuardar.setBounds(283, 588, 251, 43);
 		panelAnadir.add(btnGuardar);
 
-		JButton btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnCancelar.setBackground(SystemColor.controlHighlight);
-		btnCancelar.setBounds(586, 588, 251, 43);
-		panelAnadir.add(btnCancelar);
+		btnBorrar = new JButton("BORRAR");
+		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnBorrar.setBackground(SystemColor.controlHighlight);
+		btnBorrar.setBounds(586, 588, 251, 43);
+		panelAnadir.add(btnBorrar);
 
 		txtFieldNombre = new JTextField();
 		txtFieldNombre.setColumns(10);
@@ -165,15 +159,17 @@ public class Vista_Clientes extends JPanel {
 		btnEliminar.setBounds(592, 670, 238, 36);
 		panelResumen.add(btnEliminar);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(25, 11, 32, 32);
-		add(panel);
-		
+		JPanel panel_home = new JPanel();
+		panel_home.setBounds(25, 11, 32, 32);
+		add(panel_home);
+
 		btnHome = new JButton("");
 		btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
 		btnHome.setBorder(null);
 		btnHome.setBackground(null); 
         btnHome.setContentAreaFilled(false);
+		btnHome.setBackground(null);
+		btnHome.setContentAreaFilled(false);
 		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
 				btnHome.setIcon(new ImageIcon(".\\images\\home_grande.png"));
@@ -183,8 +179,40 @@ public class Vista_Clientes extends JPanel {
 				btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
 			}
 		});
-		panel.setLayout(new BorderLayout(0, 0));
-		panel.add(btnHome);
+		panel_home.add(btnHome);
+
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public JButton getBtnAnadir() {
+		return btnAnadir;
+	}
+
+	public JButton getBtnResumen() {
+		return btnResumen;
+	}
+
+	public JButton getBtnModificar() {
+		return btnModificar;
+	}
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public JButton getBtnHome() {
+		return btnHome;
+	}
+
+	public JButton getBtnBorrar() {
+		return btnBorrar;
+	}
+
+	public JButton getBtnGuardar() {
+		return btnGuardar;
 	}
 
 	public void setControlador(Controlador controlador) {

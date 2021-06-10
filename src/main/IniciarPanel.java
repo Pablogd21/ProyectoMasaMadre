@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.CardLayout;
 import java.awt.EventQueue;
 
 import controller.Controlador;
@@ -50,7 +49,7 @@ public class IniciarPanel {
 				vistaM.setControlador(controlador);
 				vistaP.setControlador(controlador);
 				
-				appPrincipal.cargarPanel(vistaM);
+				appPrincipal.cargarPanel(vistaL);
 				appPrincipal.hacerVisible();
 				
 			}
