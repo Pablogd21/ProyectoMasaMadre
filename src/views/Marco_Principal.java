@@ -15,7 +15,7 @@ public class Marco_Principal extends JFrame {
 		setTitle("CRM Masa Madre");
 		setExtendedState(MAXIMIZED_BOTH);
 		this.setSize(1920, 1080);
-		Vista_Login vistaL = new Vista_Login();
+		Vista_Clientes vistaL = new Vista_Clientes();
 		add(vistaL);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(true);
