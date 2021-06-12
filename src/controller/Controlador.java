@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JOptionPane;
+
+import model.data.Cliente;
 import model.db.PersistenciaMasaMadre;
 import views.*;
 
@@ -65,9 +68,12 @@ public class Controlador implements ActionListener {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaP);
 		} else if (e.getSource().equals(vistaM.getBtnLogout())) {
-			appPrincipal.quitarPanel(vistaM);
-			appPrincipal.cargarPanel(vistaL);
-			vistaL.vaciarCampos();
+			int opcion = vistaM.salir();
+			if (opcion == JOptionPane.YES_OPTION) { 
+				appPrincipal.quitarPanel(vistaM);
+				appPrincipal.cargarPanel(vistaL);
+				vistaL.vaciarCampos();
+			}
 		} else if (e.getSource().equals(vistaC.getBtnHome())) {
 			appPrincipal.quitarPanel(vistaC);
 			appPrincipal.cargarPanel(vistaM);
@@ -80,7 +86,29 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaF.getBtnHome())) {
 			appPrincipal.quitarPanel(vistaF);
 			appPrincipal.cargarPanel(vistaM);
-		}
+		} else if (e.getSource().equals(vistaC.getBtnBorrar())) {
+			vistaC.vaciarCampos();
+		}  else if (e.getSource().equals(vistaC.getBtnAnadir())) {
+			vistaC.cargarPanelAnadir();
+		} else if (e.getSource().equals(vistaC.getBtnResumen())) {
+			vistaC.cargarPanelResumen();
+			vistaC.cargarTabla(datos.selectClientes());
+		} else if (e.getSource().equals(vistaC.getBtnGuardar())) {
+			Cliente cli = vistaC.generarCliente();
+			if (!(cli == null)) {
+				int res = datos.insertCliente(cli);
+				if (res == 1) {
+					JOptionPane.showMessageDialog(vistaC, "Cliente añadido con éxito", "Añadido",
+							JOptionPane.INFORMATION_MESSAGE);
+					vistaC.vaciarCampos();
+				}else {
+					JOptionPane.showMessageDialog(vistaC, "Fallo al añadir el cliente", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+			
+		} 
+		
 		
 
 
