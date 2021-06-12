@@ -157,4 +157,9 @@ public class Vista_Modulos extends JPanel {
 	public JButton getBtnProgramar() {
 		return btnProgramar;
 	}
+
+	public int salir() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

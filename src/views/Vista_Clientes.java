@@ -1,19 +1,33 @@
 package views;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.JLabel;
-
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 import controller.Controlador;
+import model.data.Cliente;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 import javax.swing.JTable;
 import java.awt.SystemColor;
+import java.util.ArrayList;
 
 public class Vista_Clientes extends JPanel {
-	private JTable table;
+	
+	
 	private JButton btnAnadir, btnResumen, btnModificar, btnEliminar, btnHome, btnBorrar, btnGuardar;
 	private JTextField txtFieldNombre;
 	private JTextField txtFieldApellido;
@@ -21,6 +35,10 @@ public class Vista_Clientes extends JPanel {
 	private JTextField txtFieldNacimiento;
 	private JTextField txtFieldDireccion;
 	private JTextField txtFieldTelefono;
+	private JPanel panelAnadir, panelResumen;
+	private DefaultTableModel tblModel;
+	private JScrollPane scrpClientes;
+	private JTable tblClientes;
 
 	public Vista_Clientes() {
 
@@ -35,19 +53,19 @@ public class Vista_Clientes extends JPanel {
 
 		btnAnadir = new JButton("A\u00D1ADIR");
 		btnAnadir.setBackground(SystemColor.controlHighlight);
-		btnAnadir.setFont(new Font("Tahoma", Font.BOLD, 22));
-		btnAnadir.setBounds(25, 336, 330, 84);
+		btnAnadir.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnAnadir.setBounds(25, 300, 330, 84);
 		add(btnAnadir);
 
 		btnResumen = new JButton("RESUMEN");
 		btnResumen.setBackground(SystemColor.controlHighlight);
-		btnResumen.setFont(new Font("Tahoma", Font.BOLD, 22));
-		btnResumen.setBounds(25, 445, 330, 84);
+		btnResumen.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnResumen.setBounds(25, 399, 330, 84);
 		add(btnResumen);
 
-		JPanel panelAnadir = new JPanel();
+		panelAnadir = new JPanel();
 		panelAnadir.setLayout(null);
-		panelAnadir.setBounds(377, 72, 979, 659);
+		panelAnadir.setBounds(377, 30, 979, 659);
 		add(panelAnadir);
 
 		JLabel lblNombre = new JLabel("NOMBRE:");
@@ -73,10 +91,16 @@ public class Vista_Clientes extends JPanel {
 		lblDatosCliente.setBounds(422, 28, 288, 50);
 		panelAnadir.add(lblDatosCliente);
 
+
 		btnGuardar = new JButton("GUARDAR");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 25));
+
+
+		btnGuardar = new JButton("GUARDAR");
+		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+
 		btnGuardar.setBackground(SystemColor.controlHighlight);
-		btnGuardar.setBounds(283, 588, 251, 43);
+		btnGuardar.setBounds(283, 588, 251, 27);
 		panelAnadir.add(btnGuardar);
 
 		btnBorrar = new JButton("BORRAR");
@@ -84,6 +108,14 @@ public class Vista_Clientes extends JPanel {
 		btnBorrar.setBackground(SystemColor.controlHighlight);
 		btnBorrar.setBounds(586, 588, 251, 43);
 		panelAnadir.add(btnBorrar);
+
+
+
+		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCancelar.setBackground(SystemColor.controlHighlight);
+		btnCancelar.setBounds(586, 588, 251, 27);
+		panelAnadir.add(btnCancelar);
 
 		txtFieldNombre = new JTextField();
 		txtFieldNombre.setColumns(10);
@@ -133,32 +165,51 @@ public class Vista_Clientes extends JPanel {
 		txtFieldTelefono.setBounds(198, 509, 748, 50);
 		panelAnadir.add(txtFieldTelefono);
 
-		JPanel panelResumen = new JPanel();
-		panelResumen.setBounds(377, 72, 979, 659);
+		BorderLayout layResumen = new BorderLayout();
+		panelResumen = new JPanel();
+		panelResumen.setBounds(377, 30, 979, 659);
 		add(panelResumen);
-		panelResumen.setLayout(null);
-
+		panelResumen.setLayout(layResumen);
+		
+		FlowLayout flTit = new FlowLayout(FlowLayout.CENTER);
+		JPanel pnlTituloRes = new JPanel();
+		pnlTituloRes.setLayout(flTit);
 		JLabel lblResumenCliente = new JLabel("Resumen Cliente");
 		lblResumenCliente.setBounds(402, 10, 286, 39);
 		lblResumenCliente.setFont(new Font("Tahoma", Font.BOLD, 32));
-		panelResumen.add(lblResumenCliente);
+		pnlTituloRes.add(lblResumenCliente);
+		panelResumen.add(pnlTituloRes, BorderLayout.NORTH);
+		
+		scrpClientes = new JScrollPane();
+		scrpClientes.setVisible(true);
+		panelResumen.add(scrpClientes, BorderLayout.CENTER);
 
-		table = new JTable();
-		table.setBounds(10, 74, 959, 550);
-		panelResumen.add(table);
+		tblClientes = new JTable();
+		configurarTabla();
+		tblClientes.setRowHeight(40);
+		tblClientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrpClientes.setViewportView(tblClientes);
+		
+		FlowLayout flBot = new FlowLayout(FlowLayout.CENTER,60,10);
+		JPanel pnlBtnRes = new JPanel();
+		pnlBtnRes.setLayout(flBot);
+		
+		Dimension dBtn = new Dimension(300, 40);
 
 		btnModificar = new JButton("MODIFICAR");
 		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnModificar.setBackground(SystemColor.controlHighlight);
-		btnModificar.setBounds(306, 670, 231, 34);
-		panelResumen.add(btnModificar);
+		btnModificar.setPreferredSize(dBtn);
+		pnlBtnRes.add(btnModificar);
 
 		btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnEliminar.setBackground(SystemColor.controlHighlight);
-		btnEliminar.setBounds(592, 670, 238, 36);
-		panelResumen.add(btnEliminar);
+		btnEliminar.setPreferredSize(dBtn);
+		pnlBtnRes.add(btnEliminar);
 		
+		panelResumen.add(pnlBtnRes, BorderLayout.SOUTH);
+
 		JPanel panel_home = new JPanel();
 		panel_home.setBounds(25, 11, 32, 32);
 		add(panel_home);
@@ -178,11 +229,90 @@ public class Vista_Clientes extends JPanel {
 			}
 		});
 		panel_home.add(btnHome);
+		
+		panelAnadir.setVisible(true);
+		panelResumen.setVisible(false);
 
+	}
+	
+	private void configurarTabla() {
+		tblModel = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		
+		tblModel.addColumn("ID");
+		tblModel.addColumn("NOMBRE");
+		tblModel.addColumn("APELLIDO");
+		tblModel.addColumn("EMAIL");
+		tblModel.addColumn("TELÉFONO");
+		tblModel.addColumn("F. NACIMIENTO");
+		tblModel.addColumn("DIRECCIÓN");
+		
+		final DefaultTableCellRenderer cellRend = new DefaultTableCellRenderer();
+		cellRend.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		tblClientes.setModel(tblModel);
+		
+		tblClientes.getColumn("ID").setCellRenderer(cellRend);
+		tblClientes.getColumn("NOMBRE").setCellRenderer(cellRend);
+		tblClientes.getColumn("APELLIDO").setCellRenderer(cellRend);
+		tblClientes.getColumn("EMAIL").setCellRenderer(cellRend);
+		tblClientes.getColumn("TELÉFONO").setCellRenderer(cellRend);
+		tblClientes.getColumn("F. NACIMIENTO").setCellRenderer(cellRend);
+		tblClientes.getColumn("DIRECCIÓN").setCellRenderer(cellRend);
+		
+		
+		
+		tblClientes.getColumn("ID").setPreferredWidth(5);
+		tblClientes.getColumn("NOMBRE").setPreferredWidth(20);
+		tblClientes.getColumn("APELLIDO").setPreferredWidth(30);
+		tblClientes.getColumn("EMAIL").setPreferredWidth(90);
+		tblClientes.getColumn("TELÉFONO").setPreferredWidth(25);
+		tblClientes.getColumn("F. NACIMIENTO").setPreferredWidth(30);
+		tblClientes.getColumn("DIRECCIÓN").setPreferredWidth(90);
+		
+	}
+	
+	public void cargarTabla(ArrayList<Cliente> listaClientes) {
+		tblModel.getDataVector().clear();
+		
+		Object[] fila = new Object[7];
+		
+		for (Cliente cli : listaClientes) {
+			fila[0] = cli.getIdCliente();
+			fila[1] = cli.getNombreCliente();
+			fila[2] = cli.getApellidoCliente();
+			fila[3] = cli.getEmailCliente();
+			fila[4] = cli.getTelefonoCliente();
+			fila[5] = cli.getFechaNaCliente();
+			fila[6] = cli.getDireccionCliente();
+			
+			tblModel.addRow(fila);
+		}
+		
+	}
+
+	public void cargarPanelAnadir() {
+		if (!panelAnadir.isVisible()) {
+			panelResumen.setVisible(false);
+			panelAnadir.setVisible(true);
+			this.repaint();
+		}
+	}
+	
+	public void cargarPanelResumen() {
+		if (!panelResumen.isVisible()) {
+			panelAnadir.setVisible(false);
+			panelResumen.setVisible(true);
+			this.repaint();
+		}
 	}
 
 	public JTable getTable() {
-		return table;
+		return tblClientes;
 	}
 
 	public JButton getBtnAnadir() {
@@ -224,8 +354,32 @@ public class Vista_Clientes extends JPanel {
 		txtFieldEmail.addActionListener(controlador);
 		txtFieldNacimiento.addActionListener(controlador);
 		txtFieldNombre.addActionListener(controlador);
+		btnGuardar.addActionListener(controlador);
 		btnModificar.addActionListener(controlador);
 		btnEliminar.addActionListener(controlador);
+		btnBorrar.addActionListener(controlador);
 		btnHome.addActionListener(controlador);
+	}
+
+	public void vaciarCampos() {
+		txtFieldDireccion.setText("");
+		txtFieldTelefono.setText("");
+		txtFieldApellido.setText("");
+		txtFieldEmail.setText("");
+		txtFieldNacimiento.setText("");
+		txtFieldNombre.setText("");
+	}
+	
+	public Cliente generarCliente() {
+		Cliente cliente = null;
+			if (txtFieldNombre.getText().equals("") || txtFieldApellido.getText().equals("") || txtFieldEmail.getText().equals("") ||
+					txtFieldTelefono.getText().equals("") || txtFieldNacimiento.getText().equals("") || txtFieldDireccion.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "Introduzca todos los datos por favor", "Error",
+						JOptionPane.ERROR_MESSAGE);
+			} else {
+				cliente = new Cliente( txtFieldNombre.getText(), txtFieldApellido.getText(), txtFieldEmail.getText(),
+						txtFieldTelefono.getText(), txtFieldNacimiento.getText(), txtFieldDireccion.getText());
+			}
+		return cliente;
 	}
 }
