@@ -23,8 +23,6 @@ public class Cliente {
 		this.direccionCliente = direccionCliente;
 	}
 
-	
-
 	public int getIdCliente() {
 		return idCliente;
 	}
