@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Vista_Marketing extends JPanel {
+	
 	private JTextField txtFieldTituloFeli;
 	private JTextField txtFieldConteFeli;
 	private JTextField txtFieldDestiFeli;

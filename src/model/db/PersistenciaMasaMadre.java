@@ -93,6 +93,7 @@ private AccesoDB acceso;
 		return res;
 	}
 	
+	
 	public int deleteCliente(int idCliente) {
 		String query = "DELETE FROM Clientes WHERE idCliente = ?";
 		
@@ -144,7 +145,7 @@ private AccesoDB acceso;
 			Cliente cliente = null;
 			String fecha = null;
 			while (rslt.next()) {
-				fecha = rslt.getDate(6).toString();
+				fecha = rslt.getString(6);
 				cliente = new Cliente(rslt.getInt(1), rslt.getString(2), 
 						rslt.getString(3), rslt.getString(4), rslt.getString(5), fecha, rslt.getString(7));
 				listaClientes.add(cliente);

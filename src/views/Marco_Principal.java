@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 
 public class Marco_Principal extends JFrame {
-	
+	 
 	
 	private static final long serialVersionUID = 1L;
 	private Vista_Clientes vistaC;

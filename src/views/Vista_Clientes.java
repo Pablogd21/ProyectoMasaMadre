@@ -377,8 +377,10 @@ public class Vista_Clientes extends JPanel {
 				JOptionPane.showMessageDialog(this, "Introduzca todos los datos por favor", "Error",
 						JOptionPane.ERROR_MESSAGE);
 			} else {
-				cliente = new Cliente( txtFieldNombre.getText(), txtFieldApellido.getText(), txtFieldEmail.getText(),
-						txtFieldTelefono.getText(), txtFieldNacimiento.getText(), txtFieldDireccion.getText());
+
+			
+
+				
 			}
 		return cliente;
 	}

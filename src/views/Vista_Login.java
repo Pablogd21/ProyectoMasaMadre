@@ -61,9 +61,6 @@ public class Vista_Login extends JPanel {
 		btnIngresar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		btnIngresar.setBounds(921, 447, 214, 34);
 		add(btnIngresar);
-		
-		
-		
 	}
 
 
@@ -86,7 +83,6 @@ public class Vista_Login extends JPanel {
 	}
 
 	public void vaciarCampos() {
-		// Hola
 		txtUsuario.setText("");
 		txtPassword.setText("");
 	}
