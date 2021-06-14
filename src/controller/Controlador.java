@@ -62,6 +62,7 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaM.getBtnProgramar())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaP);
+			vistaP.cargarComboBox(datos.selectClientes());
 		} else if (e.getSource().equals(vistaM.getBtnLogout())) {
 			int opcion = vistaM.salir();
 			if (opcion == JOptionPane.YES_OPTION) { 
@@ -96,7 +97,18 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaP.getBtnBorrar())) {
 			vistaP.vaciarCampos();
 		} else if (e.getSource().equals(vistaP.getBtnGuardar())) {
-			vistaP.generarPedido();
+			Pedido ped = vistaP.generarPedido();
+			if (!(ped == null)) {
+				int res = datos.insertPedido(ped);
+				if (res == 1) {
+					JOptionPane.showMessageDialog(vistaC, "Pedido añadido con éxito", "Añadido",
+							JOptionPane.INFORMATION_MESSAGE);
+					vistaC.vaciarCampos();
+				}else {
+					JOptionPane.showMessageDialog(vistaC, "Fallo al añadir el pedido", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
 		} else if (e.getSource().equals(vistaMar.getBtnHome())) {
 			appPrincipal.quitarPanel(vistaMar);
 			appPrincipal.cargarPanel(vistaM);

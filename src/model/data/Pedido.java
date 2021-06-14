@@ -23,6 +23,10 @@ public class Pedido {
 		this.importePedido = precioPedido;
 		this.fechaPedido = fechaPedido;
 	}
+	
+	public Pedido() {
+		// TODO
+	}
 
 	public int getIdPedido() {
 		return idPedido;

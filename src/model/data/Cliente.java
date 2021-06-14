@@ -32,6 +32,11 @@ public class Cliente {
 		this.fechaNaCliente = fechaNaCliente;
 		this.direccionCliente = direccionCliente;
 	}
+	
+	public Cliente(int idCliente, String emailCliente) {
+		this.idCliente = idCliente;
+		this.emailCliente = emailCliente;
+	}
 
 	public int getIdCliente() {
 		return idCliente;
