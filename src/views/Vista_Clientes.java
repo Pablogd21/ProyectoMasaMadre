@@ -376,12 +376,6 @@ public class Vista_Clientes extends JPanel {
 	public void setControlador(Controlador controlador) {
 		btnAnadir.addActionListener(controlador);
 		btnResumen.addActionListener(controlador);
-		txtFieldDireccion.addActionListener(controlador);
-		txtFieldTelefono.addActionListener(controlador);
-		txtFieldApellido.addActionListener(controlador);
-		txtFieldEmail.addActionListener(controlador);
-		txtFieldNacimiento.addActionListener(controlador);
-		txtFieldNombre.addActionListener(controlador);
 		btnGuardar.addActionListener(controlador);
 		btnModificar.addActionListener(controlador);
 		btnEliminar.addActionListener(controlador);

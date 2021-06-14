@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import model.data.Cliente;
+import model.data.Pedido;
 import model.db.PersistenciaMasaMadre;
 import views.*;
 
@@ -78,8 +79,24 @@ public class Controlador implements ActionListener {
 				appPrincipal.cargarPanel(vistaM);
 			}
 		} else if (e.getSource().equals(vistaP.getBtnHome())) {
+			int opcionSalirCli = vistaP.salir();
+			if (opcionSalirCli == JOptionPane.YES_OPTION) {
+				vistaP.vaciarCampos();
+				vistaP.cargarPanelAnadir();
+				appPrincipal.quitarPanel(vistaC);
+				appPrincipal.cargarPanel(vistaM);
+			}
 			appPrincipal.quitarPanel(vistaP);
 			appPrincipal.cargarPanel(vistaM);
+		} else if (e.getSource().equals(vistaP.getBtnResumenPedido())) {
+			vistaP.cargarPanelResumen();
+			vistaP.cargarTabla();
+		} else if (e.getSource().equals(vistaP.getBtnAniadirPedido())) {
+			vistaP.cargarPanelAnadir();
+		} else if (e.getSource().equals(vistaP.getBtnBorrar())) {
+			vistaP.vaciarCampos();
+		} else if (e.getSource().equals(vistaP.getBtnGuardar())) {
+			vistaP.generarPedido();
 		} else if (e.getSource().equals(vistaMar.getBtnHome())) {
 			appPrincipal.quitarPanel(vistaMar);
 			appPrincipal.cargarPanel(vistaM);

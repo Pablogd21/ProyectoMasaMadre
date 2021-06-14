@@ -1,19 +1,24 @@
 package model.data;
 
-import java.util.Date;
-
 public class Pedido {
 	
 	private int idPedido;
 	private int idCliente;
 	private String descripcionPedido;
 	private double importePedido;
-	private Date fechaPedido;
+	private String fechaPedido;
 	
-	public Pedido(int idPedido, int idCliente, String descripcionPedido, double precioPedido, Date fechaPedido) {
+	public Pedido(int idPedido, int idCliente, String descripcionPedido, double precioPedido, String fechaPedido) {
 		super();
 		this.idPedido = idPedido;
 		this.idCliente = idCliente;
+		this.descripcionPedido = descripcionPedido;
+		this.importePedido = precioPedido;
+		this.fechaPedido = fechaPedido;
+	}
+	
+	public Pedido(String descripcionPedido, double precioPedido, String fechaPedido) {
+		super();
 		this.descripcionPedido = descripcionPedido;
 		this.importePedido = precioPedido;
 		this.fechaPedido = fechaPedido;
@@ -51,11 +56,11 @@ public class Pedido {
 		this.importePedido = precioPedido;
 	}
 
-	public Date getFechaPedido() {
+	public String getFechaPedido() {
 		return fechaPedido;
 	}
 
-	public void setFechaPedido(Date fechaPedido) {
+	public void setFechaPedido(String fechaPedido) {
 		this.fechaPedido = fechaPedido;
 	}
 
