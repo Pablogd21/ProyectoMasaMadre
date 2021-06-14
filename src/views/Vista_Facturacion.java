@@ -276,10 +276,10 @@ public class Vista_Facturacion extends JPanel {
 
 	public void setControlador(Controlador controlador) {
 		btnHome.addActionListener(controlador);
-		btnAniadirUsu.addActionListener(controlador);
-		btnModificar.addActionListener(controlador);
-		btnEliminar.addActionListener(controlador);
-		btnResumen.addActionListener(controlador);
+		//btnAniadirUsu.addActionListener(controlador);
+		//btnModificar.addActionListener(controlador);
+		//btnEliminar.addActionListener(controlador);
+		//btnResumen.addActionListener(controlador);
 
 		btnMostrarBalance.addActionListener(controlador);
 		btnLimpiar.addActionListener(controlador);

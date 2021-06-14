@@ -1,6 +1,7 @@
 package views;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -157,4 +158,11 @@ public class Vista_Modulos extends JPanel {
 	public JButton getBtnProgramar() {
 		return btnProgramar;
 	}
+
+	public int salir() {
+		int opcion = JOptionPane.showConfirmDialog(this, "¿Desea cambiar de usuario?", "Salida",
+				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+		return opcion;
+	}
+
 }
