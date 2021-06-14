@@ -1,98 +1,168 @@
 package views;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import controller.Controlador;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Toolkit;
-
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class Vista_Modulos extends JPanel {
 
+	private JLabel lblUsuario;
+	private JButton btnLogout;
+	private JLabel lblTitulo;
+	private JLabel lblClientes;
+	private JLabel lblMarketing;
+	private JLabel lblFacturas;
+	private JLabel lblProgramar;
+	private JButton btnClientes;
+	private JButton btnMarketing;
+	private JButton btnFacturas;
+	private JButton btnProgramar;
+
 	public Vista_Modulos() {
+		setSize(1366, 768);
+		setLayout(new BorderLayout(0, 0));
+		JPanel panel_login = new JPanel();
+		panel_login.setBackground(new Color(255, 204, 153));
+		add(panel_login, BorderLayout.NORTH);
+		panel_login.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
-//setBorder(null);
-		setLayout(null);
-		Toolkit miPantalla = Toolkit.getDefaultToolkit();
-		Dimension tamanyoPantalla = miPantalla.getScreenSize();
-		int altoPantalla = tamanyoPantalla.height;
-		int anchoPantalla = tamanyoPantalla.width;
-		setSize(1920, 1080);
-
-		BorderLayout layout = new BorderLayout();
-		setLayout(layout);
-
-		// PANEL SUPERIOR PARA BOTON Y USUARIO
-		JPanel panel_login = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblUsuario.setBounds(835, 186, 63, 25);
-		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		add(lblUsuario);
+		lblUsuario = new JLabel("Salir");
+		lblUsuario.setBorder(new EmptyBorder(20, 0, 20, 10));
 		panel_login.add(lblUsuario);
 
-		JButton btnCerrarSesion = new JButton();
-		btnCerrarSesion.setBounds(908, 186, 25, 25);
-		btnCerrarSesion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/logout.png")));
-		btnCerrarSesion.setBorder(null);
-		add(btnCerrarSesion);
-		panel_login.add(btnCerrarSesion);
-		panel_login.setAlignmentX(RIGHT_ALIGNMENT);
-		add(panel_login, BorderLayout.NORTH);
+		btnLogout = new JButton("");
+		btnLogout.setIcon(new ImageIcon(".\\images\\logout.png"));
+		btnLogout.setBackground(null);
+		btnLogout.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnLogout.setContentAreaFilled(false);
+		btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				btnLogout.setIcon(new ImageIcon(".\\images\\logout_grande.png"));
+			}
 
-		// PANEL CENTRAL CON BOTONES
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				btnLogout.setIcon(new ImageIcon(".\\images\\logout.png"));
+			}
+		});
+		panel_login.add(btnLogout);
 
-		JButton btnFacturacion = new JButton();
-		btnFacturacion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/factura.png")));
-		btnFacturacion.setBounds(624, 248, 100, 100);
-		add(btnFacturacion);
-		JButton btnMarketing = new JButton("");
-		btnMarketing.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/marketing.png")));
-		btnMarketing.setBounds(624, 426, 100, 100);
-		add(btnMarketing);
-		JButton btnPlanificacion = new JButton("");
-		btnPlanificacion.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/programar.png")));
-		btnPlanificacion.setBounds(386, 426, 100, 100);
-		add(btnPlanificacion);
-		JButton btnClientes = new JButton("");
-		btnClientes.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/clientes.png")));
-		btnClientes.setBounds(386, 248, 100, 100);
-		add(btnClientes);
-// btnClientes.addMouseListener(new MouseAdapter() {
-// @Override
-// public void mouseEntered(MouseEvent e) {
-// btnClientes.setIcon(new ImageIcon(Vista_Modulos.class.getResource("/imagenes/cliente_grande.png")));
-// }
-// });
+		JPanel panel_modulos = new JPanel();
+		panel_modulos.setBackground(new Color(255, 204, 153));
+		add(panel_modulos);
+		panel_modulos.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Clientes");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
-		lblNewLabel.setBounds(386, 359, 100, 14);
-		add(lblNewLabel);
-		JLabel lblNewLabel_1 = new JLabel("Planificaci\u00F3n");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(386, 537, 100, 14);
-		add(lblNewLabel_1);
-		JLabel lblNewLabel_2 = new JLabel("Facturas");
-		lblNewLabel_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(624, 359, 100, 14);
-		add(lblNewLabel_2);
-		JLabel lblNewLabel_3 = new JLabel("Marketing");
-		lblNewLabel_3.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel_3.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 15));
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(624, 535, 100, 25);
-		add(lblNewLabel_3);
+		lblTitulo = new JLabel("M \u00D3 D U L O S");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(0, 10, 1370, 104);
+		lblTitulo.setFont(new Font("NSimSun", Font.PLAIN, 90));
+		panel_modulos.add(lblTitulo);
+
+		lblClientes = new JLabel("Clientes");
+		lblClientes.setFont(new Font("Sitka Small", Font.BOLD, 16));
+		lblClientes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblClientes.setBounds(465, 279, 128, 52);
+		panel_modulos.add(lblClientes);
+
+		lblMarketing = new JLabel("Marketing");
+		lblMarketing.setFont(new Font("Sitka Small", Font.BOLD, 16));
+		lblMarketing.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMarketing.setBounds(760, 279, 128, 52);
+		panel_modulos.add(lblMarketing);
+
+		lblFacturas = new JLabel("Facturas");
+		lblFacturas.setFont(new Font("Sitka Small", Font.BOLD, 16));
+		lblFacturas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFacturas.setBounds(465, 554, 128, 52);
+		panel_modulos.add(lblFacturas);
+
+		lblProgramar = new JLabel("Programar");
+		lblProgramar.setFont(new Font("Sitka Small", Font.BOLD, 16));
+		lblProgramar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblProgramar.setBounds(760, 554, 128, 52);
+		panel_modulos.add(lblProgramar);
+
+		btnClientes = new JButton("");
+		btnClientes.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnClientes.setIcon(new ImageIcon(".\\images\\clientes.png"));
+		btnClientes.setBounds(465, 140, 128, 128);
+		btnClientes.setBorder(null);
+		btnClientes.setBackground(null);
+		btnClientes.setContentAreaFilled(false);
+		panel_modulos.add(btnClientes);
+
+		btnMarketing = new JButton("");
+		btnMarketing.setHorizontalAlignment(SwingConstants.LEFT);
+		btnMarketing.setIcon(new ImageIcon(".\\images\\marketing.png"));
+		btnMarketing.setBounds(760, 140, 128, 128);
+		btnMarketing.setBorder(null);
+		btnMarketing.setBackground(null);
+		btnMarketing.setContentAreaFilled(false);
+		panel_modulos.add(btnMarketing);
+
+		btnFacturas = new JButton("");
+		btnFacturas.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnFacturas.setIcon(new ImageIcon(".\\images\\facturas.png"));
+		btnFacturas.setBounds(465, 415, 128, 128);
+		btnFacturas.setBorder(null);
+		btnFacturas.setBackground(null);
+		btnFacturas.setContentAreaFilled(false);
+		panel_modulos.add(btnFacturas);
+
+		btnProgramar = new JButton("");
+		btnProgramar.setHorizontalAlignment(SwingConstants.LEFT);
+		btnProgramar.setIcon(new ImageIcon(".\\images\\programar.png"));
+		btnProgramar.setBounds(760, 415, 128, 128);
+		btnProgramar.setBorder(null);
+		btnProgramar.setBackground(null);
+		btnProgramar.setContentAreaFilled(false);
+		panel_modulos.add(btnProgramar);
 
 	}
+
+	public void setControlador(Controlador controlador) {
+		btnLogout.addActionListener(controlador);
+		btnClientes.addActionListener(controlador);
+		btnMarketing.addActionListener(controlador);
+		btnFacturas.addActionListener(controlador);
+		btnProgramar.addActionListener(controlador);
+
+	}
+
+	public JButton getBtnLogout() {
+		return btnLogout;
+	}
+
+	public JButton getBtnClientes() {
+		return btnClientes;
+	}
+
+	public JButton getBtnMarketing() {
+		return btnMarketing;
+	}
+
+	public JButton getBtnFacturas() {
+		return btnFacturas;
+	}
+
+	public JButton getBtnProgramar() {
+		return btnProgramar;
+	}
+
+	public int salir() {
+		int opcion = JOptionPane.showConfirmDialog(this, "¿Desea cambiar de usuario?", "Salida",
+				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+		return opcion;
+	}
+
 }
