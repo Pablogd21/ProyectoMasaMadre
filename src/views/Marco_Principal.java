@@ -18,14 +18,14 @@ public class Marco_Principal extends JFrame {
 	private Vista_Login vistaL;
 	private Vista_Marketing vistaMar;
 	private Vista_Modulos vistaM;
-	private Vista_Planificacion vistaP;
+	private Vista_Pedidos vistaP;
 	
 	public Marco_Principal() throws HeadlessException {
 		super();
 	}
 
 	public Marco_Principal(Vista_Clientes vistaC, Vista_Facturacion vistaF, Vista_Login vistaL, Vista_Marketing vistaMar,
-			Vista_Modulos vistaM, Vista_Planificacion vistaP) {
+			Vista_Modulos vistaM, Vista_Pedidos vistaP) {
 		this.vistaC = vistaC;
 		this.vistaF = vistaF;
 		this.vistaL = vistaL;
@@ -43,7 +43,7 @@ public class Marco_Principal extends JFrame {
 	}
 	
 	private void cargaPaneles(Vista_Clientes vistaC, Vista_Facturacion vistaF, Vista_Login vistaL, Vista_Marketing vistaMar,
-			Vista_Modulos vistaM, Vista_Planificacion vistaP) {
+			Vista_Modulos vistaM, Vista_Pedidos vistaP) {
 		
 		this.add(vistaC);
 		this.vistaC.setVisible(false);
