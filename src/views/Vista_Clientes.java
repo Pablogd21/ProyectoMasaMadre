@@ -19,11 +19,10 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.Controlador;
 import model.data.Cliente;
-import sun.swing.table.DefaultTableCellHeaderRenderer;
-
 import javax.swing.JTable;
 import java.awt.SystemColor;
 import java.util.ArrayList;
+import java.awt.Color;
 
 public class Vista_Clientes extends JPanel {
 	
@@ -52,6 +51,7 @@ public class Vista_Clientes extends JPanel {
 		add(lblTituloModulo);
 
 		btnAnadir = new JButton("A\u00D1ADIR");
+		btnAnadir.setToolTipText("hola gilipollas");
 		btnAnadir.setBackground(SystemColor.controlHighlight);
 		btnAnadir.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnAnadir.setBounds(25, 300, 330, 84);
@@ -69,7 +69,7 @@ public class Vista_Clientes extends JPanel {
 		add(panelAnadir);
 
 		JLabel lblNombre = new JLabel("NOMBRE:");
-		lblNombre.setToolTipText("");
+		lblNombre.setToolTipText("introduce tu nombre");
 		lblNombre.setFont(new Font("Cambria Math", Font.PLAIN, 21));
 		lblNombre.setBounds(58, 141, 135, 35);
 		panelAnadir.add(lblNombre);
@@ -118,6 +118,7 @@ public class Vista_Clientes extends JPanel {
 		panelAnadir.add(btnCancelar);
 
 		txtFieldNombre = new JTextField();
+		txtFieldNombre.setToolTipText("introduce tu nombre");
 		txtFieldNombre.setColumns(10);
 		txtFieldNombre.setBounds(198, 134, 748, 50);
 		panelAnadir.add(txtFieldNombre);
@@ -164,6 +165,11 @@ public class Vista_Clientes extends JPanel {
 		txtFieldTelefono.setColumns(10);
 		txtFieldTelefono.setBounds(198, 509, 748, 50);
 		panelAnadir.add(txtFieldTelefono);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel.setBounds(58, 335, 46, 14);
+		panelAnadir.add(lblNewLabel);
 
 		BorderLayout layResumen = new BorderLayout();
 		panelResumen = new JPanel();
