@@ -58,6 +58,8 @@ private AccesoDB acceso;
 		PreparedStatement pstmt = null;
 		int res = 0;
 		
+		//formato de fecha: AAAA-MM-DD
+		Date fecha = Date.valueOf(cliente.getFechaNaCliente());
 		
 		try {
 			con = acceso.getConexion();
@@ -68,7 +70,7 @@ private AccesoDB acceso;
 			pstmt.setString(3, cliente.getApellidoCliente());
 			pstmt.setString(4, cliente.getEmailCliente());
 			pstmt.setString(5, cliente.getTelefonoCliente());
-			pstmt.setString(6, cliente.getFechaNaCliente()); //formato de fecha: AAAA-MM-DD
+			pstmt.setDate(6, fecha);
 			pstmt.setString(7, cliente.getDireccionCliente());
 			
 			res = pstmt.executeUpdate();
@@ -142,7 +144,7 @@ private AccesoDB acceso;
 			Cliente cliente = null;
 			String fecha = null;
 			while (rslt.next()) {
-				fecha = rslt.getString(6);
+				fecha = rslt.getDate(6).toString();
 				cliente = new Cliente(rslt.getInt(1), rslt.getString(2), 
 						rslt.getString(3), rslt.getString(4), rslt.getString(5), fecha, rslt.getString(7));
 				listaClientes.add(cliente);
@@ -217,7 +219,7 @@ private AccesoDB acceso;
 		return cliente;
 	}
 	
-	public int updateCliente(int id, String nombre, String apellido, String email, String telef, String fechaNac, String direccion) {
+	public int updateCliente(Cliente cli) {
 		String query = "UPDATE Clientes SET Nombre = ?, Apellido = ?, Email = ?, Telefono = ?, FechaNac = ?, Direccion = ?"
 				+ "WHERE idCliente = ?";
 		
@@ -225,19 +227,19 @@ private AccesoDB acceso;
 		PreparedStatement pstmt = null;
 		int res = 0;
 		
-		Date fecha = Date.valueOf(fechaNac);
+		Date fecha = Date.valueOf(cli.getFechaNaCliente());
 		
 		try {
 			con = acceso.getConexion();
 			
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, nombre);
-			pstmt.setString(2, apellido);
-			pstmt.setString(3, email);
-			pstmt.setString(4, telef);
+			pstmt.setString(1, cli.getNombreCliente());
+			pstmt.setString(2, cli.getApellidoCliente());
+			pstmt.setString(3, cli.getEmailCliente());
+			pstmt.setString(4, cli.getTelefonoCliente());
 			pstmt.setDate(5, fecha);
-			pstmt.setString(6, direccion);
-			pstmt.setInt(7, id);
+			pstmt.setString(6, cli.getDireccionCliente());
+			pstmt.setInt(7, cli.getIdCliente());
 					
 			res = pstmt.executeUpdate();
 			

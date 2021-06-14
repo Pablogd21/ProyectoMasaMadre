@@ -22,6 +22,16 @@ public class Cliente {
 		this.fechaNaCliente = fechaNaCliente;
 		this.direccionCliente = direccionCliente;
 	}
+	
+	public Cliente( String nombreCliente, String apellidoCliente, String emailCliente,
+			String telefonoCliente, String fechaNaCliente, String direccionCliente) {
+		this.nombreCliente = nombreCliente;
+		this.apellidoCliente = apellidoCliente;
+		this.emailCliente = emailCliente;
+		this.telefonoCliente = telefonoCliente;
+		this.fechaNaCliente = fechaNaCliente;
+		this.direccionCliente = direccionCliente;
+	}
 
 	public int getIdCliente() {
 		return idCliente;

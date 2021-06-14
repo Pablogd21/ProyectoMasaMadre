@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import controller.Controlador;
 
-public class Vista_Planificacion extends JPanel {
+public class Vista_Pedidos extends JPanel {
 
 	private JButton btnAniadirUsu;
 	private JButton btnModificar;
@@ -18,7 +18,7 @@ public class Vista_Planificacion extends JPanel {
 	private JButton btnResumen;
 	private JButton btnHome;
 
-	public Vista_Planificacion() {
+	public Vista_Pedidos() {
 		setLayout(null);
 
 		this.setSize(1366, 768);
