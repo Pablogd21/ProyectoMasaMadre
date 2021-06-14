@@ -2,29 +2,37 @@ package views;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Scrollbar;
+import java.awt.SystemColor;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import controller.Controlador;
-import java.awt.SystemColor;
-import javax.swing.JTextField;
-import java.awt.Scrollbar;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
-import java.awt.TextField;
+import javax.swing.JTextField;
+
+import controller.Controlador;
 
 public class Vista_Facturacion extends JPanel {
+	
 	private JTable tableDatosFactura;
 	private JTable tableDescrip2;
 	private JTable table;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JButton btnMostrarBalance, btnLimpiar, btnGenerarFac, btnEliminarFac, btnBalanceMen, btnGenerarNueva, btnCancelarFac, btnEliminarFact,btnCancelarEliminar;
+	private JButton btnMostrarBalance, btnLimpiar, btnGenerarFac, btnEliminarFac, btnBalanceMen, btnGenerarNueva, btnCancelarFac, btnEliminarFact, btnCancelarEliminar;
 	private JSpinner spMesBalances, spAnioBalances, spDiaBalances, spMes,spAnio, spDia;
 	private Scrollbar scrollBuscar;
 	
+
+	private JButton btnAniadirUsu;
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JButton btnResumen;
+	private JButton btnHome;
+
 	
 	public Vista_Facturacion() {
 		setLayout(null);
@@ -110,6 +118,27 @@ public class Vista_Facturacion extends JPanel {
 		lblTituloModulo.setBounds(75, 658, 169, 28);
 		add(lblTituloModulo);
 		
+
+		JPanel panel_home = new JPanel();
+		panel_home.setBounds(25, 11, 32, 32);
+		add(panel_home);
+
+		btnHome = new JButton("");
+		btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
+		btnHome.setBorder(null);
+		btnHome.setBackground(null); 
+        btnHome.setContentAreaFilled(false);
+		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				btnHome.setIcon(new ImageIcon(".\\images\\home_grande.png"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
+			}
+		});
+		panel_home.add(btnHome);
+
 		btnGenerarFac = new JButton("GENERAR FACTURA");
 		btnGenerarFac.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnGenerarFac.setBackground(SystemColor.controlHighlight);
@@ -232,12 +261,26 @@ public class Vista_Facturacion extends JPanel {
 		tableDescrip2.setBounds(184, 164, 757, 354);
 		panelEliminarFac.add(tableDescrip2);
 		
-		TextField textField = new TextField();
+		JTextField textField = new JTextField();
 		textField.setBounds(184, 101, 757, 27);
 		panelEliminarFac.add(textField);
 	}
 	
+	
+	
+	public JButton getBtnHome() {
+		return btnHome;
+	}
+
+
+
 	public void setControlador(Controlador controlador) {
+		btnHome.addActionListener(controlador);
+		//btnAniadirUsu.addActionListener(controlador);
+		//btnModificar.addActionListener(controlador);
+		//btnEliminar.addActionListener(controlador);
+		//btnResumen.addActionListener(controlador);
+
 		btnMostrarBalance.addActionListener(controlador);
 		btnLimpiar.addActionListener(controlador);
 		btnGenerarFac.addActionListener(controlador);
@@ -247,6 +290,8 @@ public class Vista_Facturacion extends JPanel {
 		btnCancelarFac.addActionListener(controlador);
 		btnEliminarFact.addActionListener(controlador);
 		btnCancelarEliminar.addActionListener(controlador);
-		
+
 	}
+	
+
 }

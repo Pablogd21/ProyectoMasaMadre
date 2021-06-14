@@ -9,12 +9,22 @@ public class Cliente {
 	private String apellidoCliente;
 	private String emailCliente;
 	private String telefonoCliente;
-	private Date fechaNaCliente;
+	private String fechaNaCliente;
 	private String direccionCliente;
 	
 	public Cliente(int idCliente, String nombreCliente, String apellidoCliente, String emailCliente,
-			String telefonoCliente, Date fechaNaCliente, String direccionCliente) {
+			String telefonoCliente, String fechaNaCliente, String direccionCliente) {
 		this.idCliente = idCliente;
+		this.nombreCliente = nombreCliente;
+		this.apellidoCliente = apellidoCliente;
+		this.emailCliente = emailCliente;
+		this.telefonoCliente = telefonoCliente;
+		this.fechaNaCliente = fechaNaCliente;
+		this.direccionCliente = direccionCliente;
+	}
+	
+	public Cliente( String nombreCliente, String apellidoCliente, String emailCliente,
+			String telefonoCliente, String fechaNaCliente, String direccionCliente) {
 		this.nombreCliente = nombreCliente;
 		this.apellidoCliente = apellidoCliente;
 		this.emailCliente = emailCliente;
@@ -63,11 +73,11 @@ public class Cliente {
 		this.telefonoCliente = telefonoCliente;
 	}
 
-	public Date getFechaNaCliente() {
+	public String getFechaNaCliente() {
 		return fechaNaCliente;
 	}
 
-	public void setFechaNaCliente(Date fechaNaCliente) {
+	public void setFechaNaCliente(String fechaNaCliente) {
 		this.fechaNaCliente = fechaNaCliente;
 	}
 

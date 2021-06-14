@@ -9,7 +9,7 @@ import views.Vista_Facturacion;
 import views.Vista_Login;
 import views.Vista_Marketing;
 import views.Vista_Modulos;
-import views.Vista_Planificacion;
+import views.Vista_Pedidos;
 
 public class IniciarPanel {
 
@@ -26,21 +26,16 @@ public class IniciarPanel {
 				Vista_Login vistaL = new Vista_Login();
 				Vista_Marketing vistaMar = new Vista_Marketing();
 				Vista_Modulos vistaM = new Vista_Modulos();
-				Vista_Planificacion vistaP = new Vista_Planificacion();
+				Vista_Pedidos vistaP = new Vista_Pedidos();
 				
 				Marco_Principal appPrincipal = new Marco_Principal(vistaC,vistaF,vistaL,vistaMar,vistaM,vistaP);
 
 				Controlador controlador = new Controlador(vistaC, vistaF, vistaL, vistaMar, vistaM, vistaP);
 
+
 				// Añadir controlador a las vistas
-				vistaC.setControlador(controlador);
-				vistaF.setControlador(controlador);
-				vistaL.setControlador(controlador);
-				vistaMar.setControlador(controlador);
-				vistaM.setControlador(controlador);
-				vistaP.setControlador(controlador);
-				
-				appPrincipal.add(vistaMar);
+
+				appPrincipal.add(vistaM);
 
 				vistaC.setControlador(controlador);
 				vistaF.setControlador(controlador);
@@ -49,7 +44,7 @@ public class IniciarPanel {
 				vistaM.setControlador(controlador);
 				vistaP.setControlador(controlador);
 				
-				appPrincipal.cargarPanel(vistaMar);
+				appPrincipal.cargarPanel(vistaL);
 				appPrincipal.hacerVisible();
 				
 			}
