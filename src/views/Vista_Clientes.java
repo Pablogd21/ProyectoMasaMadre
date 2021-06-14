@@ -49,21 +49,21 @@ public class Vista_Clientes extends JPanel {
 
 		this.setSize(1366, 768);
 
-		JLabel lblTituloModulo = new JLabel("Clientes ...");
+		JLabel lblTituloModulo = new JLabel("Clientes...");
 		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
-		lblTituloModulo.setBounds(83, 636, 213, 69);
+		lblTituloModulo.setBounds(117, 57, 213, 69);
 		add(lblTituloModulo);
 
 		btnAnadir = new JButton("A\u00D1ADIR");
 		btnAnadir.setBackground(SystemColor.controlHighlight);
 		btnAnadir.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnAnadir.setBounds(25, 300, 330, 84);
+		btnAnadir.setBounds(25, 307, 330, 64);
 		add(btnAnadir);
 
 		btnResumen = new JButton("RESUMEN");
 		btnResumen.setBackground(SystemColor.controlHighlight);
 		btnResumen.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnResumen.setBounds(25, 399, 330, 84);
+		btnResumen.setBounds(25, 381, 330, 64);
 		add(btnResumen);
 
 		panelAnadir = new JPanel();
@@ -73,17 +73,17 @@ public class Vista_Clientes extends JPanel {
 
 		JLabel lblNombre = new JLabel("NOMBRE:");
 		lblNombre.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblNombre.setBounds(58, 142, 135, 35);
+		lblNombre.setBounds(32, 141, 135, 35);
 		panelAnadir.add(lblNombre);
 
 		JLabel lblApellido = new JLabel("APELLIDO:");
 		lblApellido.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblApellido.setBounds(58, 212, 142, 35);
+		lblApellido.setBounds(32, 211, 142, 35);
 		panelAnadir.add(lblApellido);
 
 		JLabel lblEmail = new JLabel("E-MAIL:");
 		lblEmail.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblEmail.setBounds(58, 301, 116, 37);
+		lblEmail.setBounds(32, 299, 116, 37);
 		panelAnadir.add(lblEmail);
 
 		JLabel lblDatosCliente = new JLabel("DATOS CLIENTE");
@@ -92,22 +92,22 @@ public class Vista_Clientes extends JPanel {
 		panelAnadir.add(lblDatosCliente);
 		
 		btnMod = new JButton("MODIFICAR");
-		btnMod.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnMod.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnMod.setBackground(SystemColor.controlHighlight);
-		btnMod.setBounds(283, 588, 251, 43);
+		btnMod.setBounds(304, 606, 251, 35);
 		btnMod.setVisible(false);
 		panelAnadir.add(btnMod);
 
 		btnGuardar = new JButton("GUARDAR");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnGuardar.setBackground(SystemColor.controlHighlight);
-		btnGuardar.setBounds(283, 588, 251, 43);
+		btnGuardar.setBounds(304, 606, 251, 35);
 		panelAnadir.add(btnGuardar);
 
 		btnBorrar = new JButton("BORRAR");
-		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnBorrar.setBackground(SystemColor.controlHighlight);
-		btnBorrar.setBounds(586, 588, 251, 43);
+		btnBorrar.setBounds(589, 606, 251, 35);
 		panelAnadir.add(btnBorrar);
 		
 		txtId = new JTextField();
@@ -131,12 +131,12 @@ public class Vista_Clientes extends JPanel {
 
 		JLabel lblDireccion = new JLabel("DIRECCIÓN:");
 		lblDireccion.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblDireccion.setBounds(43, 452, 171, 35);
+		lblDireccion.setBounds(32, 451, 171, 35);
 		panelAnadir.add(lblDireccion);
 
 		JLabel lblTelefono = new JLabel("TELÉFONO:");
 		lblTelefono.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblTelefono.setBounds(43, 517, 171, 35);
+		lblTelefono.setBounds(32, 516, 171, 35);
 		panelAnadir.add(lblTelefono);
 
 		txtFieldApellido = new JTextField();
