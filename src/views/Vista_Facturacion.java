@@ -4,7 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -22,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.Controlador;
 import model.data.Cliente;
+import model.data.DatosFactura;
 import model.data.Factura;
 import model.data.Pedido;
 import javax.swing.JComboBox;
@@ -393,6 +399,76 @@ public class Vista_Facturacion extends JPanel {
 		}
 	}
 	
+	public Factura generarFactura() {
+		Factura factura = null;
+
+		if (txtFieldFechaFactura.getText().equals("") || txtAreaFactura.getText().equals("")) {
+			JOptionPane.showMessageDialog(this, "Introduzca todos los datos por favor", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} else if (formatoFecha()) {
+			JOptionPane.showMessageDialog(this, "El formato de la fecha debe ser AAAA-MM-DD", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} else {
+				Pedido p = (Pedido) cbBuscarPedido.getSelectedItem();
+				factura = new Factura(0, p.getIdPedido(), p.getIdCliente(), p.getImportePedido(), txtFieldFechaFactura.getText());
+		}
+		return factura;
+	}
+	
+	private boolean formatoFecha() {
+		String fech = txtFieldFechaFactura.getText();
+		String[] fechaComp = fech.split("-");
+		boolean fechaCorrecta = false;
+		Pattern pFe = Pattern.compile("^\\d{4}([\\-/.])(0?[1-9]|1[1-2])\\1(3[01]|[12][0-9]|0?[1-9])$");
+		Matcher mFe = pFe.matcher(fech);
+		if (mFe.find()) {
+			int anio = Integer.parseInt(fechaComp[0]);
+			int mes = Integer.parseInt(fechaComp[1]);
+			int dia = Integer.parseInt(fechaComp[2]);
+
+			if (anio < 1920 ) {
+				fechaCorrecta = false;
+			} else {
+				if (mes > 0 && mes < 13) {
+					if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+						if (dia > 0 && dia < 32) {
+							fechaCorrecta = true;
+						} else {
+							fechaCorrecta = false;
+						}
+					} else if (mes == 2) {
+						if ((anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0) {
+							if (dia > 0 && dia < 30) {
+								fechaCorrecta = true;
+							} else {
+								fechaCorrecta = false;
+							}
+						} else {
+							if (dia > 0 && dia < 29) {
+								fechaCorrecta = true;
+							} else {
+								fechaCorrecta = false;
+							}
+						}
+					} else {
+						if (dia > 0 && dia < 31) {
+							fechaCorrecta = true;
+						} else {
+							fechaCorrecta = false;
+						}
+					}
+				} else {
+					fechaCorrecta = false;
+				}
+			}
+		}
+		if (fechaCorrecta == true) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 	
 	public int confirmaEliminar() {
 		int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar la factura de la base de datos?", "Eliminar",
@@ -416,5 +492,68 @@ public class Vista_Facturacion extends JPanel {
 	public void vaciarCampos() {
 		txtAreaFactura.setText("");
 		txtFieldFechaFactura.setText("");
+	}
+	
+	public int generarDocFactura(DatosFactura data) {
+		int resDoc = 0;
+		FileWriter fw = null;
+		BufferedWriter bw = null;
+
+		try {
+			String desktopRuta = System.getProperty("user.home") + "/Desktop";
+			fw = new FileWriter(
+					desktopRuta + "/Factura_" + data.getIdPedido() + "_" + data.getNombreCliente() + "_" + data.getApellidoCliente() + ".txt");
+			bw = new BufferedWriter(fw);
+
+			bw.write("************ DETALLES DE LA FACTURA ************");
+			bw.newLine();
+			bw.newLine();
+			bw.write("DATOS CLIENTE:");
+			bw.newLine();
+			bw.newLine();
+			bw.write("Nombre: " + data.getNombreCliente());
+			bw.newLine();
+			bw.write("Apellido: " + data.getApellidoCliente());
+			bw.newLine();
+			bw.write("Teléfono: " + data.getTelefonoCliente());
+			bw.newLine();
+			bw.write("E-mail: " + data.getEmailCliente());
+			bw.newLine();
+			bw.write("Dirección: " + data.getDireccionCliente());
+			bw.newLine();
+			bw.newLine();
+			bw.write("DATOS PEDIDO: ");
+			bw.newLine();
+			bw.newLine();
+			bw.write("idPedido: " + data.getIdPedido());
+			bw.newLine();
+			bw.write("Descripción: " + data.getDescripcionPedido());
+			bw.newLine();
+			bw.newLine();
+			bw.write("DATOS FACTURA: ");
+			bw.newLine();
+			bw.newLine();
+			bw.write("Fecha Facturación: " + txtFieldFechaFactura.getText());
+			bw.newLine();
+			bw.write("Descripción de Factura: " + txtAreaFactura.getText());
+			bw.newLine();
+			bw.write("Importe: " + data.getImportePedido() + " euros");
+			bw.newLine();
+			bw.newLine();
+			bw.write("****************************************************");
+
+		} catch (IOException ex) {
+			resDoc = -100;
+			ex.printStackTrace();
+		} finally {
+			try {
+				bw.close();
+				fw.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		return resDoc;
 	}
 }

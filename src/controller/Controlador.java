@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import model.data.Cliente;
+import model.data.Factura;
 import model.data.Pedido;
 import model.db.PersistenciaMasaMadre;
 import views.*;
@@ -68,7 +69,7 @@ public class Controlador implements ActionListener {
 			vistaP.cargarComboBox(datos.selectClientes());
 		} else if (e.getSource().equals(vistaM.getBtnLogout())) {
 			int opcion = vistaM.salir();
-			if (opcion == JOptionPane.YES_OPTION) { 
+			if (opcion == JOptionPane.YES_OPTION) {
 				appPrincipal.quitarPanel(vistaM);
 				appPrincipal.cargarPanel(vistaL);
 				vistaL.vaciarCampos();
@@ -110,14 +111,14 @@ public class Controlador implements ActionListener {
 					JOptionPane.showMessageDialog(vistaP, "Pedido añadido con éxito", "Añadido",
 							JOptionPane.INFORMATION_MESSAGE);
 					vistaP.vaciarCampos();
-				}else {
+				} else {
 					JOptionPane.showMessageDialog(vistaP, "Fallo al añadir el pedido", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		} else if (e.getSource().equals(vistaP.getBtnModificar())) {
 			int filaMod = vistaP.getTblPedidos().getSelectedRow();
-			
+
 			if (filaMod != -1) {
 				vistaP.cargarPanelAnadir();
 				vistaP.cambioModificarVisible();
@@ -125,10 +126,9 @@ public class Controlador implements ActionListener {
 				Pedido pedido = datos.selectPedidoId(num);
 				Cliente cliCb = datos.selectClienteId(pedido.getIdCliente());
 				vistaP.cargarPedido(pedido, cliCb);
-				
+
 			} else {
-				JOptionPane.showMessageDialog(vistaP, 
-						"Debe seleccionar el pedido que desea modificar",
+				JOptionPane.showMessageDialog(vistaP, "Debe seleccionar el pedido que desea modificar",
 						"Error de selección", JOptionPane.ERROR_MESSAGE);
 			}
 		} else if (e.getSource().equals(vistaP.getBtnModificarP())) {
@@ -142,7 +142,7 @@ public class Controlador implements ActionListener {
 								JOptionPane.INFORMATION_MESSAGE);
 						vistaP.cargarTabla(datos.selectPedidos());
 						vistaP.cambioModificar();
-					}else {
+					} else {
 						JOptionPane.showMessageDialog(vistaP, "Fallo al modificar el Pedido", "Error",
 								JOptionPane.ERROR_MESSAGE);
 					}
@@ -162,17 +162,16 @@ public class Controlador implements ActionListener {
 						JOptionPane.showMessageDialog(vistaP, "Cliente eliminado con éxito", "Añadido",
 								JOptionPane.INFORMATION_MESSAGE);
 						vistaP.cargarTabla(datos.selectPedidos());
-					}else {
+					} else {
 						JOptionPane.showMessageDialog(vistaC, "Fallo al eliminar el cliente", "Error",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			} else {
-				JOptionPane.showMessageDialog(vistaC, 
-						"Debe seleccionar el cliente que desea eliminar",
+				JOptionPane.showMessageDialog(vistaC, "Debe seleccionar el cliente que desea eliminar",
 						"Error de selección", JOptionPane.ERROR_MESSAGE);
 			}
-		}else if (e.getSource().equals(vistaMar.getBtnHome())) {
+		} else if (e.getSource().equals(vistaMar.getBtnHome())) {
 			int opcionSalirMar = vistaMar.salir();
 			if (opcionSalirMar == JOptionPane.YES_OPTION) {
 				appPrincipal.quitarPanel(vistaMar);
@@ -192,7 +191,7 @@ public class Controlador implements ActionListener {
 			if (confirmadoCliente == JOptionPane.YES_OPTION) {
 				vistaC.vaciarCampos();
 			}
-		}  else if (e.getSource().equals(vistaC.getBtnAnadir())) {
+		} else if (e.getSource().equals(vistaC.getBtnAnadir())) {
 			vistaC.cambioModificarHome();
 			vistaC.cargarPanelAnadir();
 		} else if (e.getSource().equals(vistaC.getBtnResumen())) {
@@ -206,30 +205,29 @@ public class Controlador implements ActionListener {
 					JOptionPane.showMessageDialog(vistaC, "Cliente añadido con éxito", "Añadido",
 							JOptionPane.INFORMATION_MESSAGE);
 					vistaC.vaciarCampos();
-				}else {
+				} else {
 					JOptionPane.showMessageDialog(vistaC, "Fallo al añadir el cliente", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
-			
+
 		} else if (e.getSource().equals(vistaC.getBtnModificar())) {
 			int filaMod = vistaC.getTable().getSelectedRow();
-			
+
 			if (filaMod != -1) {
 				vistaC.cargarPanelAnadir();
 				vistaC.cambioModificarVisible();
 				int num = (int) vistaC.getTblModel().getValueAt(filaMod, 0);
 				Cliente cliente = datos.selectClienteId(num);
 				vistaC.cargarCliente(cliente);
-				
+
 			} else {
-				JOptionPane.showMessageDialog(vistaC, 
-						"Debe seleccionar el cliente que desea modificar",
+				JOptionPane.showMessageDialog(vistaC, "Debe seleccionar el cliente que desea modificar",
 						"Error de selección", JOptionPane.ERROR_MESSAGE);
 			}
 		} else if (e.getSource().equals(vistaC.getBtnEliminar())) {
 			int filaEl = vistaC.getTable().getSelectedRow();
-			
+
 			if (filaEl != -1) {
 				int confirmado = vistaC.confirmaEliminar();
 				if (confirmado == JOptionPane.YES_OPTION) {
@@ -239,15 +237,14 @@ public class Controlador implements ActionListener {
 						JOptionPane.showMessageDialog(vistaC, "Cliente eliminado con éxito", "Añadido",
 								JOptionPane.INFORMATION_MESSAGE);
 						vistaC.cargarTabla(datos.selectClientes());
-						
-					}else {
+
+					} else {
 						JOptionPane.showMessageDialog(vistaC, "Fallo al eliminar el cliente", "Error",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			} else {
-				JOptionPane.showMessageDialog(vistaC, 
-						"Debe seleccionar el cliente que desea eliminar",
+				JOptionPane.showMessageDialog(vistaC, "Debe seleccionar el cliente que desea eliminar",
 						"Error de selección", JOptionPane.ERROR_MESSAGE);
 			}
 		} else if (e.getSource().equals(vistaC.getBtnMod())) {
@@ -261,19 +258,21 @@ public class Controlador implements ActionListener {
 								JOptionPane.INFORMATION_MESSAGE);
 						vistaC.cargarTabla(datos.selectClientes());
 						vistaC.cambioModificar();
-					}else {
+					} else {
 						JOptionPane.showMessageDialog(vistaC, "Fallo al modificar el cliente", "Error",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
-			}else {
+			} else {
 				vistaC.cambioModificar();
 				vistaC.cargarPanelResumen();
 			}
 		} else if (e.getSource().equals(vistaMar.getBtnEnviarCom())) {
-			String pass = JOptionPane.showInputDialog(appPrincipal, "Introduce la contraseña de tu cuenta de gmail", "Inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
+			String pass = JOptionPane.showInputDialog(appPrincipal, "Introduce la contraseña de tu cuenta de gmail",
+					"Inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
 			Cliente c = (Cliente) vistaMar.getCbCliente().getSelectedItem();
-			vistaMar.sendEmail(c.getEmailCliente(), vistaMar.getTxtFieldTituloCom().getText(), vistaMar.getTxtAreaCom().getText(), pass);
+			vistaMar.sendEmail(c.getEmailCliente(), vistaMar.getTxtFieldTituloCom().getText(),
+					vistaMar.getTxtAreaCom().getText(), pass);
 		} else if (e.getSource().equals(vistaMar.getBtnCancelarCom())) {
 			int confirmadoCom = vistaMar.confirmaCancelar();
 			if (confirmadoCom == JOptionPane.YES_OPTION) {
@@ -289,22 +288,24 @@ public class Controlador implements ActionListener {
 				vistaMar.vaciarCamposEnc();
 			}
 		} else if (e.getSource().equals(vistaMar.getBtnEnviarEncuesta())) {
-			String pass2 = JOptionPane.showInputDialog(appPrincipal, "Introduce la contraseña de tu cuenta de gmail", "Inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
+			String pass2 = JOptionPane.showInputDialog(appPrincipal, "Introduce la contraseña de tu cuenta de gmail",
+					"Inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
 			ArrayList<String> dir = datos.selectEmails();
-			vistaMar.sendEmailEncuesta(dir, vistaMar.getTxtFieldTituloEncuesta().getText(), vistaMar.getTxtAreaEncuesta().getText(), pass2);
+			vistaMar.sendEmailEncuesta(dir, vistaMar.getTxtFieldTituloEncuesta().getText(),
+					vistaMar.getTxtAreaEncuesta().getText(), pass2);
 		} else if (e.getSource().equals(vistaMar.getBtnCrearEnc())) {
 			vistaMar.crearEncuesta();
-		} else if (e.getSource().equals(vistaF.getBtnEliminarFac())){
+		} else if (e.getSource().equals(vistaF.getBtnEliminarFac())) {
 			vistaF.cargarPanelEliminar();
 			vistaF.cargarTabla(datos.selectFactura());
-		} else if (e.getSource().equals(vistaF.getBtnGenerarFac())){
+		} else if (e.getSource().equals(vistaF.getBtnGenerarFac())) {
 			vistaF.cargarPanelGenerar();
 		} else if (e.getSource().equals(vistaF.getBtnBalanceMen())) {
 			vistaF.cargarPanelBalance();
 		} else if (e.getSource().equals(vistaF.getBtnEliminarFact())) {
 			int filaElF = vistaF.getTableDescrip2().getSelectedRow();
-			
-			if(filaElF != -1) {
+
+			if (filaElF != -1) {
 				int confirmado = vistaF.confirmaEliminar();
 				if (confirmado == JOptionPane.YES_OPTION) {
 					int numF = (int) vistaF.getTblModel().getValueAt(filaElF, 0);
@@ -313,20 +314,42 @@ public class Controlador implements ActionListener {
 						JOptionPane.showMessageDialog(vistaF, "Factura eliminada con éxito", "Añadido",
 								JOptionPane.INFORMATION_MESSAGE);
 						vistaF.cargarTabla(datos.selectFactura());
-					}else {
+					} else {
 						JOptionPane.showMessageDialog(vistaF, "Fallo al eliminar la factura", "Error",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			} else {
-				JOptionPane.showMessageDialog(vistaF, 
-						"Debe seleccionar la factura que desea eliminar",
+				JOptionPane.showMessageDialog(vistaF, "Debe seleccionar la factura que desea eliminar",
 						"Error de selección", JOptionPane.ERROR_MESSAGE);
 			}
 		} else if (e.getSource().equals(vistaF.getBtnCancelarFac())) {
 			int confirmadoCanF = vistaF.confirmaCancelar();
 			if (confirmadoCanF == JOptionPane.YES_OPTION) {
 				vistaF.vaciarCampos();
+			}
+		} else if (e.getSource().equals(vistaF.getBtnGenerarNueva())) {
+			Factura fac = vistaF.generarFactura();
+			if (!(fac == null)) {
+				int resFa = datos.insertFactura(fac);
+				int resDocF = vistaF.generarDocFactura(datos.selectDatosFactura(fac.getIdPedido()));
+				if (resFa == 1) {
+					JOptionPane.showMessageDialog(vistaF, "Factura añadida con éxito", "Añadida",
+							JOptionPane.INFORMATION_MESSAGE);
+					vistaF.vaciarCampos();
+				} else {
+					JOptionPane.showMessageDialog(vistaF, "Fallo al añadir la factura", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}
+
+				if (resDocF == 0) {
+					JOptionPane.showMessageDialog(vistaF,
+							"Documento de factura creado con éxito en su escritorio: \n C:/Usuarios/(SuUsuario)/Escritorio",
+							"Creada", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(vistaF, "Fallo al crear el documento de Factura", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		}
 
