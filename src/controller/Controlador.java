@@ -126,7 +126,7 @@ public class Controlador implements ActionListener {
 				
 			} else {
 				JOptionPane.showMessageDialog(vistaP, 
-						"Debe seleccionar el cliente que desea modificar",
+						"Debe seleccionar el pedido que desea modificar",
 						"Error de selección", JOptionPane.ERROR_MESSAGE);
 			}
 		} else if (e.getSource().equals(vistaP.getBtnModificarP())) {
