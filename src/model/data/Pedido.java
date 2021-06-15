@@ -30,10 +30,11 @@ public class Pedido {
 
 	public Pedido(int idPedido, String descripcionPedido, String fechaPedido, int idCliente, String precioPedido1) {
 		this.idPedido = idPedido;
-		this.idCliente = idCliente;
 		this.descripcionPedido = descripcionPedido;
-		this.importePedido1 = precioPedido1;
 		this.fechaPedido = fechaPedido;
+		this.importePedido1 = precioPedido1;
+		this.idCliente = idCliente;
+		
 	}
 
 	public int getIdPedido() {

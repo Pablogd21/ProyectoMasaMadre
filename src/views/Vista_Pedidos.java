@@ -269,7 +269,7 @@ public class Vista_Pedidos extends JPanel {
 		txtAreaDescrip.setText("");
 		txtFecha.setText("");
 		txtImporte.setText("");
-		//cbCliente.setSelectedIndex(-1);
+		cbCliente.setSelectedIndex(-1);
 	}
 
 	public int confirmaEliminar() {
@@ -420,6 +420,7 @@ public class Vista_Pedidos extends JPanel {
 		txtAreaDescrip.setText(pedido.getDescripcionPedido());
 		txtImporte.setText(pedido.getImportePedido1());
 		txtId.setText(pedido.getIdPedido() + "");
+		
 	}
 	
 	public void cambioModificar() {
