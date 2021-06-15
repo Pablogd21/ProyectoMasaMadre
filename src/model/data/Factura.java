@@ -8,9 +8,9 @@ public class Factura {
 	private int idPedido;
 	private int idCliente;
 	private double importeFactura;
-	private Date fechaFactura;
+	private String fechaFactura;
 	
-	public Factura(int idFactura, int idPedido, int idCliente, double importeFactura, Date fechaFactura) {
+	public Factura(int idFactura, int idPedido, int idCliente, double importeFactura, String fechaFactura) {
 		super();
 		this.idFactura = idFactura;
 		this.idPedido = idPedido;
@@ -35,7 +35,7 @@ public class Factura {
 		return importeFactura;
 	}
 
-	public Date getFechaFactura() {
+	public String getFechaFactura() {
 		return fechaFactura;
 	}
 

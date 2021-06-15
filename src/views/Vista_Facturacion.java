@@ -1,21 +1,29 @@
 package views;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Scrollbar;
 import java.awt.SystemColor;
+import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import controller.Controlador;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import model.data.Cliente;
+import model.data.Factura;
+import model.data.Pedido;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 
@@ -24,12 +32,17 @@ public class Vista_Facturacion extends JPanel {
 	private JTable tableDescrip2;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JButton btnMostrarBalance, btnCancelarBalance, btnGenerarFac, btnEliminarFac, btnBalanceMen, btnGenerarNueva, btnCancelarFac, btnEliminarFact, btnCancelarEliminar;
+	private JButton btnMostrarBalance, btnGenerarFac, btnEliminarFac, btnBalanceMen, btnGenerarNueva, btnCancelarFac, btnEliminarFact;
 	private JButton btnHome;
 	private JTextField txtFieldFechaFactura;
 	private JLabel lblTotalIngresos;
 	private JLabel lblFormato;
 	private JTextArea txtAreaFactura;
+	JPanel panelEliminarFac, panelGenerarFac, panelBalances;
+	JComboBox <String> cbMes,cbAnio;
+	JComboBox <Pedido> cbBuscarPedido;
+	private JScrollPane scrpFacturas;
+	private DefaultTableModel tblModel;
 
 	
 	public Vista_Facturacion() {
@@ -83,7 +96,7 @@ public class Vista_Facturacion extends JPanel {
 		btnBalanceMen.setBounds(25, 455, 330, 64);
 		add(btnBalanceMen);
 		
-		JPanel panelGenerarFac = new JPanel();
+		panelGenerarFac = new JPanel();
 		panelGenerarFac.setLayout(null);
 		panelGenerarFac.setBackground(new Color(197, 224, 180));
 		panelGenerarFac.setBounds(377, 30, 979, 659);
@@ -94,13 +107,13 @@ public class Vista_Facturacion extends JPanel {
 		lblTituloPanel.setBounds(424, 25, 288, 50);
 		panelGenerarFac.add(lblTituloPanel);
 		
-		JLabel lblBuscarPedido = new JLabel("BUSCAR PEDIDO");
+		JLabel lblBuscarPedido = new JLabel("BUSCAR PEDIDO:");
 		lblBuscarPedido.setToolTipText("");
 		lblBuscarPedido.setFont(new Font("Cambria Math", Font.PLAIN, 21));
 		lblBuscarPedido.setBounds(17, 101, 161, 35);
 		panelGenerarFac.add(lblBuscarPedido);
 		
-		JLabel lblDescripcion = new JLabel("DESCRIPCI\u00D3N");
+		JLabel lblDescripcion = new JLabel("DESCRIPCI\u00D3N:");
 		lblDescripcion.setToolTipText("");
 		lblDescripcion.setFont(new Font("Cambria Math", Font.PLAIN, 21));
 		lblDescripcion.setBounds(17, 271, 135, 35);
@@ -118,7 +131,7 @@ public class Vista_Facturacion extends JPanel {
 		btnCancelarFac.setBounds(589, 606, 251, 35);
 		panelGenerarFac.add(btnCancelarFac);
 		
-		JComboBox cbBuscarPedido = new JComboBox();
+		cbBuscarPedido = new JComboBox<Pedido>();
 		cbBuscarPedido.setBounds(188, 105, 772, 27);
 		panelGenerarFac.add(cbBuscarPedido);
 		
@@ -142,11 +155,12 @@ public class Vista_Facturacion extends JPanel {
 		txtAreaFactura.setBounds(188, 227, 772, 353);
 		panelGenerarFac.add(txtAreaFactura);
 		
-		JPanel panelEliminarFac = new JPanel();
+		panelEliminarFac = new JPanel();
 		panelEliminarFac.setBackground(new Color(197, 224, 180));
 		panelEliminarFac.setLayout(null);
 		panelEliminarFac.setBounds(377, 30, 979, 659);
 		add(panelEliminarFac);
+		panelEliminarFac.setVisible(false);
 		
 		JLabel lblTituloPanel2 = new JLabel("ELIMINAR FACTURA");
 		lblTituloPanel2.setFont(new Font("Tahoma", Font.BOLD, 32));
@@ -159,27 +173,30 @@ public class Vista_Facturacion extends JPanel {
 		lblDescripcion_1.setBounds(32, 141, 135, 35);
 		panelEliminarFac.add(lblDescripcion_1);
 		
-		btnEliminarFact = new JButton("ELIMINAR");
+		btnEliminarFact = new JButton("ELIMINAR FACTURA");
 		btnEliminarFact.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnEliminarFact.setBackground(SystemColor.controlHighlight);
-		btnEliminarFact.setBounds(304, 606, 251, 35);
+		btnEliminarFact.setBounds(400, 606, 550, 35);//hacer grande
 		panelEliminarFac.add(btnEliminarFact);
 		
-		btnCancelarEliminar = new JButton("CANCELAR");
-		btnCancelarEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCancelarEliminar.setBackground(SystemColor.controlHighlight);
-		btnCancelarEliminar.setBounds(589, 606, 251, 35);
-		panelEliminarFac.add(btnCancelarEliminar);
+		scrpFacturas = new JScrollPane();
+		scrpFacturas.setVisible(true);
+		scrpFacturas.setBounds(184, 124, 772, 435);
+		panelEliminarFac.add(scrpFacturas);
 		
 		tableDescrip2 = new JTable();
-		tableDescrip2.setBounds(184, 124, 772, 435);
-		panelEliminarFac.add(tableDescrip2);
+		configurarTabla();
+		tableDescrip2.setRowHeight(40);
+		tableDescrip2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrpFacturas.setViewportView(tableDescrip2);
 		
-		JPanel panelBalances = new JPanel();
+		panelBalances = new JPanel();
 		panelBalances.setBackground(new Color(197, 224, 180));
 		panelBalances.setLayout(null);
 		panelBalances.setBounds(377, 30, 979, 659);
+		panelBalances.setVisible(false);
 		add(panelBalances);
+		
 		
 		JLabel lblBalances = new JLabel("BALANCES");
 		lblBalances.setFont(new Font("Tahoma", Font.BOLD, 32));
@@ -192,12 +209,6 @@ public class Vista_Facturacion extends JPanel {
 		btnMostrarBalance.setBounds(304, 606, 251, 27);
 		panelBalances.add(btnMostrarBalance);
 		
-		btnCancelarBalance = new JButton("CANCELAR");
-		btnCancelarBalance.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCancelarBalance.setBackground(SystemColor.controlHighlight);
-		btnCancelarBalance.setBounds(589, 606, 251, 27);
-		panelBalances.add(btnCancelarBalance);
-		
 		JLabel lblMes_1 = new JLabel("MES:");
 		lblMes_1.setBounds(184, 102, 154, 13);
 		panelBalances.add(lblMes_1);
@@ -206,7 +217,7 @@ public class Vista_Facturacion extends JPanel {
 		lblAo_1.setBounds(415, 102, 154, 13);
 		panelBalances.add(lblAo_1);
 		
-		JLabel lblTotalFactura = new JLabel("Total Facturas");
+		JLabel lblTotalFactura = new JLabel("Total Facturas:");
 		lblTotalFactura.setBounds(415, 194, 72, 13);
 		panelBalances.add(lblTotalFactura);
 		
@@ -220,11 +231,11 @@ public class Vista_Facturacion extends JPanel {
 		textField_2.setBounds(497, 194, 116, 13);
 		panelBalances.add(textField_2);
 		
-		JComboBox cbMes = new JComboBox();
+		cbMes = new JComboBox<String>();
 		cbMes.setBounds(184, 120, 200, 27);
 		panelBalances.add(cbMes);
 		
-		JComboBox cbAnio = new JComboBox();
+		cbAnio = new JComboBox<String>();
 		cbAnio.setBounds(413, 120, 200, 27);
 		panelBalances.add(cbAnio);
 		
@@ -235,23 +246,163 @@ public class Vista_Facturacion extends JPanel {
 	
 	
 	
+	private void configurarTabla() {
+		tblModel = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		tblModel.addColumn("ID FACTURA");
+		tblModel.addColumn("F. FACTURA");
+		tblModel.addColumn("ID CLIENTE");
+		tblModel.addColumn("ID PEDIDO");
+		tblModel.addColumn("IMPORTE");
+
+		final DefaultTableCellRenderer cellRend = new DefaultTableCellRenderer();
+		cellRend.setHorizontalAlignment(SwingConstants.CENTER);
+
+		tableDescrip2.setModel(tblModel);
+
+		tableDescrip2.getColumn("ID FACTURA").setCellRenderer(cellRend);
+		tableDescrip2.getColumn("F. FACTURA").setCellRenderer(cellRend);
+		tableDescrip2.getColumn("ID CLIENTE").setCellRenderer(cellRend);
+		tableDescrip2.getColumn("ID PEDIDO").setCellRenderer(cellRend);
+		tableDescrip2.getColumn("IMPORTE").setCellRenderer(cellRend);
+
+		tableDescrip2.getColumn("ID FACTURA").setPreferredWidth(20);
+		tableDescrip2.getColumn("F. FACTURA").setPreferredWidth(40);
+		tableDescrip2.getColumn("ID CLIENTE").setPreferredWidth(20);
+		tableDescrip2.getColumn("ID PEDIDO").setPreferredWidth(20);
+		tableDescrip2.getColumn("IMPORTE").setPreferredWidth(40);
+	}
+
+	public void cargarTabla(ArrayList<Factura> listaFacturas) {
+		tblModel.getDataVector().clear();
+
+		Object[] fila = new Object[7];
+
+		for (Factura fac : listaFacturas) {
+			fila[0] = fac.getIdFactura();
+			fila[1] = fac.getFechaFactura();
+			fila[2] = fac.getIdCliente();
+			fila[3] = fac.getIdPedido();
+			fila[4] = fac.getImporteFactura();
+
+			tblModel.addRow(fila);
+		}
+	}
+
 	public JButton getBtnHome() {
 		return btnHome;
 	}
+	
+	public DefaultTableModel getTblModel() {
+		return tblModel;
+	}
 
+	public JTable getTableDescrip2() {
+		return tableDescrip2;
+	}
 
+	public JButton getBtnMostrarBalance() {
+		return btnMostrarBalance;
+	}
+
+	public JButton getBtnGenerarFac() {
+		return btnGenerarFac;
+	}
+
+	public JButton getBtnEliminarFac() {
+		return btnEliminarFac;
+	}
+
+	public JButton getBtnBalanceMen() {
+		return btnBalanceMen;
+	}
+
+	public JButton getBtnGenerarNueva() {
+		return btnGenerarNueva;
+	}
+
+	public JButton getBtnCancelarFac() {
+		return btnCancelarFac;
+	}
+
+	public JButton getBtnEliminarFact() {
+		return btnEliminarFact;
+	}
 
 	public void setControlador(Controlador controlador) {
 		btnHome.addActionListener(controlador);
 		btnMostrarBalance.addActionListener(controlador);
-		btnCancelarBalance.addActionListener(controlador);
 		btnGenerarFac.addActionListener(controlador);
 		btnEliminarFac.addActionListener(controlador);
 		btnBalanceMen.addActionListener(controlador);
 		btnGenerarNueva.addActionListener(controlador);
 		btnCancelarFac.addActionListener(controlador);
 		btnEliminarFact.addActionListener(controlador);
-		btnCancelarEliminar.addActionListener(controlador);
+	}
+	
+	public void cargarComboBox(ArrayList<Pedido> array) {
+		DefaultComboBoxModel<Pedido> cmbModel = new DefaultComboBoxModel<>();
 
+		for (Pedido pedido : array) {
+			cmbModel.addElement(pedido);
+		}
+		cbBuscarPedido.setModel(cmbModel);
+	}
+	
+	public void cargarPanelEliminar() {
+		if (!panelEliminarFac.isVisible()) {
+			panelGenerarFac.setVisible(false);
+			panelBalances.setVisible(false);
+			panelEliminarFac.setVisible(true);
+			this.repaint();
+		}
+	}
+
+	public void cargarPanelGenerar() {
+		if (!panelGenerarFac.isVisible()) {
+			panelEliminarFac.setVisible(false);
+			panelBalances.setVisible(false);
+			panelGenerarFac.setVisible(true);
+			this.repaint();
+		}
+	}
+	
+	public void cargarPanelBalance() {
+		if (!panelBalances.isVisible()) {
+			panelEliminarFac.setVisible(false);
+			panelGenerarFac.setVisible(false);
+			panelBalances.setVisible(true);
+			this.repaint();
+		}
+	}
+	
+	
+	public int confirmaEliminar() {
+		int opcion = JOptionPane.showConfirmDialog(this, "¿Desea eliminar la factura de la base de datos?", "Eliminar",
+				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+		return opcion;
+	}
+	
+	public int confirmaCancelar() {
+		int opcion4 = JOptionPane.showConfirmDialog(this, "¿Desea borrar los campos?", "Borrar",
+				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+		return opcion4;
+	
+	}
+	
+	public int salir() {
+		int opcion3 = JOptionPane.showConfirmDialog(this, "¿Desea volver al menú principal?", "Volver",
+				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+		return opcion3;
+	}
+
+	public void vaciarCampos() {
+		txtAreaFactura.setText("");
+		txtFieldFechaFactura.setText("");
 	}
 }
