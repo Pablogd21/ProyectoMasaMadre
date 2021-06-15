@@ -60,6 +60,7 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaM.getBtnMarketing())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaMar);
+			vistaMar.cargarComboBox(datos.selectClientes());
 		} else if (e.getSource().equals(vistaM.getBtnProgramar())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaP);
