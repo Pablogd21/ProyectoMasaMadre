@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -62,6 +61,8 @@ public class Vista_Pedidos extends JPanel {
 	private JTable tblPedidos;
 	private JButton btnModificarP;
 	private JTextField txtId;
+	private JLabel lblFormato;
+	private JLabel lblModuloMarketing;
 
 	public Vista_Pedidos() {
 		setLayout(null);
@@ -145,14 +146,20 @@ public class Vista_Pedidos extends JPanel {
 		lblAniadirPedido.setFont(new Font("Tahoma", Font.BOLD, 32));
 		lblAniadirPedido.setBounds(0, 11, 932, 52);
 		panel_aniadir.add(lblAniadirPedido);
+		
+		lblFormato = new JLabel("(AAAA-MM-DD)");
+		lblFormato.setForeground(Color.LIGHT_GRAY);
+		lblFormato.setFont(new Font("Cambria Math", Font.PLAIN, 14));
+		lblFormato.setBounds(46, 190, 144, 35);
+		panel_aniadir.add(lblFormato);
 
-		btnAniadirPedido = new JButton("A\u00F1adir Pedido");
+		btnAniadirPedido = new JButton("A\u00D1ADIR PEDIDO");
 		btnAniadirPedido.setBackground(SystemColor.controlHighlight);
 		btnAniadirPedido.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnAniadirPedido.setBounds(10, 283, 330, 64);
 		add(btnAniadirPedido);
 
-		btnResumenPedido = new JButton("Pedidos");
+		btnResumenPedido = new JButton("PEDIDOS");
 		btnResumenPedido.setBackground(SystemColor.controlHighlight);
 		btnResumenPedido.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnResumenPedido.setBounds(10, 377, 330, 64);
@@ -217,6 +224,11 @@ public class Vista_Pedidos extends JPanel {
 		tblPedidos.setRowHeight(40);
 		tblPedidos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrpPedidos.setViewportView(tblPedidos);
+		
+		lblModuloMarketing = new JLabel("Pedidos...");
+		lblModuloMarketing.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
+		lblModuloMarketing.setBounds(100, 57, 213, 69);
+		add(lblModuloMarketing);
 		
 		txtId = new JTextField();
 		txtId.setVisible(false);
@@ -385,9 +397,7 @@ public class Vista_Pedidos extends JPanel {
 			int mes = Integer.parseInt(fechaComp[1]);
 			int dia = Integer.parseInt(fechaComp[2]);
 
-			Calendar cal = Calendar.getInstance();
-			int anioAct = cal.get(Calendar.YEAR);
-			if (anio < 1920 || anio > (anioAct - 18)) {
+			if (anio < 1920) {
 				fechaCorrecta = false;
 			} else {
 				if (mes > 0 && mes < 13) {

@@ -30,7 +30,7 @@ public class Vista_Facturacion extends JPanel {
 	private JTable tableDescrip2;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JButton btnMostrarBalance, btnGenerarFac, btnEliminarFac, btnBalanceMen, btnGenerarNueva, btnCancelarFac, btnEliminarFact;
+	private JButton btnGenerarFac, btnEliminarFac, btnBalanceMen, btnGenerarNueva, btnCancelarFac, btnEliminarFact;
 	private JButton btnHome;
 	private JTextField txtFieldFechaFactura;
 	private JLabel lblTotalIngresos;
@@ -41,6 +41,7 @@ public class Vista_Facturacion extends JPanel {
 	JComboBox <Pedido> cbBuscarPedido;
 	private JScrollPane scrpFacturas;
 	private DefaultTableModel tblModel;
+	private JButton btnMostrarBalance;
 
 	
 	public Vista_Facturacion() {
@@ -48,6 +49,70 @@ public class Vista_Facturacion extends JPanel {
 		
 		this.setSize(1366, 768);
 		this.setBackground(new Color(197, 224, 180));
+		
+		panelBalances = new JPanel();
+		panelBalances.setBackground(new Color(197, 224, 180));
+		panelBalances.setLayout(null);
+		panelBalances.setBounds(377, 30, 979, 659);
+		panelBalances.setVisible(false);
+		add(panelBalances);
+		
+		
+		JLabel lblBalances = new JLabel("BALANCE MENSUAL");
+		lblBalances.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBalances.setFont(new Font("Tahoma", Font.BOLD, 32));
+		lblBalances.setBounds(0, 25, 979, 50);
+		panelBalances.add(lblBalances);
+		
+		JLabel lblMes_1 = new JLabel("MES:");
+		lblMes_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblMes_1.setBounds(102, 94, 154, 25);
+		panelBalances.add(lblMes_1);
+		
+		JLabel lblAo_1 = new JLabel("A\u00D1O:");
+		lblAo_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAo_1.setBounds(627, 92, 154, 29);
+		panelBalances.add(lblAo_1);
+		
+		JLabel lblTotalFactura = new JLabel("Total Facturas:");
+		lblTotalFactura.setFont(new Font("Cambria Math", Font.PLAIN, 25));
+		lblTotalFactura.setBounds(627, 183, 178, 38);
+		panelBalances.add(lblTotalFactura);
+		
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setBounds(272, 186, 93, 34);
+		panelBalances.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		textField_2.setColumns(10);
+		textField_2.setBounds(797, 186, 93, 34);
+		panelBalances.add(textField_2);
+		
+		cbMes = new JComboBox<String>();
+		cbMes.setBounds(102, 130, 263, 27);
+		panelBalances.add(cbMes);
+		
+		cbAnio = new JComboBox<String>();
+		cbAnio.setBounds(627, 130, 263, 27);
+		panelBalances.add(cbAnio);
+		
+		lblTotalIngresos = new JLabel("Total Ingresos:");
+		lblTotalIngresos.setFont(new Font("Cambria Math", Font.PLAIN, 25));
+		lblTotalIngresos.setBounds(102, 177, 178, 50);
+		panelBalances.add(lblTotalIngresos);
+		
+		JPanel panel_mostrar = new JPanel();
+		panel_mostrar.setBackground(new Color(197, 224, 180));
+		panel_mostrar.setBounds(0, 586, 979, 73);
+		panelBalances.add(panel_mostrar);
+		
+		btnMostrarBalance = new JButton("MOSTRAR BALANCE");
+		btnMostrarBalance.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnMostrarBalance.setBackground(SystemColor.controlHighlight);
+		panel_mostrar.add(btnMostrarBalance);
 		
 		JLabel lblTituloModulo = new JLabel("Facturaci\u00F3n...");
 		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
@@ -187,59 +252,6 @@ public class Vista_Facturacion extends JPanel {
 		tableDescrip2.setRowHeight(40);
 		tableDescrip2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrpFacturas.setViewportView(tableDescrip2);
-		
-		panelBalances = new JPanel();
-		panelBalances.setBackground(new Color(197, 224, 180));
-		panelBalances.setLayout(null);
-		panelBalances.setBounds(377, 30, 979, 659);
-		panelBalances.setVisible(false);
-		add(panelBalances);
-		
-		
-		JLabel lblBalances = new JLabel("BALANCES");
-		lblBalances.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblBalances.setBounds(424, 25, 288, 50);
-		panelBalances.add(lblBalances);
-		
-		btnMostrarBalance = new JButton("MOSTRAR");
-		btnMostrarBalance.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnMostrarBalance.setBackground(SystemColor.controlHighlight);
-		btnMostrarBalance.setBounds(304, 606, 251, 27);
-		panelBalances.add(btnMostrarBalance);
-		
-		JLabel lblMes_1 = new JLabel("MES:");
-		lblMes_1.setBounds(184, 102, 154, 13);
-		panelBalances.add(lblMes_1);
-		
-		JLabel lblAo_1 = new JLabel("A\u00D1O:");
-		lblAo_1.setBounds(415, 102, 154, 13);
-		panelBalances.add(lblAo_1);
-		
-		JLabel lblTotalFactura = new JLabel("Total Facturas:");
-		lblTotalFactura.setBounds(415, 194, 72, 13);
-		panelBalances.add(lblTotalFactura);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(266, 194, 118, 13);
-		panelBalances.add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(497, 194, 116, 13);
-		panelBalances.add(textField_2);
-		
-		cbMes = new JComboBox<String>();
-		cbMes.setBounds(184, 120, 200, 27);
-		panelBalances.add(cbMes);
-		
-		cbAnio = new JComboBox<String>();
-		cbAnio.setBounds(413, 120, 200, 27);
-		panelBalances.add(cbAnio);
-		
-		lblTotalIngresos = new JLabel("Total Ingresos");
-		lblTotalIngresos.setBounds(184, 194, 72, 13);
-		panelBalances.add(lblTotalIngresos);
 	}
 	
 	

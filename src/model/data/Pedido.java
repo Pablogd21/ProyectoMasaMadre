@@ -23,10 +23,6 @@ public class Pedido {
 		this.importePedido = precioPedido;
 		this.fechaPedido = fechaPedido;
 	}
-	
-	public Pedido() {
-		// TODO
-	}
 
 	public Pedido(int idPedido, String descripcionPedido, String fechaPedido, int idCliente, String precioPedido1) {
 		this.idPedido = idPedido;
@@ -79,6 +75,10 @@ public class Pedido {
 
 	public String getImportePedido1() {
 		return importePedido1;
+	}
+
+	public double getImportePedido() {
+		return importePedido;
 	}
 
 	@Override
