@@ -27,11 +27,7 @@ import javax.swing.table.DefaultTableModel;
 import controller.Controlador;
 import model.data.Cliente;
 
-
-
 public class Vista_Clientes extends JPanel {
-
-
 
 	private JButton btnAnadir, btnResumen, btnModificar, btnEliminar, btnHome, btnBorrar, btnGuardar, btnMod;
 	private JTextField txtFieldNombre, txtId;
@@ -98,12 +94,10 @@ public class Vista_Clientes extends JPanel {
 		lblDatosCliente.setBounds(422, 28, 288, 50);
 		panelAnadir.add(lblDatosCliente);
 
-		
 		btnMod = new JButton("MODIFICAR");
 		btnMod.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnMod.setBackground(SystemColor.controlHighlight);
 		btnMod.setBounds(283, 588, 251, 43);
-
 
 		btnMod = new JButton("MODIFICAR");
 		btnMod.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -125,7 +119,6 @@ public class Vista_Clientes extends JPanel {
 		btnBorrar.setBackground(SystemColor.controlHighlight);
 		btnBorrar.setBounds(589, 606, 251, 35);
 		panelAnadir.add(btnBorrar);
-
 
 		txtId = new JTextField();
 		txtId.setVisible(false);
@@ -257,10 +250,6 @@ public class Vista_Clientes extends JPanel {
 
 	}
 
-	
-
-
-
 	public JTextField getTxtId() {
 		return txtId;
 	}
@@ -358,6 +347,12 @@ public class Vista_Clientes extends JPanel {
 		vaciarCampos();
 	}
 
+	public void cambioModificarVisible() {
+		btnMod.setVisible(true);
+		btnGuardar.setVisible(false);
+		vaciarCampos();
+	}
+
 	public JButton getBtnMod() {
 		return btnMod;
 	}
@@ -421,23 +416,24 @@ public class Vista_Clientes extends JPanel {
 	public Cliente generarCliente() {
 		Cliente cliente = null;
 
-			if (txtFieldNombre.getText().equals("") || txtFieldApellido.getText().equals("") || txtFieldEmail.getText().equals("") ||
-					txtFieldTelefono.getText().equals("") || txtFieldNacimiento.getText().equals("") || txtFieldDireccion.getText().equals("")) {
-				JOptionPane.showMessageDialog(this, "Introduzca todos los datos por favor", "Error",
-						JOptionPane.ERROR_MESSAGE);
-			} else if (formatoEmail()) {
-				JOptionPane.showMessageDialog(this, "Introduzca un e-mail válido por favor", "Error",
-						JOptionPane.ERROR_MESSAGE);
-			} else if (formatoFecha()) {
-				JOptionPane.showMessageDialog(this, "El formato de la fecha debe ser AAAA-MM-DD", "Error",
-						JOptionPane.ERROR_MESSAGE);
-			} else if (formatoTelefono()) {
-				JOptionPane.showMessageDialog(this, "Introduzca un número de teléfono válido por favor", "Error",
-						JOptionPane.ERROR_MESSAGE);
-			} else {
-				cliente = new Cliente( txtFieldNombre.getText(), txtFieldApellido.getText(), txtFieldEmail.getText(),
-						txtFieldTelefono.getText(), txtFieldNacimiento.getText(), txtFieldDireccion.getText());
-			}
+		if (txtFieldNombre.getText().equals("") || txtFieldApellido.getText().equals("")
+				|| txtFieldEmail.getText().equals("") || txtFieldTelefono.getText().equals("")
+				|| txtFieldNacimiento.getText().equals("") || txtFieldDireccion.getText().equals("")) {
+			JOptionPane.showMessageDialog(this, "Introduzca todos los datos por favor", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} else if (formatoEmail()) {
+			JOptionPane.showMessageDialog(this, "Introduzca un e-mail válido por favor", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} else if (formatoFecha()) {
+			JOptionPane.showMessageDialog(this, "El formato de la fecha debe ser AAAA-MM-DD", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} else if (formatoTelefono()) {
+			JOptionPane.showMessageDialog(this, "Introduzca un número de teléfono válido por favor", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} else {
+			cliente = new Cliente(txtFieldNombre.getText(), txtFieldApellido.getText(), txtFieldEmail.getText(),
+					txtFieldTelefono.getText(), txtFieldNacimiento.getText(), txtFieldDireccion.getText());
+		}
 
 		if (txtFieldNombre.getText().equals("") || txtFieldApellido.getText().equals("")
 				|| txtFieldEmail.getText().equals("") || txtFieldTelefono.getText().equals("")
@@ -460,7 +456,6 @@ public class Vista_Clientes extends JPanel {
 
 		return cliente;
 	}
-	
 
 	public Cliente generarClienteMod() {
 		Cliente cliente = null;
@@ -596,6 +591,6 @@ public class Vista_Clientes extends JPanel {
 		int opcion4 = JOptionPane.showConfirmDialog(this, "¿Desea borrar los campos?", "Borrar",
 				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 		return opcion4;
-	
+
 	}
 }

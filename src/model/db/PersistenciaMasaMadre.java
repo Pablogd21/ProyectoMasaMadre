@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.data.Cliente;
+import model.data.DatosFactura;
+import model.data.Factura;
 import model.data.Pedido;
 
 public class PersistenciaMasaMadre {
@@ -207,7 +209,6 @@ public class PersistenciaMasaMadre {
 				telef = rslt.getString(5);
 				fech = rslt.getDate(6);
 				dir = rslt.getString(7);
-				// TODO: revisar el manejo de datos de tipo fecha
 				cliente = new Cliente(id, nom, ape, email, telef, fech.toString(), dir);
 			}
 
@@ -357,7 +358,7 @@ public class PersistenciaMasaMadre {
 	public ArrayList<Pedido> selectPedidos() {
 		ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
 		
-		String query = "SELECT idPedido, Descripcion, FechaPedido, idCliente, Importe" + "	 FROM Pedidos";
+		String query = "SELECT idPedido, Descripcion, FechaPedido, idCliente, Importe FROM Pedidos";
 
 		Connection con = null;
 		Statement stmt = null;
@@ -416,7 +417,6 @@ public class PersistenciaMasaMadre {
 			int idC = 0;
 			Double imp;
 			Date fech = null;
-			String dir = "";
 			if (rslt.next()) {
 				id = rslt.getInt(1);
 				desc = rslt.getString(2);
@@ -559,5 +559,203 @@ public class PersistenciaMasaMadre {
 		}
 		
 		return listaEmails;
+	}
+
+	public ArrayList<Factura> selectFactura() {
+		ArrayList<Factura> listaFacturas = new ArrayList<Factura>();
+		
+		String query = "SELECT idFactura, FechaFactura, idCliente, idPedido, Importe FROM Facturas";
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rslt = null;
+		
+		try {
+			con = acceso.getConexion();
+			stmt = con.createStatement();
+			rslt = stmt.executeQuery(query);
+
+			Factura factura = null;
+			String fecha = null;
+			while (rslt.next()) {
+				fecha = rslt.getDate(2).toString();
+				factura = new Factura(rslt.getInt(1), rslt.getInt(3), rslt.getInt(4), rslt.getDouble(5), fecha);
+				listaFacturas.add(factura);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null)
+					rslt.close();
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return listaFacturas;
+	}
+	
+	public int deleteFactura(int idFactura) {
+		String query = "DELETE FROM Facturas WHERE idFactura = ?";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int res = 0;
+
+		try {
+			con = acceso.getConexion();
+
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, idFactura);
+
+			res = pstmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			res = -200;
+			e.printStackTrace();
+		} catch (SQLException e) {
+			res = -100;
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return res;
+	}
+	
+	public int insertFactura(Factura fac) {
+		String query = "INSERT INTO Facturas VALUES (?, ?, ?, ?, ?)";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int resF = 0;
+
+		// formato de fecha: AAAA-MM-DD
+		Date fecha = Date.valueOf(fac.getFechaFactura());
+
+		try {
+			con = acceso.getConexion();
+
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, 0);
+			pstmt.setDate(2, fecha);
+			pstmt.setInt(3, fac.getIdCliente());
+			pstmt.setInt(4, fac.getIdPedido());
+			pstmt.setDouble(5, fac.getImporteFactura());
+
+			resF = pstmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			resF = -200;
+			e.printStackTrace();
+		} catch (SQLException e) {
+			resF = -100;
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return resF;
+	}
+	
+	public int selectIdClientePedido(int idPedi) {
+		int idCli = 0;
+		String query = "SELECT idCliente FROM Pedidos WHERE idPedido = ?";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rslt = null;
+
+		try {
+			con = acceso.getConexion();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, idPedi);
+
+			rslt = pstmt.executeQuery();
+
+			if (rslt.next()) {
+				idCli = rslt.getInt(1);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null)
+					rslt.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return idCli;
+	}
+	
+	public DatosFactura selectDatosFactura(int idPed) {
+		DatosFactura dFactura = null;
+		
+		String query = "SELECT C.Nombre, C.Apellido, C.Telefono, C.Email, C.Direccion, P.idPedido, P.Descripcion, P.Importe "+
+				"FROM Clientes C, Pedidos P WHERE C.idCliente = P.idCliente AND P.idPedido = ?";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rslt = null;
+		
+		try {
+			con = acceso.getConexion();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, idPed);
+			
+			rslt = pstmt.executeQuery();
+			if (rslt.next()) {
+				dFactura = new DatosFactura(rslt.getString(1), rslt.getString(2), rslt.getString(4), rslt.getString(3), rslt.getString(5), rslt.getString(7), rslt.getInt(6), rslt.getDouble(8));
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null)
+					rslt.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return dFactura;
 	}
 }
