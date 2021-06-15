@@ -19,6 +19,7 @@ public class Vista_Login extends JPanel {
 	private JButton btnIngresar;
 	private JPasswordField txtPassword;
 	private JTextField txtUsuario;
+	private ImageIcon image;
 
 	public Vista_Login() {
 
