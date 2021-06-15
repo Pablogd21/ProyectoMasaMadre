@@ -79,15 +79,15 @@ public class Vista_Marketing extends JPanel {
 		lblCom.setBounds(401, 21, 288, 50);
 		panelComunicacion.add(lblCom);
 
-		JLabel lblTituloCom = new JLabel("TÍTULO:");
-		lblTituloCom.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblTituloCom.setBounds(25, 96, 89, 42);
-		panelComunicacion.add(lblTituloCom);
+		JLabel lblAsuntoCom = new JLabel("ASUNTO:");
+		lblAsuntoCom.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblAsuntoCom.setBounds(25, 96, 89, 42);
+		panelComunicacion.add(lblAsuntoCom);
 
-		JLabel lblDescripCom = new JLabel("DESCRIPCI\u00D3N:");
-		lblDescripCom.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblDescripCom.setBounds(25, 166, 135, 35);
-		panelComunicacion.add(lblDescripCom);
+		JLabel lblContenidoCom = new JLabel("CONTENIDO:");
+		lblContenidoCom.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblContenidoCom.setBounds(25, 166, 135, 35);
+		panelComunicacion.add(lblContenidoCom);
 
 		txtFieldTituloCom = new JTextField();
 		txtFieldTituloCom.setColumns(10);
