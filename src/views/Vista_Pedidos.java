@@ -251,7 +251,7 @@ public class Vista_Pedidos extends JPanel {
 		}
 
 		cbCliente.setModel(cmbModel);
-
+//		cbCliente.setSelectedIndex(-1);
 	}
 
 	public void setControlador(Controlador controlador) {
@@ -270,7 +270,7 @@ public class Vista_Pedidos extends JPanel {
 		txtAreaDescrip.setText("");
 		txtFecha.setText("");
 		txtImporte.setText("");
-
+		//cbCliente.setSelectedIndex(-1);
 	}
 
 	public int confirmaEliminar() {
@@ -341,8 +341,6 @@ public class Vista_Pedidos extends JPanel {
 		} else if (formatoFecha()) {
 			JOptionPane.showMessageDialog(this, "El formato de la fecha debe ser AAAA-MM-DD", "Error",
 					JOptionPane.ERROR_MESSAGE);
-		} else if (formatoImporte()) {
-			JOptionPane.showMessageDialog(this, "El importe solo puede contener puntos para los decimales", "Error", JOptionPane.ERROR_MESSAGE);
 		} else {
 			String tel = txtImporte.getText();
 			NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
@@ -359,13 +357,6 @@ public class Vista_Pedidos extends JPanel {
 			
 		}
 		return pedido;
-	}
-
-	public boolean formatoImporte() {
-		return false;
-		
-
-		
 	}
 
 	private boolean formatoFecha() {
@@ -460,12 +451,19 @@ public class Vista_Pedidos extends JPanel {
 		} else if (formatoFecha()) {
 			JOptionPane.showMessageDialog(this, "El formato de la fecha debe ser AAAA-MM-DD", "Error",
 					JOptionPane.ERROR_MESSAGE);
-		} else if (formatoImporte()) {
-			JOptionPane.showMessageDialog(this, "Introduzca un número de teléfono válido por favor", "Error",
-					JOptionPane.ERROR_MESSAGE);
 		} else {
-			Cliente p = (Cliente) cbCliente.getSelectedItem();
-			pedido = new Pedido(Integer.parseInt(txtId.getText()), txtAreaDescrip.getText(),txtFecha.getText(), p.getIdCliente(),Double.parseDouble(txtImporte.getText()));
+			String tel = txtImporte.getText();
+			NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
+			Number number;
+			try {
+				number = format.parse(tel);
+				Double importe = number.doubleValue();
+				Cliente p = (Cliente) cbCliente.getSelectedItem();
+				pedido = new Pedido(Integer.parseInt(txtId.getText()), txtAreaDescrip.getText(),txtFecha.getText(), p.getIdCliente(),importe);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	return pedido;
 	}
@@ -525,5 +523,7 @@ public class Vista_Pedidos extends JPanel {
 	public JButton getBtnModificarP() {
 		return btnModificarP;
 	}
+
+	
 
 }

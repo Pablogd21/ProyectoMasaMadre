@@ -94,7 +94,7 @@ public class Controlador implements ActionListener {
 			vistaP.cargarPanelResumen();
 			vistaP.cargarTabla(datos.selectPedidos());
 		} else if (e.getSource().equals(vistaP.getBtnAniadirPedido())) {
-			vistaP.cambioModificar();
+			vistaP.cambioModificarHome();
 			vistaP.cargarPanelAnadir();
 		} else if (e.getSource().equals(vistaP.getBtnBorrar())) {
 			int confirmadoPedido = vistaP.confirmaCancelar();
@@ -106,11 +106,11 @@ public class Controlador implements ActionListener {
 			if (!(ped == null)) {
 				int res = datos.insertPedido(ped);
 				if (res == 1) {
-					JOptionPane.showMessageDialog(vistaC, "Pedido añadido con éxito", "Añadido",
+					JOptionPane.showMessageDialog(vistaP, "Pedido añadido con éxito", "Añadido",
 							JOptionPane.INFORMATION_MESSAGE);
-					vistaC.vaciarCampos();
+					vistaP.vaciarCampos();
 				}else {
-					JOptionPane.showMessageDialog(vistaC, "Fallo al añadir el pedido", "Error",
+					JOptionPane.showMessageDialog(vistaP, "Fallo al añadir el pedido", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
@@ -151,7 +151,6 @@ public class Controlador implements ActionListener {
 			}
 		} else if (e.getSource().equals(vistaP.getBtnEliminar())) {
 			int filaEl = vistaP.getTblPedidos().getSelectedRow();
-			//
 			if (filaEl != -1) {
 				int confirmado = vistaP.confirmaEliminar();
 				if (confirmado == JOptionPane.YES_OPTION) {
@@ -161,7 +160,6 @@ public class Controlador implements ActionListener {
 						JOptionPane.showMessageDialog(vistaP, "Cliente eliminado con éxito", "Añadido",
 								JOptionPane.INFORMATION_MESSAGE);
 						vistaP.cargarTabla(datos.selectPedidos());
-						
 					}else {
 						JOptionPane.showMessageDialog(vistaC, "Fallo al eliminar el cliente", "Error",
 								JOptionPane.ERROR_MESSAGE);
@@ -189,7 +187,7 @@ public class Controlador implements ActionListener {
 				vistaC.vaciarCampos();
 			}
 		}  else if (e.getSource().equals(vistaC.getBtnAnadir())) {
-			vistaC.cambioModificar();
+			vistaC.cambioModificarHome();
 			vistaC.cargarPanelAnadir();
 		} else if (e.getSource().equals(vistaC.getBtnResumen())) {
 			vistaC.cargarPanelResumen();

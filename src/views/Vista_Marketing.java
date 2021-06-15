@@ -43,6 +43,7 @@ public class Vista_Marketing extends JPanel {
 	public Vista_Marketing() {
 
 		this.setSize(1366, 768);
+		this.setBackground(new Color(197, 224, 180));
 		setLayout(null);
 
 		btnNuevaComunicacion = new JButton("NUEVA COMUNICACI\u00D3N");
@@ -71,6 +72,7 @@ public class Vista_Marketing extends JPanel {
 		add(lblModuloMarketing);
 
 		panelComunicacion = new JPanel();
+		panelComunicacion.setBackground(new Color(197, 224, 180));
 		panelComunicacion.setLayout(null);
 		panelComunicacion.setBounds(377, 30, 979, 659);
 		add(panelComunicacion);
@@ -144,6 +146,7 @@ public class Vista_Marketing extends JPanel {
 		panel_home.add(btnHome);
 
 		panelEncuesta = new JPanel();
+		panelEncuesta.setBackground(new Color(197, 224, 180));
 		panelEncuesta.setLayout(null);
 		panelEncuesta.setBounds(377, 30, 979, 659);
 		panelEncuesta.setVisible(false);
