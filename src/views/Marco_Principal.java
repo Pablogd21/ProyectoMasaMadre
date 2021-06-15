@@ -5,6 +5,7 @@ import java.awt.HeadlessException;
 import java.awt.Image; 
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -22,6 +23,7 @@ public class Marco_Principal extends JFrame {
 	
 	public Marco_Principal() throws HeadlessException {
 		super();
+		
 	}
 
 	public Marco_Principal(Vista_Clientes vistaC, Vista_Facturacion vistaF, Vista_Login vistaL, Vista_Marketing vistaMar,
@@ -34,28 +36,26 @@ public class Marco_Principal extends JFrame {
 		this.vistaP = vistaP;
 		setTitle("CRM Masa Madre");
 		setExtendedState(MAXIMIZED_BOTH);
-		this.setSize(1920, 1080);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Marco_Principal.class.getResource("/imagenes/logo.jpg")));
 		setResizable(false);
-		Image icon = Toolkit.getDefaultToolkit().getImage(".\\images\\logo.jpg");
-		setIconImage(icon);
 		cargaPaneles(vistaC,vistaF,vistaL,vistaMar,vistaM,vistaP);
 	}
 	
 	private void cargaPaneles(Vista_Clientes vistaC, Vista_Facturacion vistaF, Vista_Login vistaL, Vista_Marketing vistaMar,
 			Vista_Modulos vistaM, Vista_Pedidos vistaP) {
 		
-		this.add(vistaC);
+		getContentPane().add(vistaC);
 		this.vistaC.setVisible(false);
-		this.add(vistaF);
+		getContentPane().add(vistaF);
 		this.vistaF.setVisible(false);
-		this.add(vistaMar);
+		getContentPane().add(vistaMar);
 		this.vistaMar.setVisible(false);
-		this.add(vistaP);
+		getContentPane().add(vistaP);
 		this.vistaP.setVisible(false);
-		this.add(vistaM);
+		getContentPane().add(vistaM);
 		this.vistaM.setVisible(false);
-		this.add(vistaL);
+		getContentPane().add(vistaL);
 		this.vistaL.setVisible(false);
 	}
 
@@ -72,13 +72,5 @@ public class Marco_Principal extends JFrame {
 	public void hacerVisible() {
 		setVisible(true);
 	}
-
-	/*
-	 * public int salir() { int opcion = JOptionPane.showConfirmDialog( this,
-	 * "¿Desea salir de la aplicación?", "confirmación", JOptionPane.YES_NO_OPTION,
-	 * JOptionPane.WARNING_MESSAGE);
-	 * 
-	 * if (opcion == JOptionPane.YES_OPTION) { System.exit(0); } return opcion; }
-	 */
 
 }

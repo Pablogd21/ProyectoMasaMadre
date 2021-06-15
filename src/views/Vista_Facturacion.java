@@ -134,17 +134,17 @@ public class Vista_Facturacion extends JPanel {
 		add(panel_home);
 
 		btnHome = new JButton("");
-		btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
+		btnHome.setIcon(new ImageIcon(Vista_Facturacion.class.getResource("/imagenes/home.png")));
 		btnHome.setBorder(null);
 		btnHome.setBackground(null); 
         btnHome.setContentAreaFilled(false);
 		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				btnHome.setIcon(new ImageIcon(".\\images\\home_grande.png"));
+				btnHome.setIcon(new ImageIcon(Vista_Facturacion.class.getResource("/imagenes/home_grande.png")));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent evt) {
-				btnHome.setIcon(new ImageIcon(".\\images\\home.png"));
+				btnHome.setIcon(new ImageIcon(Vista_Facturacion.class.getResource("/imagenes/home.png")));
 			}
 		});
 		panel_home.add(btnHome);

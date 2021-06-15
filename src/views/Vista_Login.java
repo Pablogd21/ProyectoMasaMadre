@@ -29,12 +29,12 @@ public class Vista_Login extends JPanel {
 		setBackground(new Color(255, 255, 255));
 
 		JLabel logo = new JLabel();
-		logo.setIcon(new ImageIcon(".\\images\\logo.jpg"));
+		logo.setIcon(new ImageIcon(Vista_Login.class.getResource("/imagenes/logo.jpg")));
 		logo.setBounds(150, 11, 684, 517);
 		add(logo);
 
 		JLabel curvas = new JLabel();
-		curvas.setIcon(new ImageIcon(".\\images\\curvas.png"));
+		curvas.setIcon(new ImageIcon(Vista_Login.class.getResource("/imagenes/curvas.png")));
 		curvas.setBounds(-12, 367, 1382, 418);
 		add(curvas);
 
