@@ -248,6 +248,7 @@ public class Vista_Clientes extends JPanel {
 		panelResumen.add(pnlBtnRes, BorderLayout.SOUTH);
 
 		JPanel panel_home = new JPanel();
+		panel_home.setBackground(new Color(197, 224, 180));
 		panel_home.setBounds(25, 11, 32, 32);
 		add(panel_home);
 

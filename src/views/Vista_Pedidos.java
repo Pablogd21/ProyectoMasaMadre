@@ -1,6 +1,7 @@
 package views;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -62,9 +63,11 @@ public class Vista_Pedidos extends JPanel {
 		setLayout(null);
 
 		this.setSize(1366, 768);
+		this.setBackground(new Color(197, 224, 180));
 
 		panel_aniadir = new JPanel();
 		panel_aniadir.setBounds(294, 31, 1000, 662);
+		panel_aniadir.setBackground(new Color(197, 224, 180));
 		add(panel_aniadir);
 		panel_aniadir.setLayout(null);
 
@@ -136,6 +139,7 @@ public class Vista_Pedidos extends JPanel {
 		add(btnResumenPedido);
 
 		panel_home = new JPanel();
+		panel_home.setBackground(new Color(197, 224, 180));
 		panel_home.setBounds(25, 11, 32, 32);
 		add(panel_home);
 

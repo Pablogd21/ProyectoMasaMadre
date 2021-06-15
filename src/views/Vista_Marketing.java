@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.mail.Message;
@@ -120,6 +121,7 @@ public class Vista_Marketing extends JPanel {
 		panelComunicacion.add(lblDestinatario);
 
 		JPanel panel_home = new JPanel();
+		panel_home.setBackground(new Color(197, 224, 180));
 		panel_home.setBounds(25, 11, 32, 32);
 		add(panel_home);
 

@@ -36,6 +36,7 @@ public class Vista_Facturacion extends JPanel {
 		setLayout(null);
 		
 		this.setSize(1366, 768);
+		this.setBackground(new Color(197, 224, 180));
 		
 		JLabel lblTituloModulo = new JLabel("Facturaci\u00F3n...");
 		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
@@ -44,6 +45,7 @@ public class Vista_Facturacion extends JPanel {
 		
 
 		JPanel panel_home = new JPanel();
+		panel_home.setBackground(new Color(197, 224, 180));
 		panel_home.setBounds(25, 11, 32, 32);
 		add(panel_home);
 
@@ -76,10 +78,6 @@ public class Vista_Facturacion extends JPanel {
 		add(btnEliminarFac);
 		
 		btnBalanceMen = new JButton("BALANCE MENSUAL");
-		btnBalanceMen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnBalanceMen.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnBalanceMen.setBackground(SystemColor.controlHighlight);
 		btnBalanceMen.setBounds(25, 455, 330, 64);
@@ -87,6 +85,7 @@ public class Vista_Facturacion extends JPanel {
 		
 		JPanel panelGenerarFac = new JPanel();
 		panelGenerarFac.setLayout(null);
+		panelGenerarFac.setBackground(new Color(197, 224, 180));
 		panelGenerarFac.setBounds(377, 30, 979, 659);
 		add(panelGenerarFac);
 		
@@ -144,6 +143,7 @@ public class Vista_Facturacion extends JPanel {
 		panelGenerarFac.add(txtAreaFactura);
 		
 		JPanel panelEliminarFac = new JPanel();
+		panelEliminarFac.setBackground(new Color(197, 224, 180));
 		panelEliminarFac.setLayout(null);
 		panelEliminarFac.setBounds(377, 30, 979, 659);
 		add(panelEliminarFac);
@@ -176,6 +176,7 @@ public class Vista_Facturacion extends JPanel {
 		panelEliminarFac.add(tableDescrip2);
 		
 		JPanel panelBalances = new JPanel();
+		panelBalances.setBackground(new Color(197, 224, 180));
 		panelBalances.setLayout(null);
 		panelBalances.setBounds(377, 30, 979, 659);
 		add(panelBalances);

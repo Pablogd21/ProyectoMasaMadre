@@ -33,7 +33,7 @@ public class Vista_Modulos extends JPanel {
 		setSize(1366, 768);
 		setLayout(new BorderLayout(0, 0));
 		JPanel panel_login = new JPanel();
-		panel_login.setBackground(new Color(255, 204, 153));
+		panel_login.setBackground(new Color(197, 224, 180)); //ssssssssssssssssssssssssssssssssssssss
 		add(panel_login, BorderLayout.NORTH);
 		panel_login.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
@@ -58,20 +58,20 @@ public class Vista_Modulos extends JPanel {
 		panel_login.add(btnLogout);
 
 		JPanel panel_modulos = new JPanel();
-		panel_modulos.setBackground(new Color(255, 204, 153));
+		panel_modulos.setBackground(new Color(197, 224, 180)); //ssssssssssssssssssssssssssssssssssssss
 		add(panel_modulos);
 		panel_modulos.setLayout(null);
 
 		lblTitulo = new JLabel("M \u00D3 D U L O S");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setBounds(0, 10, 1370, 104);
-		lblTitulo.setFont(new Font("NSimSun", Font.PLAIN, 90));
+		lblTitulo.setFont(new Font("Impact", Font.PLAIN, 80));
 		panel_modulos.add(lblTitulo);
 
 		lblClientes = new JLabel("Clientes");
 		lblClientes.setFont(new Font("Sitka Small", Font.BOLD, 16));
 		lblClientes.setHorizontalAlignment(SwingConstants.CENTER);
-		lblClientes.setBounds(465, 279, 128, 52);
+		lblClientes.setBounds(465, 279, 128, 50);
 		panel_modulos.add(lblClientes);
 
 		lblMarketing = new JLabel("Marketing");
@@ -83,7 +83,7 @@ public class Vista_Modulos extends JPanel {
 		lblFacturas = new JLabel("Facturas");
 		lblFacturas.setFont(new Font("Sitka Small", Font.BOLD, 16));
 		lblFacturas.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFacturas.setBounds(465, 554, 128, 52);
+		lblFacturas.setBounds(465, 554, 128, 50);
 		panel_modulos.add(lblFacturas);
 
 		lblProgramar = new JLabel("Pedidos");
