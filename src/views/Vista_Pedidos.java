@@ -251,7 +251,6 @@ public class Vista_Pedidos extends JPanel {
 		}
 
 		cbCliente.setModel(cmbModel);
-//		cbCliente.setSelectedIndex(-1);
 	}
 
 	public void setControlador(Controlador controlador) {
