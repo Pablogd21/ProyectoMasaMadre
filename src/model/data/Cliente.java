@@ -1,9 +1,7 @@
 package model.data;
-
-import java.util.Date;
-
-public class Cliente {
 	
+public class Cliente {
+
 	private int idCliente;
 	private String nombreCliente;
 	private String apellidoCliente;
@@ -11,7 +9,7 @@ public class Cliente {
 	private String telefonoCliente;
 	private String fechaNaCliente;
 	private String direccionCliente;
-	
+
 	public Cliente(int idCliente, String nombreCliente, String apellidoCliente, String emailCliente,
 			String telefonoCliente, String fechaNaCliente, String direccionCliente) {
 		this.idCliente = idCliente;
@@ -22,15 +20,20 @@ public class Cliente {
 		this.fechaNaCliente = fechaNaCliente;
 		this.direccionCliente = direccionCliente;
 	}
-	
-	public Cliente( String nombreCliente, String apellidoCliente, String emailCliente,
-			String telefonoCliente, String fechaNaCliente, String direccionCliente) {
+
+	public Cliente(String nombreCliente, String apellidoCliente, String emailCliente, String telefonoCliente,
+			String fechaNaCliente, String direccionCliente) {
 		this.nombreCliente = nombreCliente;
 		this.apellidoCliente = apellidoCliente;
 		this.emailCliente = emailCliente;
 		this.telefonoCliente = telefonoCliente;
 		this.fechaNaCliente = fechaNaCliente;
 		this.direccionCliente = direccionCliente;
+	}
+	
+	public Cliente(int idCliente, String emailCliente) {
+		this.idCliente = idCliente;
+		this.emailCliente = emailCliente;
 	}
 
 	public int getIdCliente() {
@@ -91,10 +94,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Código Cliente: " + idCliente + "\n Nombre: " + nombreCliente + "\n Apellido: "
-				+ apellidoCliente + "\n Email: " + emailCliente + "\n Telefono: " + telefonoCliente
-				+ "\n Fecha Nacimiento: " + fechaNaCliente + "\n Dirección: " + direccionCliente;
+		return "Código Cliente: " + idCliente + "\n Nombre: " + nombreCliente + "\n Apellido: " + apellidoCliente + "\n Email: " + emailCliente;
+		
 	}
-	
-	
 }

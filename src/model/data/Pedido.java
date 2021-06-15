@@ -1,21 +1,38 @@
 package model.data;
 
-import java.util.Date;
-
 public class Pedido {
 	
 	private int idPedido;
 	private int idCliente;
 	private String descripcionPedido;
+	private String importePedido1;
 	private double importePedido;
-	private Date fechaPedido;
+	private String fechaPedido;
 	
-	public Pedido(int idPedido, int idCliente, String descripcionPedido, double precioPedido, Date fechaPedido) {
-		super();
+	public Pedido(int idPedido, String descripcionPedido, String fechaPedido, int idCliente, double precioPedido) {
 		this.idPedido = idPedido;
 		this.idCliente = idCliente;
 		this.descripcionPedido = descripcionPedido;
 		this.importePedido = precioPedido;
+		this.fechaPedido = fechaPedido;
+	}
+	
+	public Pedido(int idCliente, String descripcionPedido, double precioPedido, String fechaPedido) {
+		this.idCliente = idCliente;
+		this.descripcionPedido = descripcionPedido;
+		this.importePedido = precioPedido;
+		this.fechaPedido = fechaPedido;
+	}
+	
+	public Pedido() {
+		// TODO
+	}
+
+	public Pedido(int idPedido, String descripcionPedido, String fechaPedido, int idCliente, String precioPedido1) {
+		this.idPedido = idPedido;
+		this.idCliente = idCliente;
+		this.descripcionPedido = descripcionPedido;
+		this.importePedido1 = precioPedido1;
 		this.fechaPedido = fechaPedido;
 	}
 
@@ -51,12 +68,16 @@ public class Pedido {
 		this.importePedido = precioPedido;
 	}
 
-	public Date getFechaPedido() {
+	public String getFechaPedido() {
 		return fechaPedido;
 	}
 
-	public void setFechaPedido(Date fechaPedido) {
+	public void setFechaPedido(String fechaPedido) {
 		this.fechaPedido = fechaPedido;
+	}
+
+	public String getImportePedido1() {
+		return importePedido1;
 	}
 
 	@Override

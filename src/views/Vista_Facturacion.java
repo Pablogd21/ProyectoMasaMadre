@@ -14,24 +14,22 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controller.Controlador;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 
 public class Vista_Facturacion extends JPanel {
 	
-	private JTable tableDatosFactura;
 	private JTable tableDescrip2;
-	private JTable table;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JButton btnMostrarBalance, btnLimpiar, btnGenerarFac, btnEliminarFac, btnBalanceMen, btnGenerarNueva, btnCancelarFac, btnEliminarFact, btnCancelarEliminar;
-	private JSpinner spMesBalances, spAnioBalances, spDiaBalances, spMes,spAnio, spDia;
-	private Scrollbar scrollBuscar;
-	
-
-	private JButton btnAniadirUsu;
-	private JButton btnModificar;
-	private JButton btnEliminar;
-	private JButton btnResumen;
+	private JButton btnMostrarBalance, btnCancelarBalance, btnGenerarFac, btnEliminarFac, btnBalanceMen, btnGenerarNueva, btnCancelarFac, btnEliminarFact, btnCancelarEliminar;
 	private JButton btnHome;
+	private JTextField txtFieldFechaFactura;
+	private JLabel lblTotalIngresos;
+	private JLabel lblFormato;
+	private JTextArea txtAreaFactura;
 
 	
 	public Vista_Facturacion() {
@@ -39,83 +37,9 @@ public class Vista_Facturacion extends JPanel {
 		
 		this.setSize(1366, 768);
 		
-		JPanel panelBalances = new JPanel();
-		panelBalances.setLayout(null);
-		panelBalances.setBounds(361, 38, 979, 659);
-		add(panelBalances);
-		
-		JLabel lblBalances = new JLabel("BALANCES");
-		lblBalances.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblBalances.setBounds(424, 25, 288, 50);
-		panelBalances.add(lblBalances);
-		
-		JLabel lblDescripcionBalance = new JLabel("DESCRIPCI\u00D3N");
-		lblDescripcionBalance.setToolTipText("");
-		lblDescripcionBalance.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblDescripcionBalance.setBounds(17, 271, 135, 35);
-		panelBalances.add(lblDescripcionBalance);
-		
-		btnMostrarBalance = new JButton("MOSTRAR");
-		btnMostrarBalance.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnMostrarBalance.setBackground(SystemColor.controlHighlight);
-		btnMostrarBalance.setBounds(304, 606, 251, 27);
-		panelBalances.add(btnMostrarBalance);
-		
-		btnLimpiar = new JButton("LIMPIAR");
-		btnLimpiar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnLimpiar.setBackground(SystemColor.controlHighlight);
-		btnLimpiar.setBounds(589, 606, 251, 27);
-		panelBalances.add(btnLimpiar);
-		
-		spMesBalances = new JSpinner();
-		spMesBalances.setBounds(444, 100, 230, 27);
-		panelBalances.add(spMesBalances);
-		
-		spAnioBalances = new JSpinner();
-		spAnioBalances.setBounds(713, 100, 230, 27);
-		panelBalances.add(spAnioBalances);
-		
-		JLabel lblDia_1 = new JLabel("D\u00CDA:");
-		lblDia_1.setBounds(183, 87, 154, 13);
-		panelBalances.add(lblDia_1);
-		
-		JLabel lblMes_1 = new JLabel("MES:");
-		lblMes_1.setBounds(444, 87, 154, 13);
-		panelBalances.add(lblMes_1);
-		
-		JLabel lblAo_1 = new JLabel("A\u00D1O:");
-		lblAo_1.setBounds(713, 85, 154, 13);
-		panelBalances.add(lblAo_1);
-		
-		spDiaBalances = new JSpinner();
-		spDiaBalances.setBounds(183, 100, 230, 27);
-		panelBalances.add(spDiaBalances);
-		
-		table = new JTable();
-		table.setBounds(184, 217, 770, 353);
-		panelBalances.add(table);
-		
-		JLabel lblTotalIngresos = new JLabel("Total Ingresos");
-		lblTotalIngresos.setBounds(290, 177, 75, 13);
-		panelBalances.add(lblTotalIngresos);
-		
-		JLabel lblTotalFactura = new JLabel("Total Facturas");
-		lblTotalFactura.setBounds(602, 177, 72, 13);
-		panelBalances.add(lblTotalFactura);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(375, 177, 146, 13);
-		panelBalances.add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(694, 177, 146, 13);
-		panelBalances.add(textField_2);
-		
-		JLabel lblTituloModulo = new JLabel("Facturación ...");
-		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblTituloModulo.setBounds(75, 658, 169, 28);
+		JLabel lblTituloModulo = new JLabel("Facturaci\u00F3n...");
+		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
+		lblTituloModulo.setBounds(95, 57, 213, 69);
 		add(lblTituloModulo);
 		
 
@@ -142,24 +66,28 @@ public class Vista_Facturacion extends JPanel {
 		btnGenerarFac = new JButton("GENERAR FACTURA");
 		btnGenerarFac.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnGenerarFac.setBackground(SystemColor.controlHighlight);
-		btnGenerarFac.setBounds(21, 272, 330, 42);
+		btnGenerarFac.setBounds(25, 307, 330, 64);
 		add(btnGenerarFac);
 		
 		btnEliminarFac = new JButton("ELIMINAR FACTURA");
 		btnEliminarFac.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnEliminarFac.setBackground(SystemColor.controlHighlight);
-		btnEliminarFac.setBounds(21, 324, 330, 42);
+		btnEliminarFac.setBounds(25, 381, 330, 64);
 		add(btnEliminarFac);
 		
 		btnBalanceMen = new JButton("BALANCE MENSUAL");
+		btnBalanceMen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnBalanceMen.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnBalanceMen.setBackground(SystemColor.controlHighlight);
-		btnBalanceMen.setBounds(21, 375, 330, 42);
+		btnBalanceMen.setBounds(25, 455, 330, 64);
 		add(btnBalanceMen);
 		
 		JPanel panelGenerarFac = new JPanel();
 		panelGenerarFac.setLayout(null);
-		panelGenerarFac.setBounds(361, 38, 979, 659);
+		panelGenerarFac.setBounds(377, 30, 979, 659);
 		add(panelGenerarFac);
 		
 		JLabel lblTituloPanel = new JLabel("NUEVA FACTURA");
@@ -182,88 +110,126 @@ public class Vista_Facturacion extends JPanel {
 		btnGenerarNueva = new JButton("GENERAR");
 		btnGenerarNueva.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnGenerarNueva.setBackground(SystemColor.controlHighlight);
-		btnGenerarNueva.setBounds(304, 606, 251, 27);
+		btnGenerarNueva.setBounds(304, 606, 251, 35);
 		panelGenerarFac.add(btnGenerarNueva);
 		
 		btnCancelarFac = new JButton("CANCELAR");
 		btnCancelarFac.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnCancelarFac.setBackground(SystemColor.controlHighlight);
-		btnCancelarFac.setBounds(589, 606, 251, 27);
+		btnCancelarFac.setBounds(589, 606, 251, 35);
 		panelGenerarFac.add(btnCancelarFac);
 		
-		scrollBuscar = new Scrollbar();
-		scrollBuscar.setBounds(184, 81, 770, 56);
-		panelGenerarFac.add(scrollBuscar);
+		JComboBox cbBuscarPedido = new JComboBox();
+		cbBuscarPedido.setBounds(188, 105, 772, 27);
+		panelGenerarFac.add(cbBuscarPedido);
 		
-		spMes = new JSpinner();
-		spMes.setBounds(445, 185, 230, 27);
-		panelGenerarFac.add(spMes);
+		JLabel lblFactura = new JLabel("F.FACTURA:");
+		lblFactura.setFont(new Font("Cambria Math", Font.PLAIN, 21));
+		lblFactura.setBounds(17, 173, 171, 35);
+		panelGenerarFac.add(lblFactura);
 		
-		spAnio = new JSpinner();
-		spAnio.setBounds(713, 185, 230, 27);
-		panelGenerarFac.add(spAnio);
+		txtFieldFechaFactura = new JTextField();
+		txtFieldFechaFactura.setColumns(10);
+		txtFieldFechaFactura.setBounds(188, 171, 772, 40);
+		panelGenerarFac.add(txtFieldFechaFactura);
 		
-		JLabel lblDia = new JLabel("D\u00CDA:");
-		lblDia.setBounds(184, 162, 154, 13);
-		panelGenerarFac.add(lblDia);
+		lblFormato = new JLabel("(AAAA-MM-DD)");
+		lblFormato.setForeground(Color.LIGHT_GRAY);
+		lblFormato.setFont(new Font("Cambria Math", Font.PLAIN, 14));
+		lblFormato.setBounds(17, 195, 144, 35);
+		panelGenerarFac.add(lblFormato);
 		
-		JLabel lblMes = new JLabel("MES:");
-		lblMes.setBounds(445, 162, 154, 13);
-		panelGenerarFac.add(lblMes);
-		
-		JLabel lblAo = new JLabel("A\u00D1O:");
-		lblAo.setBounds(713, 162, 154, 13);
-		panelGenerarFac.add(lblAo);
-		
-		spDia = new JSpinner();
-		spDia.setBounds(184, 185, 230, 27);
-		panelGenerarFac.add(spDia);
-		
-		tableDatosFactura = new JTable();
-		tableDatosFactura.setBounds(184, 260, 770, 310);
-		panelGenerarFac.add(tableDatosFactura);
+		txtAreaFactura = new JTextArea();
+		txtAreaFactura.setBounds(188, 227, 772, 353);
+		panelGenerarFac.add(txtAreaFactura);
 		
 		JPanel panelEliminarFac = new JPanel();
 		panelEliminarFac.setLayout(null);
-		panelEliminarFac.setBounds(361, 38, 979, 659);
+		panelEliminarFac.setBounds(377, 30, 979, 659);
 		add(panelEliminarFac);
 		
 		JLabel lblTituloPanel2 = new JLabel("ELIMINAR FACTURA");
 		lblTituloPanel2.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblTituloPanel2.setBounds(396, 25, 334, 50);
+		lblTituloPanel2.setBounds(422, 28, 334, 50);
 		panelEliminarFac.add(lblTituloPanel2);
 		
-		JLabel lblNumFact = new JLabel("N\u00BA FACTURA");
-		lblNumFact.setToolTipText("");
-		lblNumFact.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblNumFact.setBounds(17, 101, 161, 35);
-		panelEliminarFac.add(lblNumFact);
-		
-		JLabel lblDescripcion_1 = new JLabel("DESCRIPCI\u00D3N");
+		JLabel lblDescripcion_1 = new JLabel("FACTURAS:");
 		lblDescripcion_1.setToolTipText("");
 		lblDescripcion_1.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-		lblDescripcion_1.setBounds(17, 185, 135, 35);
+		lblDescripcion_1.setBounds(32, 141, 135, 35);
 		panelEliminarFac.add(lblDescripcion_1);
 		
 		btnEliminarFact = new JButton("ELIMINAR");
 		btnEliminarFact.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnEliminarFact.setBackground(SystemColor.controlHighlight);
-		btnEliminarFact.setBounds(317, 574, 251, 27);
+		btnEliminarFact.setBounds(304, 606, 251, 35);
 		panelEliminarFac.add(btnEliminarFact);
 		
 		btnCancelarEliminar = new JButton("CANCELAR");
 		btnCancelarEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnCancelarEliminar.setBackground(SystemColor.controlHighlight);
-		btnCancelarEliminar.setBounds(598, 574, 251, 27);
+		btnCancelarEliminar.setBounds(589, 606, 251, 35);
 		panelEliminarFac.add(btnCancelarEliminar);
 		
 		tableDescrip2 = new JTable();
-		tableDescrip2.setBounds(184, 164, 757, 354);
+		tableDescrip2.setBounds(184, 124, 772, 435);
 		panelEliminarFac.add(tableDescrip2);
 		
-		JTextField textField = new JTextField();
-		textField.setBounds(184, 101, 757, 27);
-		panelEliminarFac.add(textField);
+		JPanel panelBalances = new JPanel();
+		panelBalances.setLayout(null);
+		panelBalances.setBounds(377, 30, 979, 659);
+		add(panelBalances);
+		
+		JLabel lblBalances = new JLabel("BALANCES");
+		lblBalances.setFont(new Font("Tahoma", Font.BOLD, 32));
+		lblBalances.setBounds(424, 25, 288, 50);
+		panelBalances.add(lblBalances);
+		
+		btnMostrarBalance = new JButton("MOSTRAR");
+		btnMostrarBalance.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnMostrarBalance.setBackground(SystemColor.controlHighlight);
+		btnMostrarBalance.setBounds(304, 606, 251, 27);
+		panelBalances.add(btnMostrarBalance);
+		
+		btnCancelarBalance = new JButton("CANCELAR");
+		btnCancelarBalance.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCancelarBalance.setBackground(SystemColor.controlHighlight);
+		btnCancelarBalance.setBounds(589, 606, 251, 27);
+		panelBalances.add(btnCancelarBalance);
+		
+		JLabel lblMes_1 = new JLabel("MES:");
+		lblMes_1.setBounds(184, 102, 154, 13);
+		panelBalances.add(lblMes_1);
+		
+		JLabel lblAo_1 = new JLabel("A\u00D1O:");
+		lblAo_1.setBounds(415, 102, 154, 13);
+		panelBalances.add(lblAo_1);
+		
+		JLabel lblTotalFactura = new JLabel("Total Facturas");
+		lblTotalFactura.setBounds(415, 194, 72, 13);
+		panelBalances.add(lblTotalFactura);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(266, 194, 118, 13);
+		panelBalances.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(497, 194, 116, 13);
+		panelBalances.add(textField_2);
+		
+		JComboBox cbMes = new JComboBox();
+		cbMes.setBounds(184, 120, 200, 27);
+		panelBalances.add(cbMes);
+		
+		JComboBox cbAnio = new JComboBox();
+		cbAnio.setBounds(413, 120, 200, 27);
+		panelBalances.add(cbAnio);
+		
+		lblTotalIngresos = new JLabel("Total Ingresos");
+		lblTotalIngresos.setBounds(184, 194, 72, 13);
+		panelBalances.add(lblTotalIngresos);
 	}
 	
 	
@@ -276,13 +242,8 @@ public class Vista_Facturacion extends JPanel {
 
 	public void setControlador(Controlador controlador) {
 		btnHome.addActionListener(controlador);
-		//btnAniadirUsu.addActionListener(controlador);
-		//btnModificar.addActionListener(controlador);
-		//btnEliminar.addActionListener(controlador);
-		//btnResumen.addActionListener(controlador);
-
 		btnMostrarBalance.addActionListener(controlador);
-		btnLimpiar.addActionListener(controlador);
+		btnCancelarBalance.addActionListener(controlador);
 		btnGenerarFac.addActionListener(controlador);
 		btnEliminarFac.addActionListener(controlador);
 		btnBalanceMen.addActionListener(controlador);
@@ -292,6 +253,4 @@ public class Vista_Facturacion extends JPanel {
 		btnCancelarEliminar.addActionListener(controlador);
 
 	}
-	
-
 }

@@ -2,9 +2,11 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import model.data.Cliente;
+import model.data.Pedido;
 import model.db.PersistenciaMasaMadre;
 import views.*;
 
@@ -61,6 +63,7 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaM.getBtnProgramar())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaP);
+			vistaP.cargarComboBox(datos.selectClientes());
 		} else if (e.getSource().equals(vistaM.getBtnLogout())) {
 			int opcion = vistaM.salir();
 			if (opcion == JOptionPane.YES_OPTION) { 
@@ -78,17 +81,114 @@ public class Controlador implements ActionListener {
 				appPrincipal.cargarPanel(vistaM);
 			}
 		} else if (e.getSource().equals(vistaP.getBtnHome())) {
-			appPrincipal.quitarPanel(vistaP);
-			appPrincipal.cargarPanel(vistaM);
-		} else if (e.getSource().equals(vistaMar.getBtnHome())) {
-			appPrincipal.quitarPanel(vistaMar);
-			appPrincipal.cargarPanel(vistaM);
+			int opcionSalirCli = vistaP.salir();
+			if (opcionSalirCli == JOptionPane.YES_OPTION) {
+				vistaP.vaciarCampos();
+				vistaP.cambioModificarHome();
+				vistaP.cargarPanelAnadir();
+				appPrincipal.quitarPanel(vistaP);
+				appPrincipal.cargarPanel(vistaM);
+			}
+		} else if (e.getSource().equals(vistaP.getBtnResumenPedido())) {
+			vistaP.cargarPanelResumen();
+			vistaP.cargarTabla(datos.selectPedidos());
+		} else if (e.getSource().equals(vistaP.getBtnAniadirPedido())) {
+			vistaP.cambioModificar();
+			vistaP.cargarPanelAnadir();
+		} else if (e.getSource().equals(vistaP.getBtnBorrar())) {
+			int confirmadoPedido = vistaP.confirmaCancelar();
+			if (confirmadoPedido == JOptionPane.YES_OPTION) {
+				vistaP.vaciarCampos();
+			}
+		} else if (e.getSource().equals(vistaP.getBtnGuardar())) {
+			Pedido ped = vistaP.generarPedido();
+			if (!(ped == null)) {
+				int res = datos.insertPedido(ped);
+				if (res == 1) {
+					JOptionPane.showMessageDialog(vistaC, "Pedido añadido con éxito", "Añadido",
+							JOptionPane.INFORMATION_MESSAGE);
+					vistaC.vaciarCampos();
+				}else {
+					JOptionPane.showMessageDialog(vistaC, "Fallo al añadir el pedido", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		} else if (e.getSource().equals(vistaP.getBtnModificar())) {
+			int filaMod = vistaP.getTblPedidos().getSelectedRow();
+			
+			if (filaMod != -1) {
+				vistaP.cargarPanelAnadir();
+				vistaP.cambioModificar();
+				int num = (int) vistaP.getTblModel().getValueAt(filaMod, 0);
+				Pedido pedido = datos.selectPedidoId(num);
+				vistaP.cargarPedido(pedido);
+				
+			} else {
+				JOptionPane.showMessageDialog(vistaP, 
+						"Debe seleccionar el cliente que desea modificar",
+						"Error de selección", JOptionPane.ERROR_MESSAGE);
+			}
+		} else if (e.getSource().equals(vistaP.getBtnModificarP())) {
+			int confirmadoMod = vistaP.confirmaModificar();
+			if (confirmadoMod == JOptionPane.YES_OPTION) {
+				Pedido PedidoMod = vistaP.generarPedidoMod();
+				if (!(PedidoMod == null)) {
+					int resMod = datos.updatePedido(PedidoMod);
+					if (resMod == 1) {
+						JOptionPane.showMessageDialog(vistaP, "Pedido modificado con éxito", "Modificado",
+								JOptionPane.INFORMATION_MESSAGE);
+						vistaP.cargarTabla(datos.selectPedidos());
+						vistaP.cambioModificar();
+					}else {
+						JOptionPane.showMessageDialog(vistaP, "Fallo al modificar el Pedido", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			} else {
+				vistaP.cambioModificar();
+				vistaP.cargarPanelResumen();
+			}
+		} else if (e.getSource().equals(vistaP.getBtnEliminar())) {
+			int filaEl = vistaP.getTblPedidos().getSelectedRow();
+			//
+			if (filaEl != -1) {
+				int confirmado = vistaP.confirmaEliminar();
+				if (confirmado == JOptionPane.YES_OPTION) {
+					int num = (int) vistaP.getTblModel().getValueAt(filaEl, 0);
+					int resEl = datos.deletePedido(num);
+					if (resEl == 1) {
+						JOptionPane.showMessageDialog(vistaP, "Cliente eliminado con éxito", "Añadido",
+								JOptionPane.INFORMATION_MESSAGE);
+						vistaP.cargarTabla(datos.selectPedidos());
+						
+					}else {
+						JOptionPane.showMessageDialog(vistaC, "Fallo al eliminar el cliente", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			} else {
+				JOptionPane.showMessageDialog(vistaC, 
+						"Debe seleccionar el cliente que desea eliminar",
+						"Error de selección", JOptionPane.ERROR_MESSAGE);
+			}
+		}else if (e.getSource().equals(vistaMar.getBtnHome())) {
+			int opcionSalirMar = vistaMar.salir();
+			if (opcionSalirMar == JOptionPane.YES_OPTION) {
+				appPrincipal.quitarPanel(vistaMar);
+				appPrincipal.cargarPanel(vistaM);
+				vistaMar.vaciarCamposCom();
+				vistaMar.vaciarCamposEnc();
+			}
 		} else if (e.getSource().equals(vistaF.getBtnHome())) {
 			appPrincipal.quitarPanel(vistaF);
 			appPrincipal.cargarPanel(vistaM);
 		} else if (e.getSource().equals(vistaC.getBtnBorrar())) {
-			vistaC.vaciarCampos();
+			int confirmadoCliente = vistaC.confirmaCancelar();
+			if (confirmadoCliente == JOptionPane.YES_OPTION) {
+				vistaC.vaciarCampos();
+			}
 		}  else if (e.getSource().equals(vistaC.getBtnAnadir())) {
+			vistaC.cambioModificar();
 			vistaC.cargarPanelAnadir();
 		} else if (e.getSource().equals(vistaC.getBtnResumen())) {
 			vistaC.cargarPanelResumen();
@@ -165,9 +265,31 @@ public class Controlador implements ActionListener {
 				vistaC.cambioModificar();
 				vistaC.cargarPanelResumen();
 			}
+		} else if (e.getSource().equals(vistaMar.getBtnEnviarCom())) {
+			String pass = JOptionPane.showInputDialog(appPrincipal, "Introduce la contraseña de tu cuenta de gmail", "Inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
+			Cliente c = (Cliente) vistaMar.getCbCliente().getSelectedItem();
+			vistaMar.sendEmail(c.getEmailCliente(), vistaMar.getTxtFieldTituloCom().getText(), vistaMar.getTxtAreaCom().getText(), pass);
+		} else if (e.getSource().equals(vistaMar.getBtnCancelarCom())) {
+			int confirmadoCom = vistaMar.confirmaCancelar();
+			if (confirmadoCom == JOptionPane.YES_OPTION) {
+				vistaMar.vaciarCamposCom();
+			}
+		} else if (e.getSource().equals(vistaMar.getBtnEncuestas())) {
+			vistaMar.cargarPanelEnc();
+		} else if (e.getSource().equals(vistaMar.getBtnNuevaComunicacion())) {
+			vistaMar.cargarPanelCom();
+		} else if (e.getSource().equals(vistaMar.getBtnCancelarEncuesta())) {
+			int confirmadoEnc = vistaMar.confirmaCancelar();
+			if (confirmadoEnc == JOptionPane.YES_OPTION) {
+				vistaMar.vaciarCamposEnc();
+			}
+		} else if (e.getSource().equals(vistaMar.getBtnEnviarEncuesta())) {
+			String pass2 = JOptionPane.showInputDialog(appPrincipal, "Introduce la contraseña de tu cuenta de gmail", "Inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
+			ArrayList<String> dir = datos.selectEmails();
+			vistaMar.sendEmailEncuesta(dir, vistaMar.getTxtFieldTituloEncuesta().getText(), vistaMar.getTxtAreaEncuesta().getText(), pass2);
+		} else if (e.getSource().equals(vistaMar.getBtnCrearEnc())) {
+			vistaMar.crearEncuesta();
 		}
-		
-
 
 	}
 
