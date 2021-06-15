@@ -329,8 +329,178 @@ public class PersistenciaMasaMadre {
 			pstmt.setInt(1, 0);
 			pstmt.setString(2, ped.getDescripcionPedido());
 			pstmt.setDate(3, fecha);
-			pstmt.setInt(4, 2);
+			pstmt.setInt(4, ped.getIdCliente());
 			pstmt.setDouble(5, ped.getPrecioPedido());
+
+			res = pstmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			res = -200;
+			e.printStackTrace();
+		} catch (SQLException e) {
+			res = -100;
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return res;
+	}
+
+	public ArrayList<Pedido> selectPedidos() {
+		ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>();
+		
+		String query = "SELECT idPedido, Descripcion, FechaPedido, idCliente, Importe" + "	 FROM Pedidos";
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rslt = null;
+		
+		try {
+			con = acceso.getConexion();
+			stmt = con.createStatement();
+			rslt = stmt.executeQuery(query);
+
+			Pedido pedido = null;
+			String fecha = null;
+			while (rslt.next()) {
+				fecha = rslt.getDate(3).toString();
+				pedido = new Pedido(rslt.getInt(1), rslt.getString(2), fecha, rslt.getInt(4) , rslt.getDouble(5));
+				listaPedidos.add(pedido);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null)
+					rslt.close();
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return listaPedidos;
+	}
+
+	public Pedido selectPedidoId(int idPedido) {
+		Pedido pedido = null;
+		String query = "SELECT idPedido, Descripcion, FechaPedido, idCliente, Importe FROM Pedidos WHERE idPedido = ?";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rslt = null;
+
+		try {
+			con = acceso.getConexion();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, idPedido);
+
+			rslt = pstmt.executeQuery();
+
+			int id = 0;
+			String desc = "";
+			int idC = 0;
+			Double imp;
+			Date fech = null;
+			String dir = "";
+			if (rslt.next()) {
+				id = rslt.getInt(1);
+				desc = rslt.getString(2);
+				fech = rslt.getDate(3);
+				idC = rslt.getInt(4);
+				imp = rslt.getDouble(5);
+				pedido = new Pedido(id, desc, fech.toString(), idC, imp.toString());
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null)
+					rslt.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return pedido;
+	}
+
+	public int updatePedido(Pedido pedidoMod) {
+		String query = "UPDATE Pedidos SET Descripcion = ?, FechaPedido = ?, idCliente = ?, Importe = ?"
+				+ "WHERE idPedido = ?";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int res = 0;
+
+		Date fecha = Date.valueOf(pedidoMod.getFechaPedido());
+
+		try {
+			con = acceso.getConexion();
+
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, pedidoMod.getDescripcionPedido());
+			pstmt.setDate(2, fecha);
+			pstmt.setInt(3, pedidoMod.getIdCliente());
+			pstmt.setDouble(4, pedidoMod.getPrecioPedido());
+			pstmt.setInt(5, pedidoMod.getIdPedido());
+			
+
+			res = pstmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			res = -200;
+			e.printStackTrace();
+		} catch (SQLException e) {
+			res = -100;
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return res;
+	}
+
+	public int deletePedido(int idPedido) {
+		String query = "DELETE FROM Pedidos WHERE idPedido = ?";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int res = 0;
+
+		try {
+			con = acceso.getConexion();
+
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, idPedido);
 
 			res = pstmt.executeUpdate();
 

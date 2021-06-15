@@ -86,7 +86,7 @@ public class Vista_Modulos extends JPanel {
 		lblFacturas.setBounds(465, 554, 128, 52);
 		panel_modulos.add(lblFacturas);
 
-		lblProgramar = new JLabel("Programar");
+		lblProgramar = new JLabel("Pedidos");
 		lblProgramar.setFont(new Font("Sitka Small", Font.BOLD, 16));
 		lblProgramar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblProgramar.setBounds(760, 554, 128, 52);

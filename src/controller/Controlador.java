@@ -83,16 +83,16 @@ public class Controlador implements ActionListener {
 			int opcionSalirCli = vistaP.salir();
 			if (opcionSalirCli == JOptionPane.YES_OPTION) {
 				vistaP.vaciarCampos();
+				vistaP.cambioModificarHome();
 				vistaP.cargarPanelAnadir();
-				appPrincipal.quitarPanel(vistaC);
+				appPrincipal.quitarPanel(vistaP);
 				appPrincipal.cargarPanel(vistaM);
 			}
-			appPrincipal.quitarPanel(vistaP);
-			appPrincipal.cargarPanel(vistaM);
 		} else if (e.getSource().equals(vistaP.getBtnResumenPedido())) {
 			vistaP.cargarPanelResumen();
-			vistaP.cargarTabla();
+			vistaP.cargarTabla(datos.selectPedidos());
 		} else if (e.getSource().equals(vistaP.getBtnAniadirPedido())) {
+			vistaP.cambioModificar();
 			vistaP.cargarPanelAnadir();
 		} else if (e.getSource().equals(vistaP.getBtnBorrar())) {
 			vistaP.vaciarCampos();
@@ -109,7 +109,65 @@ public class Controlador implements ActionListener {
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
-		} else if (e.getSource().equals(vistaMar.getBtnHome())) {
+		} else if (e.getSource().equals(vistaP.getBtnModificar())) {
+			int filaMod = vistaP.getTblPedidos().getSelectedRow();
+			
+			if (filaMod != -1) {
+				vistaP.cargarPanelAnadir();
+				vistaP.cambioModificar();
+				int num = (int) vistaP.getTblModel().getValueAt(filaMod, 0);
+				Pedido pedido = datos.selectPedidoId(num);
+				vistaP.cargarPedido(pedido);
+				
+			} else {
+				JOptionPane.showMessageDialog(vistaP, 
+						"Debe seleccionar el cliente que desea modificar",
+						"Error de selección", JOptionPane.ERROR_MESSAGE);
+			}
+		} else if (e.getSource().equals(vistaP.getBtnModificarP())) {
+			int confirmadoMod = vistaP.confirmaModificar();
+			if (confirmadoMod == JOptionPane.YES_OPTION) {
+				Pedido PedidoMod = vistaP.generarPedidoMod();
+				if (!(PedidoMod == null)) {
+					int resMod = datos.updatePedido(PedidoMod);
+					if (resMod == 1) {
+						JOptionPane.showMessageDialog(vistaP, "Pedido modificado con éxito", "Modificado",
+								JOptionPane.INFORMATION_MESSAGE);
+						vistaP.cargarTabla(datos.selectPedidos());
+						vistaP.cambioModificar();
+					}else {
+						JOptionPane.showMessageDialog(vistaP, "Fallo al modificar el Pedido", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			} else {
+				vistaP.cambioModificar();
+				vistaP.cargarPanelResumen();
+			}
+		} else if (e.getSource().equals(vistaP.getBtnEliminar())) {
+			int filaEl = vistaP.getTblPedidos().getSelectedRow();
+			//
+			if (filaEl != -1) {
+				int confirmado = vistaP.confirmaEliminar();
+				if (confirmado == JOptionPane.YES_OPTION) {
+					int num = (int) vistaP.getTblModel().getValueAt(filaEl, 0);
+					int resEl = datos.deletePedido(num);
+					if (resEl == 1) {
+						JOptionPane.showMessageDialog(vistaP, "Cliente eliminado con éxito", "Añadido",
+								JOptionPane.INFORMATION_MESSAGE);
+						vistaP.cargarTabla(datos.selectPedidos());
+						
+					}else {
+						JOptionPane.showMessageDialog(vistaC, "Fallo al eliminar el cliente", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			} else {
+				JOptionPane.showMessageDialog(vistaC, 
+						"Debe seleccionar el cliente que desea eliminar",
+						"Error de selección", JOptionPane.ERROR_MESSAGE);
+			}
+		}else if (e.getSource().equals(vistaMar.getBtnHome())) {
 			appPrincipal.quitarPanel(vistaMar);
 			appPrincipal.cargarPanel(vistaM);
 		} else if (e.getSource().equals(vistaF.getBtnHome())) {
@@ -118,6 +176,7 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaC.getBtnBorrar())) {
 			vistaC.vaciarCampos();
 		}  else if (e.getSource().equals(vistaC.getBtnAnadir())) {
+			vistaC.cambioModificar();
 			vistaC.cargarPanelAnadir();
 		} else if (e.getSource().equals(vistaC.getBtnResumen())) {
 			vistaC.cargarPanelResumen();
@@ -190,7 +249,7 @@ public class Controlador implements ActionListener {
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
-			}else {
+			} else {
 				vistaC.cambioModificar();
 				vistaC.cargarPanelResumen();
 			}
