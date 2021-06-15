@@ -4,8 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -89,6 +92,7 @@ public class Vista_Pedidos extends JPanel {
 
 		panel_botones = new JPanel();
 		panel_botones.setBounds(10, 447, 980, 134);
+		panel_botones.setBackground(new Color(197, 224, 180));
 		panel_aniadir.add(panel_botones);
 		panel_botones.setLayout(null);
 
@@ -161,17 +165,19 @@ public class Vista_Pedidos extends JPanel {
 		
 		panel_resumen = new JPanel();
 		panel_resumen.setBounds(294, 31, 1000, 662);
+		panel_resumen.setBackground(new Color(197, 224, 180));
 		add(panel_resumen);
 		panel_resumen.setLayout(new BorderLayout(0, 0));
 		
 		panel_titulo = new JPanel();
+		panel_titulo.setBackground(new Color(197, 224, 180));
 		panel_resumen.add(panel_titulo, BorderLayout.NORTH);
 		
 		lblTitulo = new JLabel("RESUMEN PEDIDOS");
 		panel_titulo.add(lblTitulo);
 		
 		panel_botonesResumen = new JPanel();
-		
+		panel_botonesResumen.setBackground(new Color(197, 224, 180));
 		btnModificar = new JButton("MODIFICAR");
 		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panel_botonesResumen.add(btnModificar);
@@ -319,7 +325,7 @@ public class Vista_Pedidos extends JPanel {
 			fila[1] = ped.getDescripcionPedido();
 			fila[2] = ped.getFechaPedido();
 			fila[3] = ped.getIdCliente();
-			fila[4] = ped.getPrecioPedido();
+			fila[4] = (ped.getPrecioPedido() + " €");
 
 			tblModel.addRow(fila);
 		}
@@ -336,29 +342,30 @@ public class Vista_Pedidos extends JPanel {
 			JOptionPane.showMessageDialog(this, "El formato de la fecha debe ser AAAA-MM-DD", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		} else if (formatoImporte()) {
-			JOptionPane.showMessageDialog(this, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "El importe solo puede contener puntos para los decimales", "Error", JOptionPane.ERROR_MESSAGE);
 		} else {
-			Cliente p = (Cliente) cbCliente.getSelectedItem();
-			pedido = new Pedido(p.getIdCliente(), txtAreaDescrip.getText(), Double.parseDouble(txtImporte.getText()),
-					txtFecha.getText());
+			String tel = txtImporte.getText();
+			NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
+			try {
+				Number number = format.parse(tel);
+				Double importe = number.doubleValue();
+				Cliente p = (Cliente) cbCliente.getSelectedItem();
+				pedido = new Pedido(p.getIdCliente(), txtAreaDescrip.getText(), importe,
+						txtFecha.getText());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		return pedido;
 	}
 
 	public boolean formatoImporte() {
+		return false;
+		
 
-		String tel = txtImporte.getText();
-		String pattern = "###.##";
-		DecimalFormat decimalFormat = new DecimalFormat(pattern);
-		decimalFormat.applyPattern(tel);
-
-		Pattern pTel = Pattern.compile("^[0-9]+$");
-		Matcher mTel = pTel.matcher(tel);
-		if (!(mTel.find())) {
-			return true;
-		} else {
-			return false;
-		}
+		
 	}
 
 	private boolean formatoFecha() {

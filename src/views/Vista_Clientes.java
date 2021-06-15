@@ -50,6 +50,7 @@ public class Vista_Clientes extends JPanel {
 		setLayout(null);
 
 		this.setSize(1366, 768);
+		this.setBackground(new Color(197, 224, 180));
 
 		JLabel lblTituloModulo = new JLabel("Clientes ...");
 		lblTituloModulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
@@ -70,34 +71,26 @@ public class Vista_Clientes extends JPanel {
 
 		panelAnadir = new JPanel();
 		panelAnadir.setLayout(null);
+		panelAnadir.setBackground(new Color(197, 224, 180));
 		panelAnadir.setBounds(377, 30, 979, 659);
 		add(panelAnadir);
 
 		JLabel lblNombre = new JLabel("NOMBRE:");
 		lblNombre.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-
 		lblNombre.setBounds(58, 142, 135, 35);
-
 		lblNombre.setBounds(32, 141, 135, 35);
-
 		panelAnadir.add(lblNombre);
 
 		JLabel lblApellido = new JLabel("APELLIDO:");
 		lblApellido.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-
 		lblApellido.setBounds(58, 212, 142, 35);
-
 		lblApellido.setBounds(32, 211, 142, 35);
-
 		panelAnadir.add(lblApellido);
 
 		JLabel lblEmail = new JLabel("E-MAIL:");
 		lblEmail.setFont(new Font("Cambria Math", Font.PLAIN, 21));
-
 		lblEmail.setBounds(58, 301, 116, 37);
-
 		lblEmail.setBounds(32, 299, 116, 37);
-
 		panelAnadir.add(lblEmail);
 
 		JLabel lblDatosCliente = new JLabel("DATOS CLIENTE");
@@ -123,11 +116,8 @@ public class Vista_Clientes extends JPanel {
 		btnGuardar = new JButton("GUARDAR");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnGuardar.setBackground(SystemColor.controlHighlight);
-
 		btnGuardar.setBounds(283, 588, 251, 43);
-
 		btnGuardar.setBounds(304, 606, 251, 35);
-
 		panelAnadir.add(btnGuardar);
 
 		btnBorrar = new JButton("BORRAR");
@@ -135,9 +125,6 @@ public class Vista_Clientes extends JPanel {
 		btnBorrar.setBackground(SystemColor.controlHighlight);
 		btnBorrar.setBounds(589, 606, 251, 35);
 		panelAnadir.add(btnBorrar);
-
-		
-
 
 
 		txtId = new JTextField();
@@ -198,12 +185,14 @@ public class Vista_Clientes extends JPanel {
 
 		BorderLayout layResumen = new BorderLayout();
 		panelResumen = new JPanel();
+		panelResumen.setBackground(new Color(197, 224, 180));
 		panelResumen.setBounds(377, 30, 979, 659);
 		add(panelResumen);
 		panelResumen.setLayout(layResumen);
 
 		FlowLayout flTit = new FlowLayout(FlowLayout.CENTER);
 		JPanel pnlTituloRes = new JPanel();
+		pnlTituloRes.setBackground(new Color(197, 224, 180));
 		pnlTituloRes.setLayout(flTit);
 		JLabel lblResumenCliente = new JLabel("Resumen Cliente");
 		lblResumenCliente.setBounds(402, 10, 286, 39);
@@ -223,6 +212,7 @@ public class Vista_Clientes extends JPanel {
 
 		FlowLayout flBot = new FlowLayout(FlowLayout.CENTER, 60, 10);
 		JPanel pnlBtnRes = new JPanel();
+		pnlBtnRes.setBackground(new Color(197, 224, 180));
 		pnlBtnRes.setLayout(flBot);
 
 		Dimension dBtn = new Dimension(300, 40);
@@ -238,12 +228,6 @@ public class Vista_Clientes extends JPanel {
 		btnEliminar.setBackground(SystemColor.controlHighlight);
 		btnEliminar.setPreferredSize(dBtn);
 		pnlBtnRes.add(btnEliminar);
-
-		
-		
-		
-
-
 
 		panelResumen.add(pnlBtnRes, BorderLayout.SOUTH);
 
