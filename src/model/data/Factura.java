@@ -1,7 +1,5 @@
 package model.data;
 
-import java.util.Date;
-
 public class Factura {
 	
 	private int idFactura;

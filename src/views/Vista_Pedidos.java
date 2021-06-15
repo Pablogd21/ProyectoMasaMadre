@@ -3,9 +3,13 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,76 +70,92 @@ public class Vista_Pedidos extends JPanel {
 		this.setBackground(new Color(197, 224, 180));
 
 		panel_aniadir = new JPanel();
-		panel_aniadir.setBounds(294, 31, 1000, 662);
+		panel_aniadir.setBounds(362, 31, 932, 670);
 		panel_aniadir.setBackground(new Color(197, 224, 180));
 		add(panel_aniadir);
 		panel_aniadir.setLayout(null);
 
 		lblBuscarCliente = new JLabel("Nombre del Cliente:");
-		lblBuscarCliente.setBounds(10, 23, 121, 30);
+		lblBuscarCliente.setFont(new Font("Cambria Math", Font.PLAIN, 25));
+		lblBuscarCliente.setBounds(10, 103, 227, 30);
 		panel_aniadir.add(lblBuscarCliente);
 
 		lblFecha = new JLabel("Fecha del Pedido:");
-		lblFecha.setBounds(10, 64, 107, 30);
+		lblFecha.setFont(new Font("Cambria Math", Font.PLAIN, 25));
+		lblFecha.setBounds(10, 174, 194, 30);
 		panel_aniadir.add(lblFecha);
 
 		lblDescripcion = new JLabel("Descripci\u00F3n:");
-		lblDescripcion.setBounds(10, 105, 85, 30);
+		lblDescripcion.setFont(new Font("Cambria Math", Font.PLAIN, 25));
+		lblDescripcion.setBounds(10, 240, 155, 30);
 		panel_aniadir.add(lblDescripcion);
 
 		lblImporte = new JLabel("Importe:");
-		lblImporte.setBounds(10, 390, 65, 14);
+		lblImporte.setFont(new Font("Cambria Math", Font.PLAIN, 25));
+		lblImporte.setBounds(10, 509, 121, 30);
 		panel_aniadir.add(lblImporte);
 
 		panel_botones = new JPanel();
-		panel_botones.setBounds(10, 447, 980, 134);
+		panel_botones.setBounds(10, 555, 980, 104);
+		panel_botones.setBackground(new Color(197, 224, 180));
 		panel_aniadir.add(panel_botones);
 		panel_botones.setLayout(null);
 
 		btnGuardar = new JButton("GUARDAR");
-		btnGuardar.setBounds(660, 45, 150, 39);
+		btnGuardar.setBackground(SystemColor.controlHighlight);
+		btnGuardar.setBounds(559, 45, 175, 39);
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		panel_botones.add(btnGuardar);
 
 		btnBorrar = new JButton("BORRAR");
-		btnBorrar.setBounds(820, 45, 150, 39);
+		btnBorrar.setBackground(SystemColor.controlHighlight);
+		btnBorrar.setBounds(744, 45, 160, 39);
 		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		panel_botones.add(btnBorrar);
 		
 		btnModificarP = new JButton("MODIFICAR");
+		btnModificarP.setBackground(SystemColor.controlHighlight);
 		btnModificarP.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnModificarP.setBounds(660, 45, 150, 39);
+		btnModificarP.setBounds(559, 45, 175, 39);
 		btnModificarP.setVisible(false);
 		panel_botones.add(btnModificarP);
 
 		txtAreaDescrip = new JTextArea();
 		txtAreaDescrip.setWrapStyleWord(true);
 		txtAreaDescrip.setLineWrap(true);
-		txtAreaDescrip.setBounds(368, 118, 622, 255);
+		txtAreaDescrip.setBounds(247, 244, 675, 251);
 		panel_aniadir.add(txtAreaDescrip);
 
 		txtFecha = new JTextField();
 		txtFecha.setColumns(10);
-		txtFecha.setBounds(368, 69, 622, 20);
+		txtFecha.setBounds(247, 171, 675, 38);
 		panel_aniadir.add(txtFecha);
 
 		txtImporte = new JTextField();
-		txtImporte.setBounds(835, 387, 155, 20);
+		txtImporte.setBounds(767, 506, 155, 38);
 		panel_aniadir.add(txtImporte);
 		txtImporte.setColumns(10);
 
 		cbCliente = new JComboBox<Cliente>();
-		cbCliente.setBounds(368, 27, 622, 22);
+		cbCliente.setBounds(247, 100, 675, 39);
 		panel_aniadir.add(cbCliente);
+		
+		JLabel lblAniadirPedido = new JLabel("DATOS PEDIDO");
+		lblAniadirPedido.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAniadirPedido.setFont(new Font("Tahoma", Font.BOLD, 32));
+		lblAniadirPedido.setBounds(0, 11, 932, 52);
+		panel_aniadir.add(lblAniadirPedido);
 
 		btnAniadirPedido = new JButton("A\u00F1adir Pedido");
-		btnAniadirPedido.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		btnAniadirPedido.setBounds(49, 203, 195, 65);
+		btnAniadirPedido.setBackground(SystemColor.controlHighlight);
+		btnAniadirPedido.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnAniadirPedido.setBounds(10, 283, 330, 64);
 		add(btnAniadirPedido);
 
-		btnResumenPedido = new JButton("Resumen Pedido");
-		btnResumenPedido.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		btnResumenPedido.setBounds(49, 292, 195, 65);
+		btnResumenPedido = new JButton("Pedidos");
+		btnResumenPedido.setBackground(SystemColor.controlHighlight);
+		btnResumenPedido.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnResumenPedido.setBounds(10, 377, 330, 64);
 		add(btnResumenPedido);
 
 		panel_home = new JPanel();
@@ -160,23 +180,28 @@ public class Vista_Pedidos extends JPanel {
 		panel_home.add(btnHome);
 		
 		panel_resumen = new JPanel();
-		panel_resumen.setBounds(294, 31, 1000, 662);
+		panel_resumen.setBounds(362, 31, 932, 670);
+		panel_resumen.setBackground(new Color(197, 224, 180));
 		add(panel_resumen);
 		panel_resumen.setLayout(new BorderLayout(0, 0));
 		
 		panel_titulo = new JPanel();
+		panel_titulo.setBackground(new Color(197, 224, 180));
 		panel_resumen.add(panel_titulo, BorderLayout.NORTH);
 		
 		lblTitulo = new JLabel("RESUMEN PEDIDOS");
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 32));
 		panel_titulo.add(lblTitulo);
 		
 		panel_botonesResumen = new JPanel();
-		
+		panel_botonesResumen.setBackground(new Color(197, 224, 180));
 		btnModificar = new JButton("MODIFICAR");
+		btnModificar.setBackground(SystemColor.controlHighlight);
 		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panel_botonesResumen.add(btnModificar);
 		
 		btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setBackground(SystemColor.controlHighlight);
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panel_botonesResumen.add(btnEliminar);
 		
@@ -245,7 +270,6 @@ public class Vista_Pedidos extends JPanel {
 		}
 
 		cbCliente.setModel(cmbModel);
-
 	}
 
 	public void setControlador(Controlador controlador) {
@@ -264,7 +288,6 @@ public class Vista_Pedidos extends JPanel {
 		txtAreaDescrip.setText("");
 		txtFecha.setText("");
 		txtImporte.setText("");
-
 	}
 
 	public int confirmaEliminar() {
@@ -319,7 +342,7 @@ public class Vista_Pedidos extends JPanel {
 			fila[1] = ped.getDescripcionPedido();
 			fila[2] = ped.getFechaPedido();
 			fila[3] = ped.getIdCliente();
-			fila[4] = ped.getPrecioPedido();
+			fila[4] = (ped.getPrecioPedido() + " €");
 
 			tblModel.addRow(fila);
 		}
@@ -328,37 +351,27 @@ public class Vista_Pedidos extends JPanel {
 	public Pedido generarPedido() {
 		Pedido pedido = null;
 
-		// TODO hacer comprobacion combo box
 		if (txtFecha.getText().equals("") || txtAreaDescrip.getText().equals("") || txtImporte.getText().equals("")) {
 			JOptionPane.showMessageDialog(this, "Introduzca todos los datos por favor", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		} else if (formatoFecha()) {
 			JOptionPane.showMessageDialog(this, "El formato de la fecha debe ser AAAA-MM-DD", "Error",
 					JOptionPane.ERROR_MESSAGE);
-		} else if (formatoImporte()) {
-			JOptionPane.showMessageDialog(this, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
 		} else {
-			Cliente p = (Cliente) cbCliente.getSelectedItem();
-			pedido = new Pedido(p.getIdCliente(), txtAreaDescrip.getText(), Double.parseDouble(txtImporte.getText()),
-					txtFecha.getText());
+			String tel = txtImporte.getText();
+			NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
+			try {
+				Number number = format.parse(tel);
+				Double importe = number.doubleValue();
+				Cliente p = (Cliente) cbCliente.getSelectedItem();
+				pedido = new Pedido(p.getIdCliente(), txtAreaDescrip.getText(), importe,
+						txtFecha.getText());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
 		}
 		return pedido;
-	}
-
-	public boolean formatoImporte() {
-
-		String tel = txtImporte.getText();
-		String pattern = "###.##";
-		DecimalFormat decimalFormat = new DecimalFormat(pattern);
-		decimalFormat.applyPattern(tel);
-
-		Pattern pTel = Pattern.compile("^[0-9]+$");
-		Matcher mTel = pTel.matcher(tel);
-		if (!(mTel.find())) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 
 	private boolean formatoFecha() {
@@ -417,12 +430,15 @@ public class Vista_Pedidos extends JPanel {
 		}
 	}
 	
-	public void cargarPedido(Pedido pedido) {
-		cbCliente.setSelectedItem(pedido.getIdCliente());
+	public void cargarPedido(Pedido pedido, Cliente cliCb) {
+		cbCliente.setEditable(true);
+		cbCliente.setSelectedItem(cliCb);
 		txtFecha.setText(pedido.getFechaPedido());
 		txtAreaDescrip.setText(pedido.getDescripcionPedido());
 		txtImporte.setText(pedido.getImportePedido1());
 		txtId.setText(pedido.getIdPedido() + "");
+		cbCliente.setEditable(false);
+		
 	}
 	
 	public void cambioModificar() {
@@ -444,21 +460,33 @@ public class Vista_Pedidos extends JPanel {
 		vaciarCampos();
 	}
 	
+	public void cambioModificarVisible() {
+			btnModificarP.setVisible(true);
+			btnGuardar.setVisible(false);
+		
+		vaciarCampos();
+	}
+	
 	public Pedido generarPedidoMod() {
 		Pedido pedido = null;
-		// TODO comprobacion combo box
 		if (txtFecha.getText().equals("") || txtAreaDescrip.getText().equals("") || txtImporte.getText().equals("")) {
 			JOptionPane.showMessageDialog(this, "Introduzca todos los datos por favor", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		} else if (formatoFecha()) {
 			JOptionPane.showMessageDialog(this, "El formato de la fecha debe ser AAAA-MM-DD", "Error",
 					JOptionPane.ERROR_MESSAGE);
-		} else if (formatoImporte()) {
-			JOptionPane.showMessageDialog(this, "Introduzca un número de teléfono válido por favor", "Error",
-					JOptionPane.ERROR_MESSAGE);
 		} else {
-			Cliente p = (Cliente) cbCliente.getSelectedItem();
-			pedido = new Pedido(Integer.parseInt(txtId.getText()), txtAreaDescrip.getText(),txtFecha.getText(), p.getIdCliente(),Double.parseDouble(txtImporte.getText()));
+			String tel = txtImporte.getText();
+			NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
+			Number number;
+			try {
+				number = format.parse(tel);
+				Double importe = number.doubleValue();
+				Cliente p = (Cliente) cbCliente.getSelectedItem();
+				pedido = new Pedido(Integer.parseInt(txtId.getText()), txtAreaDescrip.getText(),txtFecha.getText(), p.getIdCliente(),importe);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 	return pedido;
 	}
@@ -518,5 +546,4 @@ public class Vista_Pedidos extends JPanel {
 	public JButton getBtnModificarP() {
 		return btnModificarP;
 	}
-
 }

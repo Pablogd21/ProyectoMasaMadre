@@ -57,6 +57,7 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource().equals(vistaM.getBtnFacturas())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaF);
+			vistaF.cargarComboBox(datos.selectPedidos());
 		} else if (e.getSource().equals(vistaM.getBtnMarketing())) {
 			appPrincipal.quitarPanel(vistaM);
 			appPrincipal.cargarPanel(vistaMar);
@@ -94,7 +95,7 @@ public class Controlador implements ActionListener {
 			vistaP.cargarPanelResumen();
 			vistaP.cargarTabla(datos.selectPedidos());
 		} else if (e.getSource().equals(vistaP.getBtnAniadirPedido())) {
-			vistaP.cambioModificar();
+			vistaP.cambioModificarHome();
 			vistaP.cargarPanelAnadir();
 		} else if (e.getSource().equals(vistaP.getBtnBorrar())) {
 			int confirmadoPedido = vistaP.confirmaCancelar();
@@ -106,11 +107,11 @@ public class Controlador implements ActionListener {
 			if (!(ped == null)) {
 				int res = datos.insertPedido(ped);
 				if (res == 1) {
-					JOptionPane.showMessageDialog(vistaC, "Pedido añadido con éxito", "Añadido",
+					JOptionPane.showMessageDialog(vistaP, "Pedido añadido con éxito", "Añadido",
 							JOptionPane.INFORMATION_MESSAGE);
-					vistaC.vaciarCampos();
+					vistaP.vaciarCampos();
 				}else {
-					JOptionPane.showMessageDialog(vistaC, "Fallo al añadir el pedido", "Error",
+					JOptionPane.showMessageDialog(vistaP, "Fallo al añadir el pedido", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
@@ -119,10 +120,11 @@ public class Controlador implements ActionListener {
 			
 			if (filaMod != -1) {
 				vistaP.cargarPanelAnadir();
-				vistaP.cambioModificar();
+				vistaP.cambioModificarVisible();
 				int num = (int) vistaP.getTblModel().getValueAt(filaMod, 0);
 				Pedido pedido = datos.selectPedidoId(num);
-				vistaP.cargarPedido(pedido);
+				Cliente cliCb = datos.selectClienteId(pedido.getIdCliente());
+				vistaP.cargarPedido(pedido, cliCb);
 				
 			} else {
 				JOptionPane.showMessageDialog(vistaP, 
@@ -151,7 +153,6 @@ public class Controlador implements ActionListener {
 			}
 		} else if (e.getSource().equals(vistaP.getBtnEliminar())) {
 			int filaEl = vistaP.getTblPedidos().getSelectedRow();
-			//
 			if (filaEl != -1) {
 				int confirmado = vistaP.confirmaEliminar();
 				if (confirmado == JOptionPane.YES_OPTION) {
@@ -161,7 +162,6 @@ public class Controlador implements ActionListener {
 						JOptionPane.showMessageDialog(vistaP, "Cliente eliminado con éxito", "Añadido",
 								JOptionPane.INFORMATION_MESSAGE);
 						vistaP.cargarTabla(datos.selectPedidos());
-						
 					}else {
 						JOptionPane.showMessageDialog(vistaC, "Fallo al eliminar el cliente", "Error",
 								JOptionPane.ERROR_MESSAGE);
@@ -181,15 +181,19 @@ public class Controlador implements ActionListener {
 				vistaMar.vaciarCamposEnc();
 			}
 		} else if (e.getSource().equals(vistaF.getBtnHome())) {
-			appPrincipal.quitarPanel(vistaF);
-			appPrincipal.cargarPanel(vistaM);
+			int opcionSalirF = vistaF.salir();
+			if (opcionSalirF == JOptionPane.YES_OPTION) {
+				appPrincipal.quitarPanel(vistaF);
+				appPrincipal.cargarPanel(vistaM);
+				vistaF.vaciarCampos();
+			}
 		} else if (e.getSource().equals(vistaC.getBtnBorrar())) {
 			int confirmadoCliente = vistaC.confirmaCancelar();
 			if (confirmadoCliente == JOptionPane.YES_OPTION) {
 				vistaC.vaciarCampos();
 			}
 		}  else if (e.getSource().equals(vistaC.getBtnAnadir())) {
-			vistaC.cambioModificar();
+			vistaC.cambioModificarHome();
 			vistaC.cargarPanelAnadir();
 		} else if (e.getSource().equals(vistaC.getBtnResumen())) {
 			vistaC.cargarPanelResumen();
@@ -213,7 +217,7 @@ public class Controlador implements ActionListener {
 			
 			if (filaMod != -1) {
 				vistaC.cargarPanelAnadir();
-				vistaC.cambioModificar();
+				vistaC.cambioModificarVisible();
 				int num = (int) vistaC.getTblModel().getValueAt(filaMod, 0);
 				Cliente cliente = datos.selectClienteId(num);
 				vistaC.cargarCliente(cliente);
@@ -290,6 +294,40 @@ public class Controlador implements ActionListener {
 			vistaMar.sendEmailEncuesta(dir, vistaMar.getTxtFieldTituloEncuesta().getText(), vistaMar.getTxtAreaEncuesta().getText(), pass2);
 		} else if (e.getSource().equals(vistaMar.getBtnCrearEnc())) {
 			vistaMar.crearEncuesta();
+		} else if (e.getSource().equals(vistaF.getBtnEliminarFac())){
+			vistaF.cargarPanelEliminar();
+			vistaF.cargarTabla(datos.selectFactura());
+		} else if (e.getSource().equals(vistaF.getBtnGenerarFac())){
+			vistaF.cargarPanelGenerar();
+		} else if (e.getSource().equals(vistaF.getBtnBalanceMen())) {
+			vistaF.cargarPanelBalance();
+		} else if (e.getSource().equals(vistaF.getBtnEliminarFact())) {
+			int filaElF = vistaF.getTableDescrip2().getSelectedRow();
+			
+			if(filaElF != -1) {
+				int confirmado = vistaF.confirmaEliminar();
+				if (confirmado == JOptionPane.YES_OPTION) {
+					int numF = (int) vistaF.getTblModel().getValueAt(filaElF, 0);
+					int resElF = datos.deleteFactura(numF);
+					if (resElF == 1) {
+						JOptionPane.showMessageDialog(vistaF, "Factura eliminada con éxito", "Añadido",
+								JOptionPane.INFORMATION_MESSAGE);
+						vistaF.cargarTabla(datos.selectFactura());
+					}else {
+						JOptionPane.showMessageDialog(vistaF, "Fallo al eliminar la factura", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			} else {
+				JOptionPane.showMessageDialog(vistaF, 
+						"Debe seleccionar la factura que desea eliminar",
+						"Error de selección", JOptionPane.ERROR_MESSAGE);
+			}
+		} else if (e.getSource().equals(vistaF.getBtnCancelarFac())) {
+			int confirmadoCanF = vistaF.confirmaCancelar();
+			if (confirmadoCanF == JOptionPane.YES_OPTION) {
+				vistaF.vaciarCampos();
+			}
 		}
 
 	}
