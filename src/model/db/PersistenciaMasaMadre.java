@@ -524,4 +524,41 @@ public class PersistenciaMasaMadre {
 		return res;
 	}
 	
+	public ArrayList<String> selectEmails() {
+		ArrayList<String> listaEmails = new ArrayList<String>();
+		
+		String query = "SELECT Email FROM Clientes";
+		
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rslt = null;
+		
+		try {
+			con = acceso.getConexion();
+			stmt = con.createStatement();
+			rslt = stmt.executeQuery(query);
+			
+			String email = null;
+			while (rslt.next()) {
+				email = rslt.getString(1);
+				listaEmails.add(email);
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null) rslt.close();
+				if (stmt != null) stmt.close();
+				if (con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return listaEmails;
+	}
+	
 }

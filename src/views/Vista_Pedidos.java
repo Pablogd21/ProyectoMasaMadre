@@ -284,6 +284,12 @@ public class Vista_Pedidos extends JPanel {
 				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 		return opcion3;
 	}
+	
+	public int confirmaCancelar() {
+		int opcion4 = JOptionPane.showConfirmDialog( this, "¿Desea borrar los campos?", "Borrar", JOptionPane.YES_NO_OPTION,
+				 JOptionPane.WARNING_MESSAGE); 
+		return opcion4;
+	}
 
 	public void cargarPanelAnadir() {
 		if (!panel_aniadir.isVisible()) {

@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 import model.data.Cliente;
@@ -95,7 +97,10 @@ public class Controlador implements ActionListener {
 			vistaP.cambioModificar();
 			vistaP.cargarPanelAnadir();
 		} else if (e.getSource().equals(vistaP.getBtnBorrar())) {
-			vistaP.vaciarCampos();
+			int confirmadoPedido = vistaP.confirmaCancelar();
+			if (confirmadoPedido == JOptionPane.YES_OPTION) {
+				vistaP.vaciarCampos();
+			}
 		} else if (e.getSource().equals(vistaP.getBtnGuardar())) {
 			Pedido ped = vistaP.generarPedido();
 			if (!(ped == null)) {
@@ -168,13 +173,21 @@ public class Controlador implements ActionListener {
 						"Error de selección", JOptionPane.ERROR_MESSAGE);
 			}
 		}else if (e.getSource().equals(vistaMar.getBtnHome())) {
-			appPrincipal.quitarPanel(vistaMar);
-			appPrincipal.cargarPanel(vistaM);
+			int opcionSalirMar = vistaMar.salir();
+			if (opcionSalirMar == JOptionPane.YES_OPTION) {
+				appPrincipal.quitarPanel(vistaMar);
+				appPrincipal.cargarPanel(vistaM);
+				vistaMar.vaciarCamposCom();
+				vistaMar.vaciarCamposEnc();
+			}
 		} else if (e.getSource().equals(vistaF.getBtnHome())) {
 			appPrincipal.quitarPanel(vistaF);
 			appPrincipal.cargarPanel(vistaM);
 		} else if (e.getSource().equals(vistaC.getBtnBorrar())) {
-			vistaC.vaciarCampos();
+			int confirmadoCliente = vistaC.confirmaCancelar();
+			if (confirmadoCliente == JOptionPane.YES_OPTION) {
+				vistaC.vaciarCampos();
+			}
 		}  else if (e.getSource().equals(vistaC.getBtnAnadir())) {
 			vistaC.cambioModificar();
 			vistaC.cargarPanelAnadir();
@@ -253,9 +266,31 @@ public class Controlador implements ActionListener {
 				vistaC.cambioModificar();
 				vistaC.cargarPanelResumen();
 			}
+		} else if (e.getSource().equals(vistaMar.getBtnEnviarCom())) {
+			String pass = JOptionPane.showInputDialog(appPrincipal, "Introduce la contraseña de tu cuenta de gmail", "Inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
+			Cliente c = (Cliente) vistaMar.getCbCliente().getSelectedItem();
+			vistaMar.sendEmail(c.getEmailCliente(), vistaMar.getTxtFieldTituloCom().getText(), vistaMar.getTxtAreaCom().getText(), pass);
+		} else if (e.getSource().equals(vistaMar.getBtnCancelarCom())) {
+			int confirmadoCom = vistaMar.confirmaCancelar();
+			if (confirmadoCom == JOptionPane.YES_OPTION) {
+				vistaMar.vaciarCamposCom();
+			}
+		} else if (e.getSource().equals(vistaMar.getBtnEncuestas())) {
+			vistaMar.cargarPanelEnc();
+		} else if (e.getSource().equals(vistaMar.getBtnNuevaComunicacion())) {
+			vistaMar.cargarPanelCom();
+		} else if (e.getSource().equals(vistaMar.getBtnCancelarEncuesta())) {
+			int confirmadoEnc = vistaMar.confirmaCancelar();
+			if (confirmadoEnc == JOptionPane.YES_OPTION) {
+				vistaMar.vaciarCamposEnc();
+			}
+		} else if (e.getSource().equals(vistaMar.getBtnEnviarEncuesta())) {
+			String pass2 = JOptionPane.showInputDialog(appPrincipal, "Introduce la contraseña de tu cuenta de gmail", "Inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
+			ArrayList<String> dir = datos.selectEmails();
+			vistaMar.sendEmailEncuesta(dir, vistaMar.getTxtFieldTituloEncuesta().getText(), vistaMar.getTxtAreaEncuesta().getText(), pass2);
+		} else if (e.getSource().equals(vistaMar.getBtnCrearEnc())) {
+			vistaMar.crearEncuesta();
 		}
-		
-
 
 	}
 

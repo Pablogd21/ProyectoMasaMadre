@@ -1,7 +1,5 @@
 package model.data;
 
-import java.util.Date;
-
 public class Cliente {
 
 	private int idCliente;
@@ -96,7 +94,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Código Cliente: " + idCliente + "\n Nombre: " + nombreCliente + "\n Apellido: " + apellidoCliente;
+		return "Código Cliente: " + idCliente + "\n Nombre: " + nombreCliente + "\n Apellido: " + apellidoCliente + "\n Email: " + emailCliente;
 		/*return "Código Cliente: " + idCliente + "\n Nombre: " + nombreCliente + "\n Apellido: " + apellidoCliente
 				+ "\n Email: " + emailCliente + "\n Telefono: " + telefonoCliente + "\n Fecha Nacimiento: "
 				+ fechaNaCliente + "\n Dirección: " + direccionCliente;*/
