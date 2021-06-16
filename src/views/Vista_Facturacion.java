@@ -145,23 +145,14 @@ public class Vista_Facturacion extends JPanel {
 
 		JPanel panel_home = new JPanel();
 		panel_home.setBackground(new Color(197, 224, 180));
-		panel_home.setBounds(25, 11, 32, 32);
+		panel_home.setBounds(25, 11, 45, 45);
 		add(panel_home);
 
 		btnHome = new JButton("");
-		btnHome.setIcon(new ImageIcon(Vista_Facturacion.class.getResource("/imagenes/home.png")));
+		btnHome.setIcon(new ImageIcon(Vista_Facturacion.class.getResource("/imagenes/home_grande.png")));
 		btnHome.setBorder(null);
 		btnHome.setBackground(null);
 		btnHome.setContentAreaFilled(false);
-		btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				btnHome.setIcon(new ImageIcon(Vista_Facturacion.class.getResource("/imagenes/home_grande.png")));
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				btnHome.setIcon(new ImageIcon(Vista_Facturacion.class.getResource("/imagenes/home.png")));
-			}
-		});
 		panel_home.add(btnHome);
 
 		btnGenerarFac = new JButton("GENERAR FACTURA");
@@ -584,21 +575,12 @@ public class Vista_Facturacion extends JPanel {
 
 		textField_2.setText(contador + "");
 		textField_1.setText(importe + " €");
-		// DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		// dataset.setValue(contador, "Nº Facturas", "Mes");
 
 		DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
 		dataset2.setValue(importe, "Importe Mes", "");
 		dataset2.setValue(importeAnio, "Importe Año", "");
 
-		// Creando el Grafico
-//		JFreeChart chartCont = ChartFactory.createBarChart3D("Total Facturas", "Mes", "Nº Facturas", dataset,
-//				PlotOrientation.VERTICAL, true, true, false);
-//		chartCont.getTitle().setPaint(Color.black);
-//		CategoryPlot p = chartCont.getCategoryPlot();
-//		p.setRangeGridlinePaint(Color.red);
-//		// Mostrar Grafico
-//		ChartPanel chartPanel = new ChartPanel(chartCont);
+
 
 		chartImp = ChartFactory.createBarChart3D("Total Importes", "", "Euros", dataset2, PlotOrientation.VERTICAL,
 				true, true, false);
@@ -607,7 +589,8 @@ public class Vista_Facturacion extends JPanel {
 		p2.setRangeGridlinePaint(Color.red);
 		chartPanel2 = new ChartPanel(chartImp);
 		// panel_grafico.add(chartPanel, BorderLayout.CENTER);
-		chartPanel2.setSize(788, 351);
+		//chartPanel2.setSize(788, 351);
+		chartPanel2.setBounds(0, 0, 788, 351);
 		panel_grafico.add(chartPanel2);
 		panel_grafico.repaint();
 		panelBalances.repaint();
