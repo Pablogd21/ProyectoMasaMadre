@@ -386,11 +386,11 @@ public class Vista_Pedidos extends JPanel {
 		return pedido;
 	}
 
-	private boolean formatoFecha() {
+	public boolean formatoFecha() {
 		String fech = txtFecha.getText();
 		String[] fechaComp = fech.split("-");
 		boolean fechaCorrecta = false;
-		Pattern pFe = Pattern.compile("^\\d{4}([\\-/.])(0?[1-9]|1[1-2])\\1(3[01]|[12][0-9]|0?[1-9])$");
+		Pattern pFe = Pattern.compile("^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$");
 		Matcher mFe = pFe.matcher(fech);
 		if (mFe.find()) {
 			int anio = Integer.parseInt(fechaComp[0]);

@@ -159,16 +159,16 @@ public class Controlador implements ActionListener {
 					int num = (int) vistaP.getTblModel().getValueAt(filaEl, 0);
 					int resEl = datos.deletePedido(num);
 					if (resEl == 1) {
-						JOptionPane.showMessageDialog(vistaP, "Cliente eliminado con éxito", "Añadido",
+						JOptionPane.showMessageDialog(vistaP, "Pedido eliminado con éxito", "Añadido",
 								JOptionPane.INFORMATION_MESSAGE);
 						vistaP.cargarTabla(datos.selectPedidos());
 					} else {
-						JOptionPane.showMessageDialog(vistaC, "Fallo al eliminar el cliente", "Error",
+						JOptionPane.showMessageDialog(vistaP, "Fallo al eliminar el pedido", "Error",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			} else {
-				JOptionPane.showMessageDialog(vistaC, "Debe seleccionar el cliente que desea eliminar",
+				JOptionPane.showMessageDialog(vistaP, "Debe seleccionar el pedido que desea eliminar",
 						"Error de selección", JOptionPane.ERROR_MESSAGE);
 			}
 		} else if (e.getSource().equals(vistaMar.getBtnHome())) {
@@ -302,6 +302,7 @@ public class Controlador implements ActionListener {
 			vistaF.cargarPanelGenerar();
 		} else if (e.getSource().equals(vistaF.getBtnBalanceMen())) {
 			vistaF.cargarPanelBalance();
+			vistaF.cargarcbMes();
 		} else if (e.getSource().equals(vistaF.getBtnEliminarFact())) {
 			int filaElF = vistaF.getTableDescrip2().getSelectedRow();
 
@@ -351,6 +352,27 @@ public class Controlador implements ActionListener {
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
+		} else if (e.getSource().equals(vistaF.getBtnMostrarBalance())) {
+			ArrayList<Double> result = datos.selectImportesFactura((int) vistaF.getCbMes().getSelectedItem());
+			Double importesAnio = datos.selectImportesFacturaAnio(2021);
+			String a = Double.toString(result.get(0));
+			char cont, cont1, cont2;
+			String contador = "";
+			if (a.length() == 3) {
+				cont = a.charAt(0);
+				contador = cont + "";
+			} else if (a.length() == 4) {
+				cont = a.charAt(0);
+				cont1 = a.charAt(1);
+				contador = cont + "" + cont1;
+			} else if (a.length() == 5) {
+				cont = a.charAt(0);
+				cont1 = a.charAt(1);
+				cont2 = a.charAt(2);
+				contador = cont + "" + cont1 + "" + cont2;
+			}
+			
+			vistaF.cargarGrafico(Integer.parseInt(contador), result.get(1), importesAnio);
 		}
 
 	}

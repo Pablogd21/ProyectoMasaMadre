@@ -758,4 +758,85 @@ public class PersistenciaMasaMadre {
 
 		return dFactura;
 	}
+
+	public ArrayList<Double> selectImportesFactura(int mes) {
+		ArrayList<Double> resultados = new ArrayList<Double>();
+		String query = "SELECT COUNT(Pedidos.Importe), SUM(Pedidos.Importe), MONTH(Facturas.FechaFactura)"
+				+ " FROM Pedidos, Facturas WHERE Pedidos.idPedido = Facturas.idPedido AND MONTH(Facturas.FechaFactura) = ?";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rslt = null;
+		
+		try {
+			con = acceso.getConexion();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, mes);
+			
+			rslt = pstmt.executeQuery();
+			while (rslt.next()) {
+				Double cont = Double.parseDouble(rslt.getInt(1)+"");
+				resultados.add(cont);
+				resultados.add(rslt.getDouble(2));
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null)
+					rslt.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return resultados;
+	}
+	
+	public Double selectImportesFacturaAnio(int anio) {
+		Double resultadoAnio = (double) 0;
+		String query = "SELECT SUM(Pedidos.Importe), YEAR(Facturas.FechaFactura)"
+				+ " FROM Pedidos, Facturas WHERE Pedidos.idPedido = Facturas.idPedido AND YEAR(Facturas.FechaFactura) = ?";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rslt = null;
+		
+		try {
+			con = acceso.getConexion();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, anio);
+			
+			rslt = pstmt.executeQuery();
+			while (rslt.next()) {
+				
+				resultadoAnio = rslt.getDouble(1);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rslt != null)
+					rslt.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return resultadoAnio;
+	}
 }
