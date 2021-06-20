@@ -588,8 +588,6 @@ public class Vista_Facturacion extends JPanel {
 		CategoryPlot p2 = chartImp.getCategoryPlot();
 		p2.setRangeGridlinePaint(Color.red);
 		chartPanel2 = new ChartPanel(chartImp);
-		// panel_grafico.add(chartPanel, BorderLayout.CENTER);
-		//chartPanel2.setSize(788, 351);
 		chartPanel2.setBounds(0, 0, 788, 351);
 		panel_grafico.add(chartPanel2);
 		panel_grafico.repaint();

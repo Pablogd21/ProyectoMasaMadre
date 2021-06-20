@@ -371,7 +371,7 @@ public class Controlador implements ActionListener {
 				cont2 = a.charAt(2);
 				contador = cont + "" + cont1 + "" + cont2;
 			}
-			
+
 			vistaF.cargarGrafico(Integer.parseInt(contador), result.get(1), importesAnio);
 		}
 
